@@ -2035,6 +2035,13 @@
         db.solicitudes.unshift(newSolicitud);
         localStorage.setItem('STEVE_DROP_DB_V1', JSON.stringify(db));
         window.dispatchEvent(new Event('storage'));
+
+        // Send purchase request to cloud central server
+        fetch('/api/solicitudes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newSolicitud)
+        }).catch(err => console.error("Error enviando solicitud al servidor:", err));
       } catch (e) {
         console.error("Error al registrar solicitud:", e);
       }

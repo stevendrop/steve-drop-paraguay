@@ -21,6 +21,22 @@ app.get('/api/public-content', (req, res) => {
     plans: (db.plans || []).filter(p => p.active !== false),
     faqs: db.faqs || []
   });
+// Public API - Submit new user order/application
+app.post('/api/solicitudes', (req, res) => {
+  try {
+    const solicitud = req.body;
+    if (!solicitud || !solicitud.firstName) {
+      return res.status(400).json({ error: 'Datos de solicitud requeridos' });
+    }
+    const db = readDB();
+    if (!db.solicitudes) db.solicitudes = [];
+    db.solicitudes.unshift(solicitud);
+    writeDB(db);
+    res.json({ success: true, message: 'Solicitud registrada correctamente en el servidor' });
+  } catch (err) {
+    console.error("Error al guardar solicitud:", err);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
 });
 
 // Admin Auth API

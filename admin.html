@@ -1262,6 +1262,28 @@
       localStorage.setItem(DB_KEY, JSON.stringify(db));
       draftState = JSON.parse(JSON.stringify(db));
       window.dispatchEvent(new Event('storage'));
+
+      // Send updated DB to central cloud server
+      fetch('/api/admin/db', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(db)
+      }).catch(err => console.error("Error al sincronizar con el servidor:", err));
+    }
+
+    // Sync database from central cloud server on admin load
+    function syncServerDB() {
+      fetch('/api/admin/db')
+        .then(res => res.json())
+        .then(serverDb => {
+          if (serverDb && typeof serverDb === 'object') {
+            localStorage.setItem(DB_KEY, JSON.stringify(serverDb));
+            if (typeof initDraftState === 'function') initDraftState();
+            if (typeof renderSolicitudes === 'function') renderSolicitudes();
+            if (typeof renderMembers === 'function') renderMembers();
+          }
+        })
+        .catch(err => console.error("Error al cargar la base de datos del servidor:", err));
     }
 
     function initDraftState() {
@@ -2526,6 +2548,7 @@
     // ON LOAD INIT
     window.addEventListener('load', () => {
       if (window.lucide) lucide.createIcons();
+      syncServerDB();
       checkAuth();
     });
 
