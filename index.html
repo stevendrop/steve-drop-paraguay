@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steve Drop | Formación de Dropshipping para resultados reales</title>
+  <meta name="description" content="Aprende el sistema Steve Drop: método probado, comunidad, mentorías en vivo y herramientas de IA propias en Paraguay." />
+  
+  <!-- FAVICON BRANDING (PURE DJ HEADPHONES LOGO) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- OpenGraph Meta Tags for Social Media & WhatsApp Links -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Steve Drop" />
+  <meta property="og:title" content="Steve Drop | Formación de Dropshipping para resultados reales" />
+  <meta property="og:description" content="Aprende el sistema Steve Drop: método probado, comunidad, mentorías en vivo y herramientas de IA propias en Paraguay." />
+  <meta property="og:image" content="./og_banner.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Steve Drop | Formación de Dropshipping para resultados reales" />
+  <meta name="twitter:description" content="Aprende el sistema Steve Drop: método probado, comunidad, mentorías en vivo y herramientas de IA propias en Paraguay." />
+  <meta name="twitter:image" content="./og_banner.jpg" />
+
+  <!-- Google Fonts & Speed Resource Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#38bdf8',
+              light: '#60a5fa',
+              dark: '#0284c7',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- FORCE SCROLL TO TOP ON PAGE LOAD -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+
+  <style>
+    body {
+      background-color: #040711;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .text-gradient-brand {
+      background: linear-gradient(135deg, #38bdf8 0%, #2563eb 50%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card {
+      background: rgba(10, 16, 30, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Aurora Boreal Reactive Background Animations (UNIFORM & CONSTANT) */
+    @keyframes aurora-1 {
+      0%, 100% { transform: translate(-10%, -10%) scale(1) rotate(0deg); opacity: 0.45; }
+      50% { transform: translate(15%, 18%) scale(1.25) rotate(180deg); opacity: 0.75; }
+    }
+
+    @keyframes aurora-2 {
+      0%, 100% { transform: translate(15%, -15%) scale(1.2) rotate(0deg); opacity: 0.35; }
+      50% { transform: translate(-12%, 12%) scale(0.95) rotate(-120deg); opacity: 0.65; }
+    }
+
+    @keyframes aurora-3 {
+      0%, 100% { transform: translate(-12%, 12%) scale(0.9) rotate(0deg); opacity: 0.5; }
+      50% { transform: translate(12%, -18%) scale(1.3) rotate(90deg); opacity: 0.35; }
+    }
+
+    .aurora-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      background: #040711;
+    }
+
+    .aurora-blob-1 {
+      position: absolute;
+      top: -15%;
+      left: 5%;
+      width: 65vw;
+      height: 65vw;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(37, 99, 235, 0.14) 45%, transparent 70%);
+      filter: blur(100px);
+      animation: aurora-1 20s ease-in-out infinite;
+    }
+
+    .aurora-blob-2 {
+      position: absolute;
+      top: 35%;
+      right: -10%;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(2, 132, 199, 0.13) 50%, transparent 70%);
+      filter: blur(110px);
+      animation: aurora-2 24s ease-in-out infinite;
+    }
+
+    .aurora-blob-3 {
+      position: absolute;
+      bottom: -15%;
+      left: 15%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(3, 105, 161, 0.18) 0%, rgba(124, 58, 237, 0.1) 50%, transparent 70%);
+      filter: blur(120px);
+      animation: aurora-3 28s ease-in-out infinite;
+    }
+
+    /* Gentle Shake Wiggle Animation for "Unirme ahora" CTA Button */
+    @keyframes gentle-shake {
+      0%, 80%, 100% { transform: scale(1) rotate(0deg); }
+      85% { transform: scale(1.04) rotate(-2.5deg); }
+      90% { transform: scale(1.04) rotate(2.5deg); }
+      95% { transform: scale(1.04) rotate(-1.5deg); }
+    }
+
+    .animate-gentle-shake {
+      animation: gentle-shake 3.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+    }
+
+    /* REVEAL ON SCROLL STYLES */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .reveal-delay-100 { transition-delay: 100ms; }
+    .reveal-delay-200 { transition-delay: 200ms; }
+    .reveal-delay-300 { transition-delay: 300ms; }
+    .reveal-delay-400 { transition-delay: 400ms; }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #040711;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(56, 189, 248, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-[#040711] text-slate-100 antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- AURORA BOREAL REACTIVE BACKGROUND -->
+  <div class="aurora-bg">
+    <div id="auroraBlob1" class="aurora-blob-1"></div>
+    <div id="auroraBlob2" class="aurora-blob-2"></div>
+    <div id="auroraBlob3" class="aurora-blob-3"></div>
+  </div>
+
+  <!-- NAVBAR HEADER -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-2 sm:py-3 bg-[#040711]/90 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+    <div class="container mx-auto px-3 sm:px-6">
+      
+      <div class="flex items-center justify-between">
+        <!-- Brand Logo -->
+        <a href="#inicio" class="flex items-center gap-2 group shrink-0">
+          <div id="navLogoIconContainer" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 p-[1px] shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-all duration-700">
+            <div class="w-full h-full bg-[#040711] rounded-[11px] flex items-center justify-center">
+              <i id="navLogoIcon" data-lucide="headphones" class="w-4 h-4 sm:w-5 sm:h-5 text-sky-400 transition-colors duration-700"></i>
+            </div>
+          </div>
+          <span class="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-white">
+            Steve<span id="navLogoAccent" class="text-sky-400 transition-colors duration-700">Drop</span>
+          </span>
+        </a>
+
+        <!-- Desktop Compact Nav Pill Container (Centered on LG) -->
+        <div class="hidden lg:block relative">
+          <nav class="relative flex items-center gap-0.5 bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded-full backdrop-blur-md overflow-hidden">
+            <div id="scrollProgressBar" class="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 transition-all duration-300" style="width: 0%;"></div>
+
+            <a id="nav-inicio" href="#inicio" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Inicio</a>
+            <a id="nav-historia" href="#historia" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Mi Historia</a>
+            <a id="nav-metodo" href="#metodo" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Método</a>
+            <a id="nav-herramientas" href="#herramientas" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Herramientas</a>
+            <a id="nav-niveles" href="#niveles" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Niveles</a>
+            <a id="nav-resultados" href="#resultados" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Resultados</a>
+            <a id="nav-preguntas" href="#preguntas" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Preguntas</a>
+          </nav>
+        </div>
+
+        <!-- "Unirme ahora" CTA Button (Visible on both Mobile and Desktop) -->
+        <div class="flex items-center gap-2">
+          <button onclick="openCheckout('Pro', '527.000')" class="relative group overflow-hidden rounded-full p-[1px] focus:outline-none animate-gentle-shake shrink-0">
+            <span id="navCtaGradient" class="absolute inset-0 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600 rounded-full group-hover:opacity-90 transition-all duration-700"></span>
+            <span class="relative px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#040711] flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-white transition-colors group-hover:bg-transparent">
+              <span>Unirme ahora</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Horizontally Scrollable Section Pill Navigation Bar with Progress Bar -->
+      <div class="lg:hidden mt-2 pt-1 relative">
+        <nav class="relative flex items-center gap-1 overflow-x-auto no-scrollbar py-1 px-1 bg-white/[0.03] border border-white/10 rounded-full backdrop-blur-md whitespace-nowrap">
+          <div id="scrollProgressBarMobile" class="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 transition-all duration-300" style="width: 0%;"></div>
+
+          <a id="mobnav-inicio" href="#inicio" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Inicio</a>
+          <a id="mobnav-historia" href="#historia" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Mi Historia</a>
+          <a id="mobnav-metodo" href="#metodo" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Método</a>
+          <a id="mobnav-herramientas" href="#herramientas" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Herramientas</a>
+          <a id="mobnav-niveles" href="#niveles" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Niveles</a>
+          <a id="mobnav-resultados" href="#resultados" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Resultados</a>
+          <a id="mobnav-preguntas" href="#preguntas" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Preguntas</a>
+        </nav>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="relative z-10">
+    
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative pt-28 pb-14 md:pt-32 md:pb-16 overflow-hidden">
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-sky-400 tracking-wide uppercase mb-5 backdrop-blur-md reveal-on-scroll">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sky-400"></i>
+            <span id="displayHeroBadge">Formación premium · Paraguay</span>
+          </div>
+
+          <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-5 reveal-on-scroll reveal-delay-100">
+            La formación de <span class="text-gradient-brand">Dropshipping</span> creada para personas que quieren <span class="text-gradient-brand">resultados</span>, no teoría.
+          </h1>
+
+          <p id="displayHeroSubtitle" class="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed mb-8 reveal-on-scroll reveal-delay-200">
+            Aprende el mismo sistema que me permitió vivir completamente del Dropshipping desde diciembre de 2025 y que ya ayudó a más de <span class="text-white font-semibold underline decoration-sky-400 decoration-2 underline-offset-4">200 alumnos</span> a construir negocios reales.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-3.5 w-full justify-center mb-12 reveal-on-scroll reveal-delay-300">
+            <a href="#niveles" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 font-bold text-white text-sm shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 group">
+              <span>🚀 Quiero comenzar</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#metodo" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white/[0.05] border border-white/10 hover:bg-white/10 font-semibold text-slate-200 hover:text-white text-sm transition-all flex items-center justify-center gap-2">
+              <span>Conocer el método</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            </a>
+          </div>
+
+          <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-3.5 md:gap-5 pt-6 border-t border-white/10">
+            <div class="glass-card p-4 rounded-2xl flex flex-col items-center text-center reveal-on-scroll">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-2.5">
+                <i data-lucide="users" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <span class="font-heading text-2xl md:text-3xl font-extrabold text-white mb-0.5">+200</span>
+              <span class="text-xs text-slate-400 font-medium">Alumnos formados</span>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl flex flex-col items-center text-center reveal-on-scroll reveal-delay-100">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-2.5">
+                <i data-lucide="message-square-text" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <span class="font-heading text-2xl md:text-3xl font-extrabold text-white mb-0.5">+300</span>
+              <span class="text-xs text-slate-400 font-medium">Testimonios reales</span>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl flex flex-col items-center text-center reveal-on-scroll reveal-delay-200">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-2.5">
+                <i data-lucide="trending-up" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <span class="font-heading text-2xl md:text-3xl font-extrabold text-white mb-0.5">Desde 2025</span>
+              <span class="text-xs text-slate-400 font-medium">Viviendo de Dropshipping</span>
+            </div>
+
+            <div class="glass-card p-5 rounded-2xl flex flex-col items-center text-center reveal-on-scroll reveal-delay-300">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-2.5">
+                <i data-lucide="shield-check" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <span class="font-heading text-2xl md:text-3xl font-extrabold text-white mb-0.5">100%</span>
+              <span class="text-xs text-slate-400 font-medium">Sistema aplicado diariamente</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORIA SECTION -->
+    <section id="historia" class="relative py-14 md:py-16 border-y border-white/5">
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mb-10 reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-sky-400 uppercase tracking-widest mb-3">
+            <span>Mi Historia</span>
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-3">
+            De 0 a vivir 100% del <span class="text-gradient-brand">Dropshipping</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base">
+            Un proceso de aprendizaje real, probando sistemas hasta encontrar la fórmula escalable adaptada al mercado paraguayo.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+          <!-- CARD 01: INICIOS -->
+          <div class="glass-card p-6 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-all flex flex-col justify-between reveal-on-scroll">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <i data-lucide="wrench" class="w-6 h-6 text-sky-400"></i>
+                </div>
+                <span class="font-heading text-2xl font-extrabold text-white/20">01</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-xs font-medium text-slate-300 mb-2">Inicios</span>
+              <h3 class="font-heading text-xl font-bold text-white mb-1.5">Orígenes</h3>
+              <p class="text-sky-400/90 text-xs font-semibold mb-3">De la técnica y los escenarios al comercio real.</p>
+              
+              <div class="space-y-2.5 text-xs leading-relaxed text-slate-300">
+                <div class="flex items-start gap-2">
+                  <i data-lucide="radio" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">Técnico en Telecomunicaciones:</strong> Mis primeros años. Formación técnica, lógica de procesos y mucha disciplina.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i data-lucide="disc" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">DJ Profesional:</strong> Años en escenarios y cabinas aprendiendo a leer al público y entender el comportamiento de las personas.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i data-lucide="store" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">Tienda Física:</strong> Primer contacto con el comercio tradicional, viviendo los altos costos fijos y el inventario estancado.</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/5 flex items-center gap-2 text-xs font-medium text-slate-400">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              <span>Base y experiencia construida</span>
+            </div>
+          </div>
+
+          <!-- CARD 02: DROPSHIPPING -->
+          <div class="glass-card p-6 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-all flex flex-col justify-between reveal-on-scroll reveal-delay-150">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <i data-lucide="globe" class="w-6 h-6 text-sky-400"></i>
+                </div>
+                <span class="font-heading text-2xl font-extrabold text-white/20">02</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-xs font-medium text-slate-300 mb-2">El Cambio</span>
+              <h3 class="font-heading text-xl font-bold text-white mb-1.5">Dropshipping</h3>
+              <p class="text-sky-400/90 text-xs font-semibold mb-3">El giro. Un modelo escalable sin límites geográficos.</p>
+              
+              <div class="space-y-2.5 text-xs leading-relaxed text-slate-300">
+                <div class="flex items-start gap-2">
+                  <i data-lucide="shopping-bag" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">Venta Directa Sin Stock:</strong> Descubrimiento del modelo digital sin necesidad de almacenamiento previo ni capital estancado.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i data-lucide="target" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">Dominio de Tráfico Pago:</strong> Validación constante de ofertas, creación de anuncios y escala de campañas ganadoras en Meta Ads.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">Adaptación al Mercado PY:</strong> Ajuste del sistema a las pasarelas locales, fletes e integraciones de cobro contra entrega con Dropi.</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/5 flex items-center gap-2 text-xs font-medium text-slate-400">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              <span>Modelo validado en Paraguay</span>
+            </div>
+          </div>
+
+          <!-- CARD 03: STEVE DROP -->
+          <div class="glass-card p-6 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-all flex flex-col justify-between reveal-on-scroll reveal-delay-300">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <i data-lucide="rocket" class="w-6 h-6 text-sky-400"></i>
+                </div>
+                <span class="font-heading text-2xl font-extrabold text-white/20">03</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-xs font-medium text-slate-300 mb-2">Actualidad</span>
+              <h3 class="font-heading text-xl font-bold text-white mb-1.5">Steve Drop</h3>
+              <p class="text-sky-400/90 text-xs font-semibold mb-3">La formación. Comunidad enfocada en construir negocios reales.</p>
+              
+              <div class="space-y-2.5 text-xs leading-relaxed text-slate-300">
+                <div class="flex items-start gap-2">
+                  <i data-lucide="cpu" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">IA Propietaria Incluida:</strong> Desarrollo de asistentes virtuales exclusivos (Steve Candia AI Copy & Hunter) para optimizar el trabajo.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i data-lucide="video" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">Mentorías en Directo:</strong> Sesiones semanales cada domingo a las 15:00 hs para acompañar y acelerar el progreso real de cada alumno.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i data-lucide="users" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                  <span><strong class="text-white">Comunidad Activa:</strong> +200 emprendedores paraguayos compartiendo estrategias, proveedores y resultados en tiempo real.</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/5 flex items-center gap-2 text-xs font-medium text-slate-400">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              <span>Sistema activo y escalando</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METODO SECTION -->
+    <section id="metodo" class="relative py-14 md:py-16 overflow-hidden">
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        
+        <!-- QUE ES DROPSHIPPING CON DROPI EN PARAGUAY BLOCK -->
+        <div class="max-w-4xl mx-auto mb-16 p-6 sm:p-8 md:p-10 rounded-3xl glass-card border border-sky-500/30 bg-slate-950/70 shadow-2xl shadow-sky-500/10 reveal-on-scroll">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-400 text-xs font-black uppercase tracking-wider mb-5">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-sky-400"></i>
+            <span>EL MÉTODO</span>
+          </div>
+
+          <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
+            ¿Qué es Dropshipping con <span class="text-sky-400">Dropi</span> en Paraguay?
+          </h2>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+            Es un modelo donde <strong class="text-white">vendes online sin tener inventario propio</strong>. En Paraguay usamos <strong class="text-sky-400 font-bold">Dropi</strong>: tú publicas los productos, haces anuncios, recibes pedidos y Dropi gestiona el proceso (empaquetado, envío y cobro contra entrega).
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            <div class="flex items-start gap-3 p-4 rounded-2xl bg-slate-900/80 border border-white/5">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                Empiezas con poco capital. Pagas publicidad para validar productos ganadores (o utilizas método orgánico).
+              </p>
+            </div>
+
+            <div class="flex items-start gap-3 p-4 rounded-2xl bg-slate-900/80 border border-white/5">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                Los pedidos se entregan a domicilio. Tu cliente paga al recibir y Dropi te transfiere ese dinero.
+              </p>
+            </div>
+
+            <div class="flex items-start gap-3 p-4 rounded-2xl bg-slate-900/80 border border-white/5">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                Escalas campañas ganadoras en <strong class="text-white">Meta Ads</strong> con métricas claras (CPA, CTR, etc).
+              </p>
+            </div>
+
+            <div class="flex items-start gap-3 p-4 rounded-2xl bg-slate-900/80 border border-white/5">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                Soporte y comunidad para resolver dudas al instante.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center mb-10 reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-sky-400 uppercase tracking-widest mb-3">
+            <span>Metodología Steve Drop</span>
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-3">
+            <span class="text-white font-extrabold">Otras formaciones</span> vs. <span class="text-gradient-brand">Steve Drop</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base">
+            No competimos con cursos genéricos. Competimos con la realidad de nuestros alumnos.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          
+          <!-- OTHER COURSES CARD -->
+          <div class="glass-card p-6 rounded-3xl border-rose-500/35 bg-gradient-to-b from-rose-950/20 via-slate-950/40 to-slate-950/60 shadow-lg shadow-rose-950/20 relative reveal-on-scroll">
+            <div class="absolute top-4 right-4">
+              <span class="px-2.5 py-0.5 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[10px] font-bold uppercase tracking-wider">
+                DEFICIENTE / TEÓRICO
+              </span>
+            </div>
+
+            <div class="flex items-center gap-3 mb-4 pb-3.5 border-b border-rose-500/20">
+              <div class="w-9 h-9 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center">
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-400"></i>
+              </div>
+              <div>
+                <h3 class="font-heading text-lg font-bold text-rose-200">Otras formaciones genéricas</h3>
+                <p class="text-[11px] text-rose-400/80 font-medium">Modelos obsoletos con alto riesgo de pérdida</p>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-slate-300 text-xs md:text-sm">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
+                <span class="line-through decoration-rose-500/60 text-slate-300 font-medium">Contenido genérico y teoría reciclada</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
+                <span class="line-through decoration-rose-500/60 text-slate-300 font-medium">Sin comunidad activa ni soporte real</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
+                <span class="line-through decoration-rose-500/60 text-slate-300 font-medium">Estrategias no aplicables en Paraguay</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
+                <span class="line-through decoration-rose-500/60 text-slate-300 font-medium">Sin mentorías en vivo</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
+                <span class="line-through decoration-rose-500/60 text-slate-300 font-medium">Cero acompañamiento después de la compra</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
+                <span class="line-through decoration-rose-500/60 text-slate-300 font-medium">Sin herramientas propias</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- STEVE DROP CARD -->
+          <div class="glass-card p-6 rounded-3xl border-blue-500/40 bg-gradient-to-b from-blue-500/[0.08] to-transparent relative shadow-xl shadow-blue-500/10 reveal-on-scroll reveal-delay-150">
+            <div class="absolute top-4 right-4">
+              <span class="px-2.5 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-md shadow-blue-500/30">Recomendado</span>
+            </div>
+            <div class="flex items-center gap-3 mb-4 pb-3.5 border-b border-white/10">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                <i data-lucide="check-circle" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <div>
+                <h3 class="font-heading text-lg font-bold text-white">Sistema Steve Drop</h3>
+                <p class="text-[11px] text-sky-400/80 font-medium">Método probado en el mercado paraguayo</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-slate-200 font-medium text-xs md:text-sm">
+              <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Sistema probado y aplicado diariamente</span></li>
+              <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Comunidad activa con soporte constante</span></li>
+              <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Estrategia adaptada al mercado local</span></li>
+              <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Mentorías grupales y privadas en vivo</span></li>
+              <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Acompañamiento continuo hasta ver resultados</span></li>
+              <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Steve Candia AI incluido en cada nivel</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HERRAMIENTAS SECTION -->
+    <section id="herramientas" class="relative py-16 md:py-20 overflow-hidden">
+      
+      <!-- SUBTLE SECTION-LOCAL RADIAL GLOW -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.14)_0%,rgba(147,51,234,0.03)_55%,transparent_75%)] pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mb-10 reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-950/40 border border-purple-500/30 text-xs font-semibold text-purple-300 uppercase tracking-widest mb-3 backdrop-blur-md">
+            <i data-lucide="cpu" class="w-3.5 h-3.5 text-purple-400"></i>
+            <span>Herramientas Exclusivas</span>
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-3">Steve Candia AI</h2>
+          <p class="text-slate-300 text-sm md:text-base">
+            Inteligencia artificial <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent font-bold">al servicio de tu negocio.</span>
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <!-- CARD 1: COPY -->
+          <div class="glass-card p-6 rounded-3xl relative overflow-hidden group hover:border-purple-500/50 transition-all flex flex-col justify-between border-purple-500/20 reveal-on-scroll">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-purple-950/40 border border-purple-500/30 flex items-center justify-center">
+                  <i data-lucide="file-text" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full border text-purple-300 bg-purple-950/40 border-purple-500/30">Copywriting</span>
+              </div>
+              <h3 class="font-heading text-xl font-bold text-white mb-2">Steve Candia AI Copy</h3>
+              <p class="text-slate-300 text-xs leading-relaxed mb-4 font-normal">
+                Genera textos, anuncios y guiones de venta en el tono que mejor convierte. <strong class="text-purple-300 font-bold">Este es el asistente virtual que te hace la estructura que ya vendió más de 200 millones en PY.</strong>
+              </p>
+              <div class="space-y-2 pt-3 border-t border-purple-500/10 text-xs text-slate-300">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Estructura probada (+200 Millones facturados)</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Generador de copies para contenido publicitario</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Copies publicitarios persuasivos para Meta Ads</span></div>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-purple-500/10 flex items-center gap-2 text-xs text-purple-300 font-semibold">
+              <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i><span>Incluido con acceso a la plataforma (Nivel Inicio)</span>
+            </div>
+          </div>
+
+          <!-- CARD 2: HUNTER -->
+          <div class="glass-card p-6 rounded-3xl relative overflow-hidden group hover:border-purple-500/50 transition-all flex flex-col justify-between border-purple-500/20 reveal-on-scroll reveal-delay-150">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-purple-950/40 border border-purple-500/30 flex items-center justify-center">
+                  <i data-lucide="search" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full border text-purple-300 bg-purple-950/40 border-purple-500/30">Product Research</span>
+              </div>
+              <h3 class="font-heading text-xl font-bold text-white mb-2">Steve Candia AI Hunter</h3>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">Detecta productos con potencial real basándose en tendencias, demanda y competencia.</p>
+              <div class="space-y-2 pt-3 border-t border-purple-500/10 text-xs text-slate-300">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Filtro de productos ganadores</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Análisis de demanda local</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Estimación de márgenes reales</span></div>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-purple-500/10 flex items-center gap-2 text-xs text-purple-300 font-semibold">
+              <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i><span>Incluido en Nivel Pro y Elite (incluye todos los beneficios de Nivel Inicio)</span>
+            </div>
+          </div>
+
+          <!-- CARD 3: BUILDER -->
+          <div class="glass-card p-6 rounded-3xl relative overflow-hidden group hover:border-purple-500/50 transition-all flex flex-col justify-between border-purple-500/20 reveal-on-scroll reveal-delay-300">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-purple-950/40 border border-purple-500/30 flex items-center justify-center">
+                  <i data-lucide="layout-grid" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full border text-purple-300 bg-purple-950/40 border-purple-500/30">Store Building</span>
+              </div>
+              <h3 class="font-heading text-xl font-bold text-white mb-2">Steve Candia AI Builder</h3>
+              <p class="text-slate-300 text-xs leading-relaxed mb-4 font-normal">Un asistente virtual que construye por ti tus páginas de productos en segundos.</p>
+              <div class="space-y-2 pt-3 border-t border-purple-500/10 text-xs text-slate-300">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Ahorra horas de trabajo en cada lanzamiento</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Crea páginas de producto en segundos sin empezar de cero</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>No necesitas experiencia en diseño ni copywriting</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Reduce errores al crear páginas, ya que sigue una estructura comprobada</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Ideal para lanzar productos rápidamente y validar nuevas oportunidades</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i><span>Compatible con cualquier nicho (hogar, belleza, tecnología, etc.)</span></div>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-purple-500/10 flex items-center gap-2 text-xs text-purple-300 font-semibold">
+              <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i><span>Exclusivo Nivel Elite (incluye todos los beneficios de Inicio y Pro)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PRÓXIMA MENTORÍA EN DIRECTO (COUNTDOWN REAL DOMINGOS 15:00 HS PARAGUAY) -->
+    <section id="mentoria-vivo" class="relative py-8 md:py-10 overflow-hidden">
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-5xl mx-auto rounded-3xl p-6 sm:p-8 md:p-10 bg-slate-900/90 border-2 border-sky-500/40 shadow-2xl shadow-blue-500/15 backdrop-blur-xl relative overflow-hidden">
+          
+          <!-- AMBIENT GLOW BACKGROUND ACCENTS -->
+          <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-blue-500/15 blur-3xl pointer-events-none"></div>
+          <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-sky-500/10 blur-3xl pointer-events-none"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            
+            <!-- LEFT COLUMN: LIVE BADGE, TITLE & DESCRIPTION -->
+            <div class="lg:col-span-7 space-y-4">
+              <!-- NORMAL BLUE BADGE -->
+              <div id="liveBadgeNormal" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/40 text-sky-400 text-xs font-black uppercase tracking-wider shadow-sm">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-500"></span>
+                </span>
+                <span>((•)) MENTORÍAS EN VIVO</span>
+              </div>
+
+              <!-- ACTIVE LIVE FLASHING RED RECORDING BADGE (SUNDAYS 15:00 - 16:30 HS) -->
+              <div id="liveBadgeActive" class="hidden inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-rose-500/20 border border-rose-500/50 text-rose-300 text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(244,63,94,0.4)] animate-pulse">
+                <span class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-90"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-rose-600 border border-white"></span>
+                </span>
+                <span class="text-white font-extrabold">🔴 EN VIVO AHORA (EN DIRECTO)</span>
+              </div>
+
+              <h2 id="displayLiveTitle" class="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">
+                Próxima Mentoría en Directo
+              </h2>
+
+              <p id="displayLiveSubtitle" class="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+                Solo para alumnos <strong class="text-sky-400 font-bold">SteveDrop (desde el Nivel Inicio)</strong>. Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar.
+              </p>
+
+              <div class="pt-2">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-950/80 border border-white/10 text-xs font-bold text-slate-300 shadow-md">
+                  <i data-lucide="clock" class="w-4 h-4 text-sky-400"></i>
+                  <span>Domingos 15:00 hs a 16:30 hs · Horario Paraguay</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN: COUNTDOWN TIMER OR ACTIVE LIVE BANNER -->
+            <div class="lg:col-span-5 relative">
+              
+              <!-- STATE 1: COUNTDOWN TIMER BOXES (WHEN NOT LIVE) -->
+              <div id="liveTimerContainer" class="bg-slate-950/60 p-5 sm:p-6 rounded-2xl border border-sky-500/20 shadow-xl flex flex-col justify-between">
+                <!-- 4 TIMER BOXES: DÍAS | HORAS | MIN | SEG -->
+                <div class="grid grid-cols-4 gap-2 sm:gap-3 mb-6">
+                  <div class="bg-slate-900/90 border border-sky-500/30 rounded-xl p-2.5 text-center shadow-lg">
+                    <span id="liveTimerDays" class="font-heading text-2xl sm:text-3xl font-black text-sky-400 tracking-tight block">00</span>
+                    <span class="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">DÍAS</span>
+                  </div>
+
+                  <div class="bg-slate-900/90 border border-sky-500/30 rounded-xl p-2.5 text-center shadow-lg">
+                    <span id="liveTimerHours" class="font-heading text-2xl sm:text-3xl font-black text-sky-400 tracking-tight block">00</span>
+                    <span class="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">HORAS</span>
+                  </div>
+
+                  <div class="bg-slate-900/90 border border-sky-500/30 rounded-xl p-2.5 text-center shadow-lg">
+                    <span id="liveTimerMin" class="font-heading text-2xl sm:text-3xl font-black text-sky-400 tracking-tight block">00</span>
+                    <span class="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">MIN</span>
+                  </div>
+
+                  <div class="bg-slate-900/90 border border-sky-500/30 rounded-xl p-2.5 text-center shadow-lg">
+                    <span id="liveTimerSeg" class="font-heading text-2xl sm:text-3xl font-black text-sky-400 tracking-tight block">00</span>
+                    <span class="block text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">SEG</span>
+                  </div>
+                </div>
+
+                <!-- CTA BUTTON SCROLLS TO NIVELES -->
+                <a href="#niveles" class="w-full py-4 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-[1.02] transition-all cursor-pointer group">
+                  <span>Accede ahora</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+              </div>
+
+              <!-- STATE 2: ACTIVE LIVE TRANSMISSION BANNER (WHEN SUNDAY 15:00 - 16:30 HS) -->
+              <div id="liveActiveContainer" class="hidden bg-slate-950/90 p-6 rounded-2xl border-2 border-rose-500/50 shadow-[0_0_35px_rgba(244,63,94,0.35)] flex flex-col items-center justify-center text-center space-y-4 relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-rose-500/20 blur-2xl pointer-events-none"></div>
+
+                <div class="flex items-center justify-center gap-3">
+                  <span class="relative flex h-4 w-4">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-90"></span>
+                    <span class="relative inline-flex rounded-full h-4 w-4 bg-rose-600 border-2 border-white"></span>
+                  </span>
+                  <span class="font-heading text-sm font-black text-rose-400 uppercase tracking-widest animate-pulse">TRANSMISIÓN EN VIVO ACTIVA</span>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed font-normal">
+                  Mentoría de preguntas, respuestas y optimización de tiendas en directo ahora mismo (15:00 a 16:30 hs).
+                </p>
+
+                <a href="#niveles" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-rose-500 via-rose-600 to-amber-500 hover:from-rose-400 hover:to-amber-400 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-rose-500/40 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                  <span>🚀 UNIRME A LA MENTORÍA AHORA</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- NIVELES / PRICING SECTION -->
+    <section id="niveles" class="relative pt-12 pb-6 md:pt-14 md:pb-8 overflow-hidden">
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mb-8 reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-xs font-extrabold text-sky-400 uppercase tracking-widest mb-3 shadow-sm">
+            <span>Niveles de Formación</span>
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 tracking-tight">
+            Elige el nivel que mejor <span class="text-gradient-brand">se adapta a tu objetivo</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base font-normal">
+            Todos los niveles incluyen acceso al sistema Steve Drop. La diferencia está en el <span class="text-sky-300 font-semibold">nivel de acompañamiento</span>.
+          </p>
+        </div>
+
+        <!-- 0MS INSTANT HTML FALLBACK GRID -->
+        <div id="dynamicPublicPlansGrid" class="grid md:grid-cols-3 gap-6 items-stretch max-w-6xl mx-auto mb-0">
+          
+          <!-- Plan 1: Inicio -->
+          <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border-white/10 hover:border-white/20 transition-all duration-300 reveal-on-scroll">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="w-10 h-10 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <i data-lucide="zap" class="w-5 h-5 text-sky-400"></i>
+                </div>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                  Formación Básica
+                </span>
+              </div>
+              <h3 class="font-heading text-2xl font-black text-white uppercase tracking-tight mb-0.5">Inicio</h3>
+              <p class="text-slate-400 text-sm font-medium mb-4">Aprende el sistema</p>
+              <div class="mb-6 pb-4 border-b border-white/10">
+                <div class="flex items-baseline gap-1">
+                  <span class="font-heading text-4xl md:text-5xl font-black text-white tracking-tighter">167.000</span>
+                  <span class="text-sky-400 font-extrabold text-base uppercase">Gs</span>
+                </div>
+                <span class="text-[11px] text-slate-400 italic mt-1 block font-medium">Pago único · Acceso al contenido</span>
+              </div>
+              <ul class="space-y-2.5 mb-6 text-xs text-slate-200">
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>Curso completo Dropshipping con Dropi + Meta Ads</b> (paso a paso para que puedas verlo a tu ritmo)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>Habilidades de alto valor</b> + mentalidad inquebrantable</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>+10 horas de respuestas a dudas</b> en llamadas grabadas</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>30 días de acceso a comunidad WhatsApp</b> con miembros facturando +80 millones (Entorno ganador)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>Sala Steve Drop 4 mentorías grupales en vivo</b> para resolver dudas al instante</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Acceso a <b>Steve Candia AI Copy</b></span></li>
+              </ul>
+            </div>
+            <button onclick="openCheckout('Inicio', '167.000')" class="w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 bg-white/10 border border-white/15 text-white hover:bg-white/20 transition-all">
+              <span>Seleccionar Inicio</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Plan 2: Pro -->
+          <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border-white/10 hover:border-white/20 transition-all duration-300 reveal-on-scroll reveal-delay-150">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="w-10 h-10 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                  <i data-lucide="sparkles" class="w-5 h-5 text-sky-400"></i>
+                </div>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                  Más Vendido
+                </span>
+              </div>
+              <h3 class="font-heading text-2xl font-black text-white uppercase tracking-tight mb-0.5">Pro</h3>
+              <p class="text-slate-400 text-sm font-medium mb-4">Acelera tus resultados</p>
+              <div class="mb-6 pb-4 border-b border-white/10">
+                <div class="flex items-baseline gap-1">
+                  <span class="font-heading text-4xl md:text-5xl font-black text-white tracking-tighter">527.000</span>
+                  <span class="text-sky-400 font-extrabold text-base uppercase">Gs</span>
+                </div>
+                <span class="text-[11px] text-slate-400 italic mt-1 block font-medium">Pago único · Acceso al contenido</span>
+              </div>
+              <ul class="space-y-2.5 mb-6 text-xs text-slate-200">
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>Curso completo Dropshipping con Dropi + Meta Ads</b> (paso a paso para que puedas verlo a tu ritmo)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>3 Meses Beneficios</b> Steve Drop Inicio</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>3 Meses Comunidad WhatsApp</b> (miembros facturando +80 millones)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>3 Llamadas Privadas 1:1 conmigo vía Zoom</b> (Aclaro tus dudas específicas 1:1)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>30 días de Asesoría Personalizada 1:1 conmigo Vía WhatsApp</b> (Acceso a mi WhatsApp Personal)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Acceso a <b>Productos ganadores constantemente durante 30 días</b></span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Acceso a <b>Steve Candia AI Hunter</b></span></li>
+              </ul>
+            </div>
+            <button onclick="openCheckout('Pro', '527.000')" class="w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 bg-white/10 border border-white/15 text-white hover:bg-white/20 transition-all">
+              <span>Seleccionar Pro</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Plan 3: Elite (Highlight) -->
+          <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border-blue-500/60 bg-gradient-to-b from-blue-500/15 via-indigo-500/10 to-transparent shadow-2xl shadow-blue-500/20 relative md:-translate-y-3 transition-all duration-300 reveal-on-scroll reveal-delay-300">
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-sky-400 via-blue-600 to-indigo-600 text-white font-extrabold text-[10px] uppercase tracking-widest shadow-lg shadow-blue-500/40">
+                Nivel Más Popular
+              </span>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="w-10 h-10 rounded-2xl bg-blue-500/20 border border-blue-500/40 flex items-center justify-center">
+                  <i data-lucide="crown" class="w-5 h-5 text-sky-400"></i>
+                </div>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/40 text-sky-300">
+                  Acompañamiento VIP
+                </span>
+              </div>
+              <h3 class="font-heading text-2xl font-black text-white uppercase tracking-tight mb-0.5">Elite</h3>
+              <p class="text-slate-400 text-sm font-medium mb-4">Escala tu negocio</p>
+              <div class="mb-6 pb-4 border-b border-white/10">
+                <div class="flex items-baseline gap-1">
+                  <span class="font-heading text-4xl md:text-5xl font-black text-white tracking-tighter">1.300.000</span>
+                  <span class="text-sky-400 font-extrabold text-base uppercase">Gs</span>
+                </div>
+                <span class="text-[11px] text-slate-400 italic mt-1 block font-medium">Pago único · Acceso al contenido</span>
+              </div>
+              <ul class="space-y-2.5 mb-6 text-xs text-slate-200">
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>Curso completo Dropshipping con Dropi + Meta Ads</b> (paso a paso para que puedas verlo a tu ritmo)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>6 Meses Beneficios</b> Steve Drop Inicio</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>6 Meses Comunidad WhatsApp</b> (miembros facturando +80 millones)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>9 Llamadas Privadas 1:1 conmigo vía Zoom</b> (Aclaro tus dudas específicas 1:1)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span><b>6 Meses de Asesoría Personalizada 1:1 conmigo Vía WhatsApp</b> (Acceso a mi WhatsApp Personal)</span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Acceso a <b>Productos ganadores constantemente durante 6 meses</b></span></li>
+                <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>Acceso a <b>Steve Candia AI Builder</b></span></li>
+              </ul>
+            </div>
+            <button onclick="openCheckout('Elite', '1.300.000')" class="w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-[1.02] transition-all">
+              <span>Seleccionar Elite</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTADOS / TESTIMONIOS SECTION (REAL INSTAGRAM STORIES SCREENSHOTS CAROUSEL) -->
+    <section id="resultados" class="relative pt-6 pb-8 md:pt-8 md:pb-12 overflow-hidden">
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        
+        <!-- SECTION TITLE HEADER -->
+        <div class="max-w-3xl mx-auto text-center mb-6">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-indigo-500/10 border border-pink-500/30 text-xs font-extrabold text-pink-400 uppercase tracking-widest mb-3 shadow-sm">
+            <svg class="w-4 h-4 text-pink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Historias Reales en Instagram</span>
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 tracking-tight">
+            +300 Resultados reales de <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-rose-500 to-purple-400">alumnos en Paraguay</span>
+          </h2>
+          <p class="text-slate-300 text-sm md:text-base font-normal">
+            Capturas 100% reales de las historias destacadas <strong>Mi Gente, Mi Gente x2, Mi Gente 3 y Mi Gente 4</strong>.
+          </p>
+        </div>
+
+        <!-- REAL STORIES SWIPABLE SLIDER CAROUSEL TRACK (PURE VANILLA JS - 100% RELIABLE) -->
+        <div class="relative max-w-6xl mx-auto px-2">
+          
+          <!-- NAVIGATION ARROWS -->
+          <button onclick="scrollRealStories(-1)" class="absolute left-1 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-slate-900/90 border border-pink-500/40 text-white hover:bg-pink-500 flex items-center justify-center shadow-2xl shadow-pink-500/30 transition-all hover:scale-110 focus:outline-none backdrop-blur-md">
+            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+          </button>
+          
+          <button onclick="scrollRealStories(1)" class="absolute right-1 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-slate-900/90 border border-pink-500/40 text-white hover:bg-pink-500 flex items-center justify-center shadow-2xl shadow-pink-500/30 transition-all hover:scale-110 focus:outline-none backdrop-blur-md">
+            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+          </button>
+
+          <!-- CAROUSEL VIEWPORT CONTAINER (NO SCROLLBAR LINE) -->
+          <div class="overflow-hidden py-6 px-1">
+            <div id="realStoriesTrack" class="flex gap-5 transition-transform duration-500 ease-out">
+              
+              <!-- STORY SCREENSHOT 1: Mi Gente 4 - 41 productos vendidos / 5.635.000 Gs -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-pink-500/50 hover:border-pink-400 shadow-2xl shadow-pink-500/20 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080422824.png', 'Resultados 1 Semana · Miembro Fase 3')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080422824.png" loading="eager" decoding="async" alt="Mi Gente 4 - Resultados 1 Semana" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-pink-500/30 border border-pink-400 text-pink-300 text-[10px] font-black uppercase">MI GENTE 4</span>
+                    <p class="text-xs font-bold text-white mt-1">@danicamisay_ · Resultados 1 semana (Fase 3)</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 2: Mi Gente 4 - Pedido estudiando química -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-pink-500/30 hover:border-pink-400 shadow-2xl shadow-pink-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080424327.png', 'Ventas continuas mientras estudia')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080424327.png" loading="lazy" decoding="async" alt="Mi Gente 4 - @kevinn_diaz.c" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-pink-500/30 border border-pink-400 text-pink-300 text-[10px] font-black uppercase">MI GENTE 4</span>
+                    <p class="text-xs font-bold text-white mt-1">@kevinn_diaz.c · Vendiendo sin parar</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 3: Mi Gente 3 - Ventas antes del cole -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-sky-500/40 hover:border-sky-400 shadow-2xl shadow-sky-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080425996.png', 'Ventas antes del colegio')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080425996.png" loading="lazy" decoding="async" alt="Mi Gente 3 - @not.dvxin" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-sky-500/30 border border-sky-400 text-sky-300 text-[10px] font-black uppercase">MI GENTE 3</span>
+                    <p class="text-xs font-bold text-white mt-1">@not.dvxin · Racha antes del colegio</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 4: Mi Gente 3 - +30 millones en facturación -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-purple-500/40 hover:border-purple-400 shadow-2xl shadow-purple-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080427716.png', '+30 Millones en menos de 1 mes')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080427716.png" loading="lazy" decoding="async" alt="Mi Gente 3 - @fer__adk" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-purple-500/30 border border-purple-400 text-purple-300 text-[10px] font-black uppercase">MI GENTE 3</span>
+                    <p class="text-xs font-bold text-white mt-1">@fer__adk · +30.000.000 Gs (Fase 3)</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 5: Mi Gente 3 - +4 millones en tiempo récord -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-emerald-500/40 hover:border-emerald-400 shadow-2xl shadow-emerald-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080429455.png', '+4 Millones en 7 días')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080429455.png" loading="lazy" decoding="async" alt="Mi Gente 3 - @roberth505" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500/30 border border-emerald-400 text-emerald-300 text-[10px] font-black uppercase">MI GENTE 3</span>
+                    <p class="text-xs font-bold text-white mt-1">@roberth505 · +4.000.000 Gs tiempo récord</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 6: Mi Gente 3 - +4.5 millones ya hechos -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-amber-500/40 hover:border-amber-400 shadow-2xl shadow-amber-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080448541.png', '+4.5 Millones facturados')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080448541.png" loading="lazy" decoding="async" alt="Mi Gente 3 - @matias_zalema98" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/30 border border-amber-400 text-amber-300 text-[10px] font-black uppercase">MI GENTE 3</span>
+                    <p class="text-xs font-bold text-white mt-1">@matias_zalema98 · +4.500.000 Gs hechos 🔥</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 7: Mi Gente 3 - +1.9 millones en 1 solo día -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-rose-500/40 hover:border-rose-400 shadow-2xl shadow-rose-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080450726.png', '+1.9 Millones en 1 solo día')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080450726.png" loading="lazy" decoding="async" alt="Mi Gente 3 - @fer__adk 1 día" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-rose-500/30 border border-rose-400 text-rose-300 text-[10px] font-black uppercase">MI GENTE 3</span>
+                    <p class="text-xs font-bold text-white mt-1">@fer__adk · +1.900.000 Gs primer día</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 8: Mi Gente 3 - Victoria en 4 días -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-pink-500/40 hover:border-pink-400 shadow-2xl shadow-pink-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080454676.png', 'Victoria en 4 días')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080454676.png" loading="lazy" decoding="async" alt="Mi Gente 3 - @fer__adk 4 días" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-pink-500/30 border border-pink-400 text-pink-300 text-[10px] font-black uppercase">MI GENTE 3</span>
+                    <p class="text-xs font-bold text-white mt-1">@fer__adk · Victoria en 4 días 🏆</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 9: Mi Gente x2 - 30 millones en primeros 2 meses -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-indigo-500/40 hover:border-indigo-400 shadow-2xl shadow-indigo-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080456238.png', '30 Millones en primeros 2 meses')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080456238.png" loading="lazy" decoding="async" alt="Mi Gente x2 - @nadiagonzalez139" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-indigo-500/30 border border-indigo-400 text-indigo-300 text-[10px] font-black uppercase">MI GENTE X2</span>
+                    <p class="text-xs font-bold text-white mt-1">@nadiagonzalez139 · 30 Millones en 2 meses</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 10: Mi Gente x2 - +24 millones rompiendo desde día 1 -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-purple-500/40 hover:border-purple-400 shadow-2xl shadow-purple-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080458274.png', '+24 Millones desde el día 1')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080458274.png" loading="lazy" decoding="async" alt="Mi Gente x2 - +24 Millones" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-purple-500/30 border border-purple-400 text-purple-300 text-[10px] font-black uppercase">MI GENTE X2</span>
+                    <p class="text-xs font-bold text-white mt-1">@nadiagonzalez139 · +24.000.000 Gs</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 11: Mi Gente x2 - Pedido de 70 unidades / 90mil por producto -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-emerald-500/40 hover:border-emerald-400 shadow-2xl shadow-emerald-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080477321.png', 'Pedido récord de 70 unidades')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080477321.png" loading="lazy" decoding="async" alt="Mi Gente x2 - 70 unidades" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500/30 border border-emerald-400 text-emerald-300 text-[10px] font-black uppercase">MI GENTE X2</span>
+                    <p class="text-xs font-bold text-white mt-1">Chat Alumno · Pedido de 70 unidades 🔥</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 12: Mi Gente x2 - +10 millones en menos de 1 mes -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-sky-500/40 hover:border-sky-400 shadow-2xl shadow-sky-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080479255.png', '+10 Millones en menos de 1 mes')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080479255.png" loading="lazy" decoding="async" alt="Mi Gente x2 - @gregori_antu" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-sky-500/30 border border-sky-400 text-sky-300 text-[10px] font-black uppercase">MI GENTE X2</span>
+                    <p class="text-xs font-bold text-white mt-1">@gregori_antu · +10.387.000 Gs (17 días)</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STORY SCREENSHOT 13: Mi Gente x2 - +1 millón en un solo día -->
+              <div class="w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#080d1a] border-2 border-amber-500/40 hover:border-amber-400 shadow-2xl shadow-amber-500/10 transition-all duration-300 group relative hover:scale-[1.02] cursor-pointer" onclick="zoomStoryImage('img/media__1785080481543.png', '+1 Millón en un solo día')">
+                <div class="relative w-full h-[460px] sm:h-[500px] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="img/media__1785080481543.png" loading="lazy" decoding="async" alt="Mi Gente x2 - +1 millon en 1 dia" class="w-full h-full object-contain bg-black group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/30 border border-amber-400 text-amber-300 text-[10px] font-black uppercase">MI GENTE X2</span>
+                    <p class="text-xs font-bold text-white mt-1">@nadiagonzalez139 · +1 Millón en 1 día 🤯</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- DIRECT INSTAGRAM LINK CTA BUTTON (SINGLE CLEAN BUTTON) -->
+        <div class="max-w-2xl mx-auto text-center mt-8 reveal-on-scroll">
+          <a
+            href="https://www.instagram.com/stevecandiadj?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3.5 px-7 py-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-rose-500/15 to-purple-500/15 border border-pink-500/40 hover:border-pink-500 text-white hover:scale-[1.03] transition-all text-xs font-black shadow-xl shadow-pink-500/10 group"
+          >
+            <!-- VIBRANT INSTAGRAM GRADIENT LOGO -->
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 p-2 flex items-center justify-center shadow-md shadow-pink-500/40 shrink-0 group-hover:rotate-12 transition-transform">
+              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </div>
+            <span>Ver +300 Historias Destacadas "Mi Gente" en Instagram ↗</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STORY IMAGE LIGHTBOX MODAL (100% MOBILE FRIENDLY + BOTÓN VOLVER & ATRÁS NATIVO) -->
+    <div id="storyImageModal" class="hidden fixed inset-0 z-50 flex flex-col items-center justify-between p-3 sm:p-6 bg-black/95 backdrop-blur-2xl" onclick="closeStoryImageModal()">
+      <!-- TOP ACTION BAR WITH BACK & CLOSE BUTTONS -->
+      <div class="w-full max-w-lg flex items-center justify-between z-50 pt-1 pb-2" onclick="event.stopPropagation()">
+        <button onclick="closeStoryImageModal()" class="px-4 py-2 rounded-full bg-slate-900/90 text-white hover:text-pink-400 text-xs font-bold flex items-center gap-2 border border-white/20 shadow-xl active:scale-95 transition-all">
+          <i data-lucide="arrow-left" class="w-4 h-4 text-pink-400"></i>
+          <span>← Volver a la web</span>
+        </button>
+        <button onclick="closeStoryImageModal()" class="p-2 rounded-full bg-slate-900/90 text-white hover:text-rose-400 border border-white/20 shadow-xl active:scale-95 transition-all" title="Cerrar imagen">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- IMAGE CONTAINER -->
+      <div class="relative max-w-lg w-full flex-1 flex flex-col items-center justify-center overflow-hidden my-auto" onclick="event.stopPropagation()">
+        <div class="w-full h-full flex items-center justify-center overflow-hidden p-1">
+          <img id="storyModalImg" src="" alt="Historia Ampliada" class="max-h-[72vh] max-w-full w-auto h-auto rounded-2xl border-2 border-pink-500/80 shadow-2xl object-contain" />
+        </div>
+        <p id="storyModalCap" class="text-xs font-extrabold text-white mt-2 text-center bg-slate-900/90 px-4 py-2 rounded-full border border-pink-500/40 shadow-lg shrink-0"></p>
+      </div>
+
+      <!-- BOTTOM TOUCH BACK BUTTON FOR MOBILE -->
+      <div class="w-full max-w-lg text-center z-50 pb-2 pt-2" onclick="event.stopPropagation()">
+        <button onclick="closeStoryImageModal()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/50 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-xl active:scale-95 transition-all">
+          <i data-lucide="arrow-left" class="w-4 h-4 text-pink-400"></i>
+          <span>Volver al sitio web</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) SECTION -->
+    <section id="preguntas" class="relative pt-6 pb-14 md:pt-8 md:pb-16 overflow-hidden">
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mb-10 reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-sky-400 uppercase tracking-widest mb-3">
+            <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+            <span>Preguntas Frecuentes</span>
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-3">
+            Resuelve todas <span class="text-gradient-brand">tus dudas</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base">
+            Respuestas claras y directas sobre el sistema, los módulos y la comunidad.
+          </p>
+        </div>
+
+        <div id="dynamicFaqsContainer" class="max-w-3xl mx-auto space-y-3.5">
+          <!-- FAQ 1: Celular -->
+          <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+            <button onclick="toggleFaq('faq-cell')" class="w-full text-left p-5 flex items-center justify-between gap-4 font-heading font-bold text-sm md:text-base text-white">
+              <span>¿Puedo iniciar desde mi celular?</span>
+              <i id="faq-cell-icon" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+            </button>
+            <div id="faq-cell-ans" class="hidden px-5 pb-5 pt-0 text-slate-300 text-xs md:text-sm leading-relaxed border-t border-white/5">
+              <p class="pt-3">¡Claro que sí! Puedes vender, operar y gestionar tu negocio directamente desde tu teléfono celular. Sin embargo, recomendamos contar con una computadora (PC o notebook) para trabajar con mayor velocidad, comodidad y mejor organización al momento de armar tu tienda y configurar tus campañas.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 2: Experiencia -->
+          <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+            <button onclick="toggleFaq('faq-1')" class="w-full text-left p-5 flex items-center justify-between gap-4 font-heading font-bold text-sm md:text-base text-white">
+              <span>¿Necesito experiencia previa para empezar?</span>
+              <i id="faq-1-icon" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+            </button>
+            <div id="faq-1-ans" class="hidden px-5 pb-5 pt-0 text-slate-300 text-xs md:text-sm leading-relaxed border-t border-white/5">
+              <p class="pt-3">No. La formación está diseñada desde cero, guiándote paso a paso en la creación de tu tienda, la selección de productos y la configuración de tus campañas publicitarias.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3: Mentorías -->
+          <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+            <button onclick="toggleFaq('faq-2')" class="w-full text-left p-5 flex items-center justify-between gap-4 font-heading font-bold text-sm md:text-base text-white">
+              <span>¿Cómo funcionan las mentorías en vivo?</span>
+              <i id="faq-2-icon" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+            </button>
+            <div id="faq-2-ans" class="hidden px-5 pb-5 pt-0 text-slate-300 text-xs md:text-sm leading-relaxed border-t border-white/5">
+              <p class="pt-3">Son sesiones donde revisamos tiendas, campañas y estrategia directamente. Dependiendo del nivel elegido, accedes a mentorías grupales o privadas 1 a 1.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4: Steve Candia AI -->
+          <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+            <button onclick="toggleFaq('faq-3')" class="w-full text-left p-5 flex items-center justify-between gap-4 font-heading font-bold text-sm md:text-base text-white">
+              <span>¿Qué es Steve Candia AI y cómo me ayuda?</span>
+              <i id="faq-3-icon" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+            </button>
+            <div id="faq-3-ans" class="hidden px-5 pb-5 pt-0 text-slate-300 text-xs md:text-sm leading-relaxed border-t border-white/5">
+              <p class="pt-3">Es nuestra suite de herramientas propias con Inteligencia Artificial entrenada específicamente para el mercado paraguayo. Te ayuda a redactar anuncios, investigar productos y estructurar tiendas en minutos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA CONTACTO EMAIL / DUDAS EXTRA -->
+        <div class="mt-10 max-w-xl mx-auto text-center p-6 rounded-3xl bg-slate-900/80 border border-white/10 shadow-xl reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-3">
+            <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+            <span>¿Tienes más preguntas?</span>
+          </div>
+          <h3 class="font-heading text-lg sm:text-xl font-bold text-white mb-2">
+            ¡Haznos saber cualquier otra inquietud!
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-400 mb-5 font-normal">
+            Escríbenos directamente a nuestro correo y te responderemos a la brevedad.
+          </p>
+
+          <a
+            href="mailto:estebangabriel46@hotmail.com?subject=Consulta%20Steve%20Drop"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:to-blue-500 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-sky-500/20 hover:scale-[1.02] transition-all group"
+          >
+            <i data-lucide="mail" class="w-4 h-4 text-white group-hover:scale-110 transition-transform"></i>
+            <span>Enviar mensaje por Correo / Gmail</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER WITH PIXEL-PERFECT INLINE SVG BRAND ICONS & ULTRA-COMPACT LEGAL DISCLAIMERS -->
+  <footer class="relative pt-10 pb-8 bg-[#03060d] border-t border-white/10 text-slate-400 z-10">
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-5 pb-6 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 p-[1px]">
+            <div class="w-full h-full bg-[#040711] rounded-[11px] flex items-center justify-center">
+              <i data-lucide="headphones" class="w-5 h-5 text-sky-400"></i>
+            </div>
+          </div>
+          <span class="font-heading font-extrabold text-xl text-white">
+            Steve<span class="text-sky-400">Drop</span>
+          </span>
+        </div>
+
+        <!-- PIXEL-PERFECT INLINE SVG SOCIAL BRAND ICONS -->
+        <div class="flex items-center gap-3 flex-wrap justify-center">
+          
+          <!-- Instagram -->
+          <a id="footerInstagramLink" href="https://www.instagram.com/stevecandiadj?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" title="Instagram" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:bg-white/10 hover:border-sky-500/30 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+
+          <!-- Facebook -->
+          <a id="footerFacebookLink" href="https://www.facebook.com/stevecandiadj/about" target="_blank" rel="noopener noreferrer" title="Facebook" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:bg-white/10 hover:border-sky-500/30 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+
+          <!-- TikTok -->
+          <a id="footerTiktokLink" href="https://www.tiktok.com/@stevecandiadj?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" title="TikTok" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:bg-white/10 hover:border-sky-500/30 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+            </svg>
+          </a>
+
+          <!-- YouTube -->
+          <a id="footerYoutubeLink" href="https://youtube.com/@stevecandia1272?si=565jQKG-pwKS8gj3" target="_blank" rel="noopener noreferrer" title="YouTube" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:bg-white/10 hover:border-sky-500/30 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+
+          <!-- WhatsApp Soporte -->
+          <a id="footerWhatsappLink" href="https://wa.me/595974804611" target="_blank" rel="noopener noreferrer" title="WhatsApp Soporte" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:bg-white/10 hover:border-emerald-500/30 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </a>
+
+          <!-- Correo Mail -->
+          <a href="mailto:estebangabriel46@hotmail.com" title="Correo Contacto" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:bg-white/10 hover:border-sky-500/30 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ULTRA-COMPACT MICRO-LEGAL DISCLAIMERS & OBSERVATIONS GRID (NEUTRAL MONOCHROME) -->
+      <div class="py-5 border-b border-white/5 text-[9.5px] sm:text-[10px] text-slate-500 leading-snug">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          <!-- 1. DESCARGO DE RESPONSABILIDAD -->
+          <div class="p-3 rounded-2xl bg-white/[0.01] border border-white/5 space-y-1">
+            <div class="flex items-center gap-1.5 text-slate-500 font-bold uppercase tracking-wider text-[9px]">
+              <i data-lucide="shield" class="w-3 h-3 text-slate-500"></i>
+              <span>Descargo de Responsabilidad</span>
+            </div>
+            <p class="text-slate-500/90">
+              Steve Drop es una formación educativa. Los logros son casos individuales y no garantizamos resultados económicos específicos. No estamos oficialmente afiliados a Meta ni Shopify.
+            </p>
+          </div>
+
+          <!-- 2. POLÍTICA DE REEMBOLSOS -->
+          <div class="p-3 rounded-2xl bg-white/[0.01] border border-white/5 space-y-1">
+            <div class="flex items-center gap-1.5 text-slate-500 font-bold uppercase tracking-wider text-[9px]">
+              <i data-lucide="file-text" class="w-3 h-3 text-slate-500"></i>
+              <span>Política de Reembolsos</span>
+            </div>
+            <p class="text-slate-500/90">
+              Debido al acceso digital inmediato del contenido, herramientas y comunidad, no se efectúan reembolsos. Si tienes dudas, contáctanos a soporte por WhatsApp antes de tu inscripción.
+            </p>
+          </div>
+
+          <!-- 3. PAGO ÚNICO Y FUNCIONAMIENTO DE ACCESOS -->
+          <div class="p-3 rounded-2xl bg-white/[0.01] border border-white/5 space-y-1.5 text-[9.5px] leading-snug">
+            <div class="flex items-center gap-1.5 text-slate-400 font-bold uppercase tracking-wider text-[9px]">
+              <i data-lucide="clock" class="w-3 h-3 text-slate-400"></i>
+              <span>📌 Pago Único y Funcionamiento de Accesos</span>
+            </div>
+            <p class="text-slate-400/90">
+              • <strong>Todas las ofertas de la formación son de PAGO ÚNICO (pagas 1 sola vez).</strong> El acceso al curso grabado lo tienes de por vida sin cuotas mensuales.
+            </p>
+            <p class="text-slate-400/90">
+              • <strong>Lo que SÍ tiene caducidad</strong> es el acceso a la comunidad de WhatsApp y a las mentorías semanales en vivo (durante 30 días, 3 o 6 meses según el plan seleccionado).
+            </p>
+            <p class="text-slate-500 italic pt-1 border-t border-white/5 text-[9px]">
+              Si deseas continuar en la comunidad de WhatsApp y en las mentorías semanales una vez finalizado tu periodo, solo debes renovar tu acceso.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <div class="flex items-center gap-2">
+          <p>© 2026 Steve Drop · Asunción, Paraguay</p>
+          <a href="admin.html" title="Acceso Administración Privada" class="opacity-20 hover:opacity-100 text-slate-400 hover:text-sky-400 transition-all duration-300 p-1" aria-label="Panel de Administración">
+            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+        <p>Diseñado para construir negocios reales.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PAYMENT PANEL MODAL -->
+  <div id="checkoutModal" class="hidden fixed inset-x-0 inset-y-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="relative w-full max-w-md bg-[#0b1220] p-6 rounded-3xl border border-slate-800 shadow-2xl max-h-[92vh] overflow-y-auto">
+      <button onclick="closeCheckout()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center z-10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-blue-500/40 flex items-center justify-between mb-5">
+        <span id="modalPlanName" class="text-xs font-semibold text-slate-300">Impulso — Formación</span>
+        <span id="modalPlanPrice" class="font-heading text-lg font-bold text-blue-400">527.000 Gs</span>
+      </div>
+
+      <div id="screenMethods" class="space-y-5">
+        <div>
+          <h3 class="font-heading text-xl font-bold text-white mb-0.5">¿Cómo querés pagar?</h3>
+          <p class="text-slate-400 text-xs">Elegí el método que más te convenga.</p>
+        </div>
+
+        <div class="space-y-3">
+          <button onclick="switchScreen('transfer')" class="w-full p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-800/90 transition-all text-left flex items-start gap-3.5 group">
+            <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+              <i data-lucide="building-2" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+            <div>
+              <h4 class="font-heading text-sm font-bold text-white mb-0.5">Transferencia bancaria</h4>
+              <span class="text-[11px] text-slate-400 block"><span id="modalDisplayBankName">Banco Continental</span> · Alias por Cédula (CI)</span>
+            </div>
+          </button>
+
+          <button onclick="payWithPagopar()" class="w-full p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-800/90 transition-all text-left flex items-start gap-3.5 group">
+            <div class="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+              <i data-lucide="credit-card" class="w-4 h-4 text-sky-400"></i>
+            </div>
+            <div>
+              <h4 class="font-heading text-sm font-bold text-white mb-0.5">Tarjeta / QR</h4>
+              <span class="text-[11px] text-slate-400 block">Todos los medios de pago digitales</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div id="screenTransfer" class="hidden space-y-4">
+        <button onclick="switchScreen('methods')" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span>Volver</span>
+        </button>
+
+        <div>
+          <h3 class="font-heading text-xl font-bold text-white mb-0.5">Transferencia bancaria</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Realizá la transferencia, adjuntá la foto del comprobante y confirmá por WhatsApp.</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-blue-500/30 space-y-3">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">ALIAS / CÉDULA (CI)</span>
+            <div class="flex items-center justify-between">
+              <span id="modalDisplayAlias" class="font-mono text-xl font-bold text-blue-400 tracking-wide">4.873.932</span>
+              <button onclick="copyAlias(document.getElementById('modalDisplayAlias').innerText)" class="p-1.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 transition-colors">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-2.5 border-t border-slate-800 grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">TITULAR</span>
+              <span id="modalDisplayHolder" class="font-bold text-white">Esteban Candia</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">BANCO</span>
+              <span id="modalDisplayBank" class="font-bold text-white">Banco Continental</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3 pt-1">
+          <span class="text-[11px] font-bold text-slate-300 block uppercase tracking-wider">INGRESÁ TUS DATOS PARA VALIDAR TU PAGO:</span>
+          
+          <div class="grid grid-cols-2 gap-2.5">
+            <input id="inputFirstName" type="text" placeholder="Nombre *" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 text-xs" />
+            <input id="inputLastName" type="text" placeholder="Apellido *" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 text-xs" />
+          </div>
+
+          <input id="inputPhone" type="tel" placeholder="Número de WhatsApp (ej: 0986 529 937) *" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 text-xs" />
+
+          <input id="inputGmail" type="email" placeholder="Correo Gmail (para habilitarte el acceso) *" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 text-xs" />
+
+          <!-- ADJUNTAR COMPROBANTE FILE UPLOAD FIELD -->
+          <div class="space-y-1">
+            <label class="block text-[11px] font-bold text-slate-300 uppercase">Adjuntá el comprobante de pago *</label>
+            <div class="relative flex items-center justify-center p-3 rounded-2xl bg-slate-900/90 border border-dashed border-sky-500/40 hover:border-sky-500 text-center cursor-pointer transition-colors group">
+              <input id="inputReceiptFile" type="file" accept="image/*,.pdf" onchange="handleFileSelected(this)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+              <div class="flex items-center gap-2 text-xs text-sky-400 group-hover:text-sky-300">
+                <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+                <span id="fileNameDisplay" class="font-semibold">Subir foto o PDF del comprobante</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONFIRMAR POR WHATSAPP CTA BUTTON -->
+        <button onclick="submitTransferToWhatsapp()" class="w-full py-3.5 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-slate-950 font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all mt-2">
+          <i data-lucide="message-circle" class="w-4 h-4 fill-slate-950"></i>
+          <span>Confirmar por WhatsApp</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INTERACTIVE SCRIPTS & DYNAMIC DB SYNC -->
+  <script>
+    var currentPlan = "";
+    var currentPrice = "";
+    var activeContactPhone = "0974804611";
+
+    window.addEventListener('beforeunload', function () {
+      window.scrollTo(0, 0);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+      updateActiveNavAndTheme();
+    });
+
+    function initRevealOnScroll() {
+      var revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if (!('IntersectionObserver' in window)) {
+        revealElements.forEach(function(el) { el.classList.add('reveal-visible'); });
+        return;
+      }
+
+      var observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+      };
+
+      var revealObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      revealElements.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+    }
+
+    // DYNAMIC NAV SCROLL PROGRESS BAR, ACTIVE HIGHLIGHTING & PURPLE NAVBAR ACCENTS SHIFT
+    function updateActiveNavAndTheme() {
+      var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolledPct = Math.min(100, Math.max(0, (winScroll / height) * 100));
+      
+      var progressBar = document.getElementById('scrollProgressBar');
+      var progressBarMobile = document.getElementById('scrollProgressBarMobile');
+      if (progressBar) progressBar.style.width = scrolledPct + "%";
+      if (progressBarMobile) progressBarMobile.style.width = scrolledPct + "%";
+
+      // Check Navbar background blur state
+      var nav = document.getElementById('navbar');
+      if (winScroll > 20) {
+        nav.classList.add('bg-[#040711]/95', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-2xl');
+      }
+
+      // Detect Active Section
+      var sections = ['inicio', 'historia', 'metodo', 'herramientas', 'niveles', 'resultados', 'preguntas'];
+      var activeSectionId = 'inicio';
+      var scrollPosition = winScroll + 200;
+
+      for (var i = 0; i < sections.length; i++) {
+        var sec = document.getElementById(sections[i]);
+        if (sec) {
+          var top = sec.offsetTop;
+          var secHeight = sec.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + secHeight) {
+            activeSectionId = sections[i];
+            break;
+          }
+        }
+      }
+
+      // Check if user is currently inside Steve Candia AI Section (#herramientas)
+      var isAiSection = (activeSectionId === 'herramientas');
+
+      // Update Logo, Progress Bar, and CTA Button to AI Purple Theme smoothly
+      var logoAccent = document.getElementById('navLogoAccent');
+      var logoIcon = document.getElementById('navLogoIcon');
+      var logoContainer = document.getElementById('navLogoIconContainer');
+      var ctaGradient = document.getElementById('navCtaGradient');
+
+      if (isAiSection) {
+        // AI PURPLE NAVBAR ACCENTS SHIFT
+        if (logoAccent) logoAccent.className = "text-purple-400 transition-colors duration-700 font-extrabold";
+        if (logoIcon) logoIcon.className = "w-4 h-4 sm:w-5 sm:h-5 text-purple-400 transition-colors duration-700";
+        if (logoContainer) logoContainer.className = "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-purple-400 via-pink-500 to-indigo-600 p-[1px] shadow-lg shadow-purple-500/30 group-hover:scale-105 transition-all duration-700";
+        if (progressBar) progressBar.className = "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-500 transition-all duration-300";
+        if (progressBarMobile) progressBarMobile.className = "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-500 transition-all duration-300";
+        if (ctaGradient) ctaGradient.className = "absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-600 rounded-full group-hover:opacity-90 transition-all duration-700";
+      } else {
+        // ORIGINAL BLUE/CYAN STEVE DROP PALETTE
+        if (logoAccent) logoAccent.className = "text-sky-400 transition-colors duration-700 font-extrabold";
+        if (logoIcon) logoIcon.className = "w-4 h-4 sm:w-5 sm:h-5 text-sky-400 transition-colors duration-700";
+        if (logoContainer) logoContainer.className = "w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 p-[1px] shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-all duration-700";
+        if (progressBar) progressBar.className = "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 transition-all duration-300";
+        if (progressBarMobile) progressBarMobile.className = "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 transition-all duration-300";
+        if (ctaGradient) ctaGradient.className = "absolute inset-0 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600 rounded-full group-hover:opacity-90 transition-all duration-700";
+      }
+
+      // Highlight Active Nav Pill (Desktop & Mobile)
+      sections.forEach(function(secId) {
+        var linkDesktop = document.getElementById('nav-' + secId);
+        var linkMobile = document.getElementById('mobnav-' + secId);
+
+        [linkDesktop, linkMobile].forEach(function(link) {
+          if (link) {
+            if (secId === activeSectionId) {
+              if (secId === 'herramientas') {
+                link.className = "nav-link text-[11px] font-bold py-1 px-2.5 rounded-full transition-all text-purple-300 bg-purple-500/25 border border-purple-500/50 shadow-[0_0_12px_rgba(168,85,247,0.4)] shrink-0";
+              } else {
+                link.className = "nav-link text-[11px] font-bold py-1 px-2.5 rounded-full transition-all text-sky-300 bg-sky-500/20 border border-sky-500/40 shadow-[0_0_12px_rgba(56,189,248,0.3)] shrink-0";
+              }
+            } else {
+              link.className = "nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 border border-transparent shrink-0";
+            }
+          }
+        });
+      });
+    }
+
+    function loadPublicDataFromDB() {
+      const stored = localStorage.getItem('STEVE_DROP_DB_V1');
+      if (!stored) return;
+
+      try {
+        const db = JSON.parse(stored);
+
+        if (db.settings) {
+          // Force migration if old transfer settings exist in user's browser
+          let settingsUpdated = false;
+          if (!db.settings.bankName || db.settings.bankName === 'Banco Familiar') {
+            db.settings.bankName = 'Banco Continental';
+            settingsUpdated = true;
+          }
+          if (!db.settings.accountHolder || db.settings.accountHolder === 'Aún no definido' || db.settings.accountHolder === 'Steve Candia') {
+            db.settings.accountHolder = 'Esteban Candia';
+            settingsUpdated = true;
+          }
+          var adminWhatsappPhone = "595974804611";
+          if (db.settings.whatsappSupportPhone) {
+            var rawWp = db.settings.whatsappSupportPhone.replace(/\D/g, '');
+            if (rawWp.startsWith('09')) adminWhatsappPhone = '595' + rawWp.substring(1);
+            else if (rawWp.startsWith('9')) adminWhatsappPhone = '595' + rawWp;
+            else if (rawWp.length > 0) adminWhatsappPhone = rawWp.startsWith('595') ? rawWp : '595' + rawWp;
+          }
+
+          const aliasCI = db.settings.contactPhone || "4.873.932";
+          const holder = db.settings.accountHolder || "Esteban Candia";
+          const bank = db.settings.bankName || "Banco Continental";
+
+          if (document.getElementById('modalDisplayAlias')) document.getElementById('modalDisplayAlias').innerText = aliasCI;
+          if (document.getElementById('modalDisplayHolder')) document.getElementById('modalDisplayHolder').innerText = holder;
+          if (document.getElementById('modalDisplayBank')) document.getElementById('modalDisplayBank').innerText = bank;
+          if (document.getElementById('modalDisplayBankName')) document.getElementById('modalDisplayBankName').innerText = bank;
+          if (document.getElementById('footerWhatsappLink')) document.getElementById('footerWhatsappLink').href = `https://api.whatsapp.com/send?phone=${adminWhatsappPhone}`;
+        }
+
+        if (db.hero) {
+          if (db.hero.badge && document.getElementById('displayHeroBadge')) {
+            document.getElementById('displayHeroBadge').innerText = db.hero.badge;
+          }
+          if (db.hero.subtitle && document.getElementById('displayHeroSubtitle')) {
+            document.getElementById('displayHeroSubtitle').innerText = db.hero.subtitle;
+          }
+          if (db.hero.liveTitle && document.getElementById('displayLiveTitle')) {
+            document.getElementById('displayLiveTitle').innerText = db.hero.liveTitle;
+          }
+          if (db.hero.liveSubtitle && document.getElementById('displayLiveSubtitle')) {
+            const cleanSub = db.hero.liveSubtitle.replace(/Basic/gi, 'Inicio');
+            document.getElementById('displayLiveSubtitle').innerHTML = cleanSub;
+          }
+        }
+
+        if (db.socials) {
+          if (db.socials.instagram && document.getElementById('footerInstagramLink')) document.getElementById('footerInstagramLink').href = db.socials.instagram;
+          if (db.socials.facebook && document.getElementById('footerFacebookLink')) document.getElementById('footerFacebookLink').href = db.socials.facebook;
+          if (db.socials.tiktok && document.getElementById('footerTiktokLink')) document.getElementById('footerTiktokLink').href = db.socials.tiktok;
+          if (db.socials.youtube && document.getElementById('footerYoutubeLink')) document.getElementById('footerYoutubeLink').href = db.socials.youtube;
+        }
+
+        if (db.plans && Array.isArray(db.plans)) {
+          let updatedPublic = false;
+          const inicioFeatures = [
+            "Curso completo Dropshipping con Dropi + Meta Ads (paso a paso para que puedas verlo a tu ritmo)",
+            "Habilidades de alto valor + mentalidad inquebrantable",
+            "Más de 10 horas de respuestas a dudas en llamadas grabadas",
+            "30 días de acceso a comunidad WhatsApp con miembros facturando +80 millones (Entorno ganador)",
+            "Sala Steve Drop 4 mentorías grupales en vivo para resolver dudas al instante",
+            "Acceso a Steve Candia AI Copy"
+          ];
+          const proFeatures = [
+            "Curso completo Dropshipping con Dropi + Meta Ads (paso a paso para que puedas verlo a tu ritmo)",
+            "3 Meses Beneficios Steve Drop Inicio",
+            "3 Meses Comunidad WhatsApp (miembros facturando +80 millones)",
+            "3 Llamadas Privadas 1:1 conmigo vía Zoom (Aclaro tus dudas específicas 1:1)",
+            "30 días de Asesoría Personalizada 1:1 conmigo Vía WhatsApp (Acceso a mi WhatsApp Personal)",
+            "Acceso a Productos ganadores constantemente durante 30 días",
+            "Acceso a Steve Candia AI Hunter"
+          ];
+          const eliteFeatures = [
+            "Curso completo Dropshipping con Dropi + Meta Ads (paso a paso para que puedas verlo a tu ritmo)",
+            "6 Meses Beneficios Steve Drop Inicio",
+            "6 Meses Comunidad WhatsApp (miembros facturando +80 millones)",
+            "9 Llamadas Privadas 1:1 conmigo vía Zoom (Aclaro tus dudas específicas 1:1)",
+            "6 Meses de Asesoría Personalizada 1:1 conmigo Vía WhatsApp (Acceso a mi WhatsApp Personal)",
+            "Acceso a Productos ganadores constantemente durante 6 meses",
+            "Acceso a Steve Candia AI Builder"
+          ];
+
+          db.plans.forEach(p => {
+            if (p.name && (p.name.toLowerCase() === 'basic' || p.name.toLowerCase() === 'inicio')) {
+              p.name = 'Inicio';
+              p.ctaText = 'Seleccionar Inicio';
+              p.features = inicioFeatures;
+              updatedPublic = true;
+            } else if (p.name && p.name.toLowerCase() === 'pro') {
+              p.features = proFeatures;
+              updatedPublic = true;
+            } else if (p.name && p.name.toLowerCase() === 'elite') {
+              p.features = eliteFeatures;
+              updatedPublic = true;
+            }
+          });
+          if (updatedPublic) {
+            localStorage.setItem('STEVE_DROP_DB_V1', JSON.stringify(db));
+          }
+
+          const activePlans = db.plans.filter(p => p.active !== false);
+          const grid = document.getElementById('dynamicPublicPlansGrid');
+          if (grid && activePlans.length > 0) {
+            grid.innerHTML = '';
+            grid.className = `grid md:grid-cols-${Math.min(activePlans.length, 3)} gap-6 items-stretch max-w-6xl mx-auto mb-0`;
+
+            activePlans.forEach((plan, idx) => {
+              const isHighlight = plan.highlight === true;
+              const card = document.createElement('div');
+              card.className = `glass-card rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 reveal-on-scroll reveal-delay-${(idx + 1) * 100} ${
+                isHighlight
+                  ? 'border-blue-500/60 bg-gradient-to-b from-blue-500/15 via-indigo-500/10 to-transparent shadow-2xl shadow-blue-500/20 relative md:-translate-y-3'
+                  : 'border-white/10 hover:border-white/20'
+              }`;
+
+              card.innerHTML = `
+                ${isHighlight ? `
+                  <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-sky-400 via-blue-600 to-indigo-600 text-white font-bold text-[10px] uppercase tracking-wider shadow-lg shadow-blue-500/40">
+                      Nivel Más Popular
+                    </span>
+                  </div>
+                ` : ''}
+
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="w-10 h-10 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                      <i data-lucide="${isHighlight ? 'crown' : (plan.badge === 'Más Vendido' ? 'sparkles' : 'zap')}" class="w-5 h-5 text-sky-400"></i>
+                    </div>
+                    ${plan.badge ? `
+                      <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${isHighlight ? 'bg-blue-500/20 border border-blue-500/40 text-sky-300' : 'bg-white/5 border border-white/10 text-slate-300'}">
+                        ${plan.badge}
+                      </span>
+                    ` : ''}
+                  </div>
+
+                  <h3 class="font-heading text-2xl font-black text-white uppercase tracking-tight mb-0.5">${plan.name}</h3>
+                  <p class="text-slate-400 text-sm font-medium mb-4">${plan.tagline || ''}</p>
+
+                  <div class="mb-6 pb-4 border-b border-white/10">
+                    <div class="flex items-baseline gap-1">
+                      <span class="font-heading text-4xl md:text-5xl font-black text-white tracking-tighter">${plan.price}</span>
+                      <span class="text-sky-400 font-extrabold text-base uppercase">Gs</span>
+                      ${plan.oldPrice ? `<span class="text-xs text-slate-500 line-through ml-2">${plan.oldPrice} Gs</span>` : ''}
+                    </div>
+                    <span class="text-[11px] text-slate-400 italic mt-1 block font-medium">Pago único · Acceso al contenido</span>
+                  </div>
+
+                  <ul class="space-y-2.5 mb-6 text-xs text-slate-200 italic">
+                    ${(plan.features || []).map(f => `
+                      <li class="flex items-start gap-2.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5 not-italic"></i>
+                        <span>${f.includes('<b>') ? f : f.replace(/^(\d+\s+(?:meses|días|horas|mentorías))/i, '<b>$1</b>')}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+
+                <button onclick="openCheckout('${plan.name.replace(/'/g, "\\'")}', '${plan.price}')" class="w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 group transition-all ${
+                  isHighlight
+                    ? 'bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-[1.02]'
+                    : 'bg-white/10 border border-white/15 text-white hover:bg-white/20'
+                }">
+                  <span>${plan.ctaText || `Seleccionar ${plan.name}`}</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+              `;
+              grid.appendChild(card);
+            });
+          }
+        }
+
+        if (!db.faqs || !Array.isArray(db.faqs)) db.faqs = [];
+        const cellFaqPub = db.faqs.find(f => f.question.toLowerCase().includes('celular'));
+        const newAnswerPub = "¡Claro que sí! Puedes vender, operar y gestionar tu negocio directamente desde tu teléfono celular. Sin embargo, recomendamos contar con una computadora (PC o notebook) para trabajar con mayor velocidad, comodidad y mejor organización al momento de armar tu tienda y configurar tus campañas.";
+        
+        if (!cellFaqPub) {
+          db.faqs.unshift({
+            id: "faq-cell",
+            question: "¿Puedo iniciar desde mi celular?",
+            answer: newAnswerPub
+          });
+          localStorage.setItem('STEVE_DROP_DB_V1', JSON.stringify(db));
+        }
+
+        if (db.faqs && Array.isArray(db.faqs) && db.faqs.length > 0) {
+          const faqContainer = document.getElementById('dynamicFaqsContainer');
+          if (faqContainer) {
+            faqContainer.innerHTML = '';
+            db.faqs.forEach((faq, fIdx) => {
+              const item = document.createElement('div');
+              item.className = `glass-card rounded-2xl border border-white/10 overflow-hidden reveal-on-scroll reveal-delay-${(fIdx % 3) * 100}`;
+              item.innerHTML = `
+                <button onclick="toggleFaq('${faq.id}')" class="w-full text-left p-5 flex items-center justify-between gap-4 font-heading font-bold text-sm md:text-base text-white">
+                  <span>${faq.question}</span>
+                  <i id="${faq.id}-icon" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                </button>
+                <div id="${faq.id}-ans" class="hidden px-5 pb-5 pt-0 text-slate-300 text-xs md:text-sm leading-relaxed border-t border-white/5">
+                  <p class="pt-3">${faq.answer}</p>
+                </div>
+              `;
+              faqContainer.appendChild(item);
+            });
+          }
+        }
+
+        lucide.createIcons();
+        initRevealOnScroll();
+      } catch (e) {
+        console.error("Public DB Sync Error:", e);
+      }
+    }
+
+    window.addEventListener('load', () => {
+      lucide.createIcons();
+      loadPublicDataFromDB();
+      initRevealOnScroll();
+      updateActiveNavAndTheme();
+    });
+
+    let isScrollTicking = false;
+    function onScrollThrottled() {
+      if (!isScrollTicking) {
+        requestAnimationFrame(() => {
+          updateActiveNavAndTheme();
+          isScrollTicking = false;
+        });
+        isScrollTicking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScrollThrottled, { passive: true });
+    window.addEventListener('storage', loadPublicDataFromDB);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+        window.location.href = 'admin.html';
+      }
+    });
+
+    let isMouseTicking = false;
+    document.addEventListener('mousemove', function(e) {
+      if (!isMouseTicking) {
+        requestAnimationFrame(() => {
+          var mouseX = e.clientX / window.innerWidth;
+          var mouseY = e.clientY / window.innerHeight;
+          
+          var b1 = document.getElementById('auroraBlob1');
+          var b2 = document.getElementById('auroraBlob2');
+          
+          if (b1 && b2) {
+            b1.style.transform = 'translate(' + (mouseX * 40 - 20) + 'px, ' + (mouseY * 40 - 20) + 'px)';
+            b2.style.transform = 'translate(' + (-mouseX * 50 + 25) + 'px, ' + (-mouseY * 50 + 25) + 'px)';
+          }
+          isMouseTicking = false;
+        });
+        isMouseTicking = true;
+      }
+    }, { passive: true });
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('hidden');
+    }
+
+    function toggleFaq(faqId) {
+      var ans = document.getElementById(faqId + '-ans');
+      var icon = document.getElementById(faqId + '-icon');
+      if (ans) {
+        ans.classList.toggle('hidden');
+        if (icon) icon.classList.toggle('rotate-180');
+      }
+    }
+
+    function openCheckout(planName, price) {
+      currentPlan = planName;
+      currentPrice = price;
+      document.getElementById('modalPlanName').innerText = planName + " — Formación";
+      document.getElementById('modalPlanPrice').innerText = price + " Gs";
+      
+      switchScreen('methods');
+      document.getElementById('checkoutModal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      document.documentElement.classList.add('overflow-hidden');
+    }
+
+    function payWithPagopar() {
+      const planLower = (currentPlan || '').toLowerCase();
+      let link = "https://pago.pagopar.com/86zgq"; // Default Pro
+
+      if (planLower.includes('basic') || planLower.includes('inicio')) {
+        link = "https://pago.pagopar.com/86zdi";
+      } else if (planLower.includes('pro') || planLower.includes('impulso')) {
+        link = "https://pago.pagopar.com/86zgq";
+      } else if (planLower.includes('elite')) {
+        link = "https://pago.pagopar.com/86zhg";
+      }
+
+      // Check if Admin configured custom links in Admin Panel
+      try {
+        const stored = localStorage.getItem('STEVE_DROP_DB_V1');
+        if (stored) {
+          const db = JSON.parse(stored);
+          if (db.settings) {
+            if (db.settings.pagoparPlanLinks && db.settings.pagoparPlanLinks[currentPlan]) {
+              link = db.settings.pagoparPlanLinks[currentPlan];
+            } else if ((planLower.includes('basic') || planLower.includes('inicio')) && db.settings.pagoparUrlBasic) {
+              link = db.settings.pagoparUrlBasic;
+            } else if ((planLower.includes('pro') || planLower.includes('impulso')) && db.settings.pagoparUrlPro) {
+              link = db.settings.pagoparUrlPro;
+            } else if (planLower.includes('elite') && db.settings.pagoparUrlElite) {
+              link = db.settings.pagoparUrlElite;
+            } else if (db.settings.pagoparUrl) {
+              link = db.settings.pagoparUrl;
+            }
+          }
+        }
+      } catch (e) {
+        console.error("Error reading payment URL from DB:", e);
+      }
+
+      window.open(link, '_blank');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      document.documentElement.classList.remove('overflow-hidden');
+    }
+
+    function switchScreen(screenName) {
+      if (screenName === 'methods') {
+        document.getElementById('screenMethods').classList.remove('hidden');
+        document.getElementById('screenTransfer').classList.add('hidden');
+      } else {
+        document.getElementById('screenMethods').classList.add('hidden');
+        document.getElementById('screenTransfer').classList.remove('hidden');
+      }
+    }
+
+    function copyAlias(text) {
+      navigator.clipboard.writeText(text);
+      alert("✓ Alias de cuenta copiado: " + text);
+    }
+
+    function handleFileSelected(input) {
+      var display = document.getElementById('fileNameDisplay');
+      if (input.files && input.files[0]) {
+        display.innerText = "✓ " + input.files[0].name;
+      } else {
+        display.innerText = "Subir foto o PDF del comprobante";
+      }
+    }
+
+    function submitTransferToWhatsapp() {
+      var fname = document.getElementById('inputFirstName').value.trim();
+      var lname = document.getElementById('inputLastName').value.trim();
+      var phone = document.getElementById('inputPhone').value.trim();
+      var gmail = document.getElementById('inputGmail').value.trim();
+      var fileInput = document.getElementById('inputReceiptFile');
+
+      if (!fname || !lname || !phone || !gmail) {
+        alert("Por favor completa tu Nombre, Apellido, WhatsApp y Correo Gmail antes de continuar.");
+        return;
+      }
+
+      var file = fileInput && fileInput.files ? fileInput.files[0] : null;
+
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          saveAndRedirect(fname, lname, phone, gmail, e.target.result);
+        };
+        reader.onerror = function() {
+          saveAndRedirect(fname, lname, phone, gmail, null);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        saveAndRedirect(fname, lname, phone, gmail, null);
+      }
+    }
+
+    function saveAndRedirect(fname, lname, phone, gmail, receiptDataUrl) {
+      // SAVE PURCHASE REQUEST WITH RECEIPT IMAGE & PHONE TO LOCALSTORAGE FOR ADMIN PANEL
+      try {
+        var stored = localStorage.getItem('STEVE_DROP_DB_V1');
+        var db = stored ? JSON.parse(stored) : {};
+        if (!db.solicitudes || !Array.isArray(db.solicitudes)) {
+          db.solicitudes = [];
+        }
+
+        var newSolicitud = {
+          id: "sol_" + Date.now(),
+          firstName: fname,
+          lastName: lname,
+          phone: phone,
+          gmail: gmail,
+          planName: currentPlan || "Impulso",
+          price: currentPrice || "527.000 Gs",
+          receiptImage: receiptDataUrl, // BASE64 IMAGE DATA
+          createdAt: new Date().toISOString(),
+          status: "pending"
+        };
+
+        db.solicitudes.unshift(newSolicitud);
+        localStorage.setItem('STEVE_DROP_DB_V1', JSON.stringify(db));
+        window.dispatchEvent(new Event('storage'));
+      } catch (e) {
+        console.error("Error al registrar solicitud:", e);
+      }
+
+      var fireEmoji = "%F0%9F%94%A5"; // 🔥
+      var zapEmoji  = "%E2%9A%A1";     // ⚡
+      var pinEmoji  = "%F0%9F%93%8C"; // 📌
+      var userEmoji = "%F0%9F%91%A4"; // 👤
+      var starEmoji = "%E2%AD%90";     // ⭐
+      var mobEmoji  = "%F0%9F%93%B1"; // 📱
+      var mailEmoji = "%E2%9C%89";     // ✉️
+      var docEmoji  = "%F0%9F%93%84"; // 📄
+      var camEmoji  = "%F0%9F%93%B7"; // 📷
+      var rockEmoji = "%F0%9F%9A%80"; // 🚀
+
+      var receiptTag = receiptDataUrl ? "Adjuntado en el sistema {DOC}" : "Adjunto foto a continuación {CAM}";
+
+      var textContent = "¡Hola Steve Drop! {FIRE} Acabo de realizar la transferencia para unirme a la formación. {ZAP}\n\n" +
+                        "{PIN} *DATOS DE MI SOLICITUD DE INGRESO:*\n" +
+                        "{USER} *Nombre Completo:* " + fname + " " + lname + "\n" +
+                        "{STAR} *Plan Seleccionado:* " + currentPlan + " (" + currentPrice + " Gs)\n" +
+                        "{MOB} *WhatsApp:* " + phone + "\n" +
+                        "{MAIL} *Correo Gmail:* " + gmail + "\n" +
+                        "{DOC} *Comprobante:* " + receiptTag + "\n\n" +
+                        "Quedo a la espera de la validación para recibir mi acceso a la plataforma y herramientas de IA. ¡Muchas gracias! {ROCK}";
+
+      var encoded = encodeURIComponent(textContent)
+        .replace(/%7BFIRE%7D/g, fireEmoji)
+        .replace(/%7BZAP%7D/g, zapEmoji)
+        .replace(/%7BPIN%7D/g, pinEmoji)
+        .replace(/%7BUSER%7D/g, userEmoji)
+        .replace(/%7BSTAR%7D/g, starEmoji)
+        .replace(/%7BMOB%7D/g, mobEmoji)
+        .replace(/%7BMAIL%7D/g, mailEmoji)
+        .replace(/%7BDOC%7D/g, docEmoji)
+        .replace(/%7BCAM%7D/g, camEmoji)
+        .replace(/%7BROCK%7D/g, rockEmoji);
+
+      var cleanPhone = "595974804611";
+      try {
+        var storedSetting = localStorage.getItem('STEVE_DROP_DB_V1');
+        if (storedSetting) {
+          var dbParsed = JSON.parse(storedSetting);
+          if (dbParsed.settings && dbParsed.settings.whatsappSupportPhone) {
+            var raw = dbParsed.settings.whatsappSupportPhone.replace(/\D/g, '');
+            if (raw.startsWith('09')) cleanPhone = '595' + raw.substring(1);
+            else if (raw.startsWith('9')) cleanPhone = '595' + raw;
+            else if (raw.length > 0) cleanPhone = raw.startsWith('595') ? raw : '595' + raw;
+          }
+        }
+      } catch (e) {}
+
+      var url = "https://api.whatsapp.com/send?phone=" + cleanPhone + "&text=" + encoded;
+      window.open(url, '_blank');
+      closeCheckout();
+    }
+
+    // REAL INSTAGRAM STORIES 3D PERSPECTIVE CAROUSEL & LIGHTBOX CONTROLLER (SEAMLESS PURE VANILLA JS CLONE LOOP)
+    let realStoriesIndex = 0; // Relative to original cards (0 to 12)
+    const totalOriginalStories = 13;
+    const cloneBuffer = 4; // Prepend & Append 4 cloned slides for seamless infinity
+    let realStoriesTimer = null;
+    let isStoryTransitioning = false;
+    let hasClonedStories = false;
+
+    function initClonedRealStories() {
+      const track = document.getElementById('realStoriesTrack');
+      if (!track || hasClonedStories) return;
+
+      const originalCards = Array.from(track.children);
+      if (originalCards.length < totalOriginalStories) return;
+
+      // Create Clones for Infinite Seamless Looping
+      const appendClones = [];
+      const prependClones = [];
+
+      for (let i = 0; i < cloneBuffer; i++) {
+        const cloneEnd = originalCards[i].cloneNode(true);
+        cloneEnd.setAttribute('data-clone', 'end-' + i);
+        appendClones.push(cloneEnd);
+      }
+
+      for (let i = totalOriginalStories - 1; i >= totalOriginalStories - cloneBuffer; i--) {
+        const cloneStart = originalCards[i].cloneNode(true);
+        cloneStart.setAttribute('data-clone', 'start-' + i);
+        prependClones.unshift(cloneStart);
+      }
+
+      appendClones.forEach(clone => track.appendChild(clone));
+      prependClones.forEach(clone => track.insertBefore(clone, track.firstChild));
+
+      hasClonedStories = true;
+      updateRealStoriesSlider(false);
+    }
+
+    function updateRealStoriesSlider(animated = true) {
+      const track = document.getElementById('realStoriesTrack');
+      if (!track || !track.children.length) return;
+
+      const cards = Array.from(track.children);
+      const container = track.parentElement;
+      const containerWidth = container.offsetWidth;
+      const firstCard = cards[0];
+      const cardWidth = firstCard.offsetWidth;
+      const gap = 20;
+      const itemFullWidth = cardWidth + gap;
+
+      // Active slide in the full cloned DOM track:
+      const activeDOMIndex = realStoriesIndex + cloneBuffer;
+
+      // Shift offset to center active story in viewport
+      const centerOffset = (containerWidth - cardWidth) / 2;
+      const targetTranslate = (activeDOMIndex * itemFullWidth) - centerOffset;
+
+      if (animated) {
+        track.style.transition = 'transform 500ms cubic-bezier(0.25, 1, 0.5, 1)';
+      } else {
+        track.style.transition = 'none';
+      }
+
+      track.style.transform = `translateX(-${targetTranslate}px)`;
+
+      // Apply 3D perspective & glowing border styling
+      cards.forEach((card, idx) => {
+        if (idx === activeDOMIndex) {
+          // CENTER ACTIVE STORY (Bright glowing neon border, scale 105%, opacity 100%)
+          card.className = "w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#091122] border-2 border-pink-500 shadow-2xl shadow-pink-500/50 scale-[1.05] z-20 opacity-100 ring-2 ring-pink-500/80 brightness-100 transition-all duration-500 group relative cursor-pointer";
+        } else {
+          // SIDE STORIES (Smaller scale 90%, opacity 40%, darker shaded brightness 60%)
+          card.className = "w-[260px] sm:w-[290px] md:w-[310px] shrink-0 rounded-3xl p-2 bg-[#040711] border border-white/10 shadow-none scale-90 z-10 opacity-40 brightness-60 transition-all duration-500 group relative cursor-pointer hover:opacity-75";
+        }
+      });
+    }
+
+    function scrollRealStories(direction) {
+      if (isStoryTransitioning) return;
+      isStoryTransitioning = true;
+
+      realStoriesIndex += direction;
+      updateRealStoriesSlider(true);
+
+      // Seamless infinite wrap adjustment after slide animation finishes (500ms)
+      setTimeout(function() {
+        if (realStoriesIndex >= totalOriginalStories) {
+          realStoriesIndex = 0;
+          updateRealStoriesSlider(false); // Invisible instant snap to start clone target
+        } else if (realStoriesIndex < 0) {
+          realStoriesIndex = totalOriginalStories - 1;
+          updateRealStoriesSlider(false); // Invisible instant snap to end clone target
+        }
+        isStoryTransitioning = false;
+      }, 510);
+
+      resetRealStoriesAutoPlay();
+    }
+
+    function startRealStoriesAutoPlay() {
+      if (realStoriesTimer) clearInterval(realStoriesTimer);
+      realStoriesTimer = setInterval(function() {
+        scrollRealStories(1);
+      }, 4000); // Auto-advance every 4 seconds seamlessly
+    }
+
+    function resetRealStoriesAutoPlay() {
+      if (realStoriesTimer) clearInterval(realStoriesTimer);
+      startRealStoriesAutoPlay();
+    }
+
+    var isStoryModalOpen = false;
+
+    function zoomStoryImage(src, caption) {
+      const modal = document.getElementById('storyImageModal');
+      const modalImg = document.getElementById('storyModalImg');
+      const modalCap = document.getElementById('storyModalCap');
+      if (modal && modalImg) {
+        modalImg.src = src;
+        if (modalCap) modalCap.textContent = caption || 'Historia Destacada de Alumno';
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        document.documentElement.classList.add('overflow-hidden');
+
+        if (!isStoryModalOpen) {
+          isStoryModalOpen = true;
+          try {
+            history.pushState({ storyModal: true }, '');
+          } catch(e) {}
+        }
+      }
+    }
+
+    function closeStoryImageModal(fromHistoryPop) {
+      const modal = document.getElementById('storyImageModal');
+      if (modal) modal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      document.documentElement.classList.remove('overflow-hidden');
+
+      if (isStoryModalOpen) {
+        isStoryModalOpen = false;
+        if (fromHistoryPop !== true && history.state && history.state.storyModal) {
+          try {
+            history.back();
+          } catch(e) {}
+        }
+      }
+    }
+
+    window.addEventListener('popstate', function(e) {
+      if (isStoryModalOpen) {
+        closeStoryImageModal(true);
+      }
+    });
+
+    // LIVE MENTORSHIP COUNTDOWN TIMER & SUNDAY LIVE EVENT CONTROLLER (15:00 - 16:30 HS PARAGUAY)
+    function checkIsLiveNow() {
+      const now = new Date();
+      const options = { timeZone: 'America/Asuncion', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false };
+      try {
+        const formatter = new Intl.DateTimeFormat('en-US', options);
+        const parts = formatter.formatToParts(now);
+        let weekday = '', hour = 0, minute = 0;
+        parts.forEach(p => {
+          if (p.type === 'weekday') weekday = p.value;
+          if (p.type === 'hour') hour = parseInt(p.value, 10);
+          if (p.type === 'minute') minute = parseInt(p.value, 10);
+        });
+
+        const isSun = weekday === 'Sun';
+        const totalMinutes = (hour * 60) + minute;
+        // Sunday 15:00 hs (900 min) to 16:30 hs (990 min)
+        return isSun && (totalMinutes >= 900 && totalMinutes < 990);
+      } catch (e) {
+        const day = now.getDay();
+        const totalMin = (now.getHours() * 60) + now.getMinutes();
+        return (day === 0 && totalMin >= 900 && totalMin < 990);
+      }
+    }
+
+    function getNextSunday1500() {
+      const now = new Date();
+      let dayOfWeek = now.getDay();
+      let target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 15, 0, 0, 0);
+
+      if (dayOfWeek === 0 && now < target) {
+        return target;
+      }
+
+      let daysUntilSunday = (7 - dayOfWeek) % 7;
+      if (daysUntilSunday === 0) daysUntilSunday = 7;
+
+      target.setDate(target.getDate() + daysUntilSunday);
+      return target;
+    }
+
+    function updateLiveMentorshipTimer() {
+      const isLiveNow = checkIsLiveNow();
+      
+      const badgeNormal = document.getElementById('liveBadgeNormal');
+      const badgeActive = document.getElementById('liveBadgeActive');
+      const titleEl = document.getElementById('displayLiveTitle');
+      const subtitleEl = document.getElementById('displayLiveSubtitle');
+      const timerContainer = document.getElementById('liveTimerContainer');
+      const activeContainer = document.getElementById('liveActiveContainer');
+
+      if (isLiveNow) {
+        if (badgeNormal) badgeNormal.classList.add('hidden');
+        if (badgeActive) badgeActive.classList.remove('hidden');
+        if (titleEl) titleEl.innerText = "🔴 ¡ESTAMOS EN DIRECTO!";
+        if (subtitleEl) subtitleEl.innerHTML = "Estamos en llamada privada con los miembros de la comunidad en este momento. <strong class=\"text-rose-400 font-bold\">¡Súmate hoy para ingresar a la transmisión en directo!</strong>";
+        if (timerContainer) timerContainer.classList.add('hidden');
+        if (activeContainer) activeContainer.classList.remove('hidden');
+        return;
+      }
+
+      // If NOT live, show normal countdown
+      if (badgeNormal) badgeNormal.classList.remove('hidden');
+      if (badgeActive) badgeActive.classList.add('hidden');
+      
+      // Load saved DB title or default
+      const stored = localStorage.getItem('STEVE_DROP_DB_V1');
+      let dbTitle = "Próxima Mentoría en Directo";
+      let dbSub = "Solo para alumnos <strong class=\"text-sky-400 font-bold\">SteveDrop (desde el Nivel Inicio)</strong>. Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar.";
+      if (stored) {
+        try {
+          const db = JSON.parse(stored);
+          if (db.hero && db.hero.liveTitle) dbTitle = db.hero.liveTitle;
+          if (db.hero && db.hero.liveSubtitle) dbSub = db.hero.liveSubtitle.replace(/Basic/gi, 'Inicio');
+        } catch(e){}
+      }
+      if (titleEl) titleEl.innerText = dbTitle;
+      if (subtitleEl) subtitleEl.innerHTML = dbSub;
+
+      if (timerContainer) timerContainer.classList.remove('hidden');
+      if (activeContainer) activeContainer.classList.add('hidden');
+
+      const target = getNextSunday1500();
+      const now = new Date();
+      let diff = target - now;
+
+      if (diff < 0) diff = 0;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const dEl = document.getElementById('liveTimerDays');
+      const hEl = document.getElementById('liveTimerHours');
+      const mEl = document.getElementById('liveTimerMin');
+      const sEl = document.getElementById('liveTimerSeg');
+
+      if (dEl) dEl.textContent = String(days).padStart(2, '0');
+      if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+      if (mEl) mEl.textContent = String(minutes).padStart(2, '0');
+      if (sEl) sEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initClonedRealStories();
+      startRealStoriesAutoPlay();
+      window.addEventListener('resize', function() {
+        updateRealStoriesSlider(false);
+      });
+      
+      updateLiveMentorshipTimer();
+      setInterval(updateLiveMentorshipTimer, 1000);
+    });
+  </script>
+</body>
+</html>
