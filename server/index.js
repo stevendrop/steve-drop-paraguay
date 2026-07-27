@@ -7,7 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
-app.use(express.json());
+// Allow large JSON payloads (for base64 receipt images)
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, '..')));
@@ -21,6 +23,8 @@ app.get('/api/public-content', (req, res) => {
     plans: (db.plans || []).filter(p => p.active !== false),
     faqs: db.faqs || []
   });
+});
+
 // Public API - Submit new user order/application
 app.post('/api/solicitudes', (req, res) => {
   try {
@@ -32,6 +36,7 @@ app.post('/api/solicitudes', (req, res) => {
     if (!db.solicitudes) db.solicitudes = [];
     db.solicitudes.unshift(solicitud);
     writeDB(db);
+    console.log("✓ Solicitud recibida y guardada:", solicitud.firstName, solicitud.lastName);
     res.json({ success: true, message: 'Solicitud registrada correctamente en el servidor' });
   } catch (err) {
     console.error("Error al guardar solicitud:", err);
@@ -44,8 +49,7 @@ app.post('/api/auth/login', (req, res) => {
   const { password } = req.body;
   const db = readDB();
 
-  // Plain text fallback or hash check
-  if (password === 'stevedrop2026') {
+  if (password === 'stevedrop2026' || (db.settings && db.settings.adminPassword === password)) {
     return res.json({ success: true, token: 'session_token_' + Date.now() });
   }
 

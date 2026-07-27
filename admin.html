@@ -2549,6 +2549,8 @@
     window.addEventListener('load', () => {
       if (window.lucide) lucide.createIcons();
       syncServerDB();
+      // Auto-check for new orders from Paraguay every 8 seconds
+      setInterval(syncServerDB, 8000);
       checkAuth();
     });
 
