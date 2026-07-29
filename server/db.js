@@ -46,8 +46,8 @@ const INITIAL_DB = {
       ]
     },
     {
-      id: "impulso",
-      name: "Impulso",
+      id: "pro",
+      name: "Pro",
       tagline: "Acelera tus resultados",
       price: "527.000",
       oldPrice: "",
@@ -75,7 +75,7 @@ const INITIAL_DB = {
       active: true,
       displayOrder: 3,
       features: [
-        "Todo lo incluido en nivel Impulso",
+        "Todo lo incluido en nivel Pro",
         "6 meses de acceso a comunidad",
         "6 meses de soporte prioritario",
         "9 mentorías privadas 1 a 1 en vivo",
