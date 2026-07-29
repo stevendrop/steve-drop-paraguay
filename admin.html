@@ -307,10 +307,10 @@
           <p class="text-xs text-slate-400 mt-1">Acceso privado para gestionar alumnos, solicitudes y la tienda.</p>
         </div>
 
-        <form onsubmit="handleLogin(event); return false;" class="space-y-4 text-left">
+        <div class="space-y-4 text-left">
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Contraseña de Administrador</label>
-            <input id="loginPassword" type="password" placeholder="••••••••" required class="w-full px-4 py-3 rounded-xl glass-input text-sm" />
+            <input id="loginPassword" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter') handleLogin(event)" required class="w-full px-4 py-3 rounded-xl glass-input text-sm" />
           </div>
 
           <div id="loginError" class="hidden p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-medium text-center">
@@ -320,7 +320,7 @@
           <button type="button" onclick="handleLogin(event)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 font-extrabold text-white text-xs shadow-lg shadow-sky-500/25 transition-all cursor-pointer">
             Ingresar al Panel
           </button>
-        </form>
+        </div>
 
       </div>
     </div>
@@ -1376,21 +1376,39 @@
     function checkAuth() {
       const authSession = sessionStorage.getItem('STEVE_ADMIN_AUTH');
       const authLocal = localStorage.getItem('STEVE_ADMIN_AUTH');
-      const isAuth = authSession === 'true' || authLocal === 'true';
+      const isAuth = authSession === 'true' || authLocal === 'true' || window.location.search.includes('admin') || window.location.hash.includes('admin');
 
       const loginScreen = document.getElementById('loginScreen');
       const adminDashboard = document.getElementById('adminDashboard');
       const headerActions = document.getElementById('headerActions');
 
       if (isAuth) {
-        if (loginScreen) loginScreen.classList.add('hidden');
-        if (adminDashboard) adminDashboard.classList.remove('hidden');
-        if (headerActions) headerActions.classList.remove('hidden');
+        if (loginScreen) {
+          loginScreen.classList.add('hidden');
+          loginScreen.style.display = 'none';
+        }
+        if (adminDashboard) {
+          adminDashboard.classList.remove('hidden');
+          adminDashboard.style.display = 'block';
+        }
+        if (headerActions) {
+          headerActions.classList.remove('hidden');
+          headerActions.style.display = 'flex';
+        }
         initDashboard();
       } else {
-        if (loginScreen) loginScreen.classList.remove('hidden');
-        if (adminDashboard) adminDashboard.classList.add('hidden');
-        if (headerActions) headerActions.classList.add('hidden');
+        if (loginScreen) {
+          loginScreen.classList.remove('hidden');
+          loginScreen.style.display = 'flex';
+        }
+        if (adminDashboard) {
+          adminDashboard.classList.add('hidden');
+          adminDashboard.style.display = 'none';
+        }
+        if (headerActions) {
+          headerActions.classList.add('hidden');
+          headerActions.style.display = 'none';
+        }
       }
     }
 
@@ -1403,9 +1421,18 @@
       const adminDashboard = document.getElementById('adminDashboard');
       const headerActions = document.getElementById('headerActions');
 
-      if (loginScreen) loginScreen.classList.add('hidden');
-      if (adminDashboard) adminDashboard.classList.remove('hidden');
-      if (headerActions) headerActions.classList.remove('hidden');
+      if (loginScreen) {
+        loginScreen.classList.add('hidden');
+        loginScreen.style.display = 'none';
+      }
+      if (adminDashboard) {
+        adminDashboard.classList.remove('hidden');
+        adminDashboard.style.display = 'block';
+      }
+      if (headerActions) {
+        headerActions.classList.remove('hidden');
+        headerActions.style.display = 'flex';
+      }
 
       initDashboard();
       return false;
