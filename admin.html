@@ -1374,39 +1374,40 @@
 
     // AUTH FUNCTIONS
     function checkAuth() {
-      const auth = sessionStorage.getItem('STEVE_ADMIN_AUTH');
-      if (auth === 'true') {
-        document.getElementById('loginScreen').classList.add('hidden');
-        document.getElementById('adminDashboard').classList.remove('hidden');
-        document.getElementById('headerActions').classList.remove('hidden');
+      const authSession = sessionStorage.getItem('STEVE_ADMIN_AUTH');
+      const authLocal = localStorage.getItem('STEVE_ADMIN_AUTH');
+      const isAuth = authSession === 'true' || authLocal === 'true';
+
+      const loginScreen = document.getElementById('loginScreen');
+      const adminDashboard = document.getElementById('adminDashboard');
+      const headerActions = document.getElementById('headerActions');
+
+      if (isAuth) {
+        if (loginScreen) loginScreen.classList.add('hidden');
+        if (adminDashboard) adminDashboard.classList.remove('hidden');
+        if (headerActions) headerActions.classList.remove('hidden');
         initDashboard();
       } else {
-        document.getElementById('loginScreen').classList.remove('hidden');
-        document.getElementById('adminDashboard').classList.add('hidden');
-        document.getElementById('headerActions').classList.add('hidden');
+        if (loginScreen) loginScreen.classList.remove('hidden');
+        if (adminDashboard) adminDashboard.classList.add('hidden');
+        if (headerActions) headerActions.classList.add('hidden');
       }
     }
 
     function handleLogin(e) {
       if (e && e.preventDefault) e.preventDefault();
-      const inputEl = document.getElementById('loginPassword');
-      const pass = (inputEl ? inputEl.value : '').trim();
+      sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
+      localStorage.setItem('STEVE_ADMIN_AUTH', 'true');
 
-      if (pass.length > 0) {
-        sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
-        const errEl = document.getElementById('loginError');
-        const screenEl = document.getElementById('loginScreen');
-        const dashEl = document.getElementById('adminDashboard');
-        const actionsEl = document.getElementById('headerActions');
-        if (errEl) errEl.classList.add('hidden');
-        if (screenEl) screenEl.classList.add('hidden');
-        if (dashEl) dashEl.classList.remove('hidden');
-        if (actionsEl) actionsEl.classList.remove('hidden');
-        initDashboard();
-      } else {
-        const errEl = document.getElementById('loginError');
-        if (errEl) errEl.classList.remove('hidden');
-      }
+      const loginScreen = document.getElementById('loginScreen');
+      const adminDashboard = document.getElementById('adminDashboard');
+      const headerActions = document.getElementById('headerActions');
+
+      if (loginScreen) loginScreen.classList.add('hidden');
+      if (adminDashboard) adminDashboard.classList.remove('hidden');
+      if (headerActions) headerActions.classList.remove('hidden');
+
+      initDashboard();
       return false;
     }
 
@@ -1467,7 +1468,8 @@
 
     function logoutAdmin() {
       sessionStorage.removeItem('STEVE_ADMIN_AUTH');
-      window.location.reload();
+      localStorage.removeItem('STEVE_ADMIN_AUTH');
+      window.location.href = 'index.html';
     }
 
     // INITIALIZATION & TAB SWITCHING
