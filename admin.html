@@ -1493,19 +1493,21 @@
 
     // INITIALIZATION & TAB SWITCHING
     function initDashboard() {
-      document.getElementById('adminDashboard').classList.remove('hidden');
-      document.getElementById('headerActions').classList.remove('hidden');
+      const dash = document.getElementById('adminDashboard');
+      const actions = document.getElementById('headerActions');
+      if (dash) dash.classList.remove('hidden');
+      if (actions) actions.classList.remove('hidden');
       initDraftState();
       renderAllDashboardViews();
     }
 
     function renderAllDashboardViews() {
-      renderSolicitudes();
-      renderMembers();
-      renderPlans();
-      renderTransferSettings();
-      renderFaqs();
-      renderHeroSettings();
+      try { renderSolicitudes(); } catch(e){ console.error("Error renderSolicitudes:", e); }
+      try { renderMembers(); } catch(e){ console.error("Error renderMembers:", e); }
+      try { renderPlans(); } catch(e){ console.error("Error renderPlans:", e); }
+      try { renderTransferSettings(); } catch(e){ console.error("Error renderTransferSettings:", e); }
+      try { renderFaqs(); } catch(e){ console.error("Error renderFaqs:", e); }
+      try { renderHeroSettings(); } catch(e){ console.error("Error renderHeroSettings:", e); }
       if (window.lucide) lucide.createIcons();
     }
 
@@ -2331,11 +2333,17 @@
     // ----------------------------------------------------
     function renderTransferSettings() {
       if (!draftState || !draftState.settings) return;
-      document.getElementById('settingPhone').value = draftState.settings.contactPhone || '4.873.932';
-      document.getElementById('settingHolder').value = draftState.settings.accountHolder || 'Esteban Candia';
-      document.getElementById('settingBank').value = draftState.settings.bankName || 'Banco Continental';
-      document.getElementById('settingPagoparUrl').value = draftState.settings.pagoparUrl || 'https://www.pagopar.com/';
-      document.getElementById('settingWhatsappSupportPhone').value = draftState.settings.whatsappSupportPhone || '0974804611';
+      const elPhone = document.getElementById('settingPhone');
+      const elHolder = document.getElementById('settingHolder');
+      const elBank = document.getElementById('settingBank');
+      const elPagopar = document.getElementById('settingPagoparUrl');
+      const elWa = document.getElementById('settingWhatsappSupportPhone');
+
+      if (elPhone) elPhone.value = draftState.settings.contactPhone || '4.873.932';
+      if (elHolder) elHolder.value = draftState.settings.accountHolder || 'Esteban Candia';
+      if (elBank) elBank.value = draftState.settings.bankName || 'Banco Continental';
+      if (elPagopar) elPagopar.value = draftState.settings.pagoparUrl || 'https://www.pagopar.com/';
+      if (elWa) elWa.value = draftState.settings.whatsappSupportPhone || '0974804611';
 
       if (!draftState.settings.pagoparPlanLinks) {
         draftState.settings.pagoparPlanLinks = {};
