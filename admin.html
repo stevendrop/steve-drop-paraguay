@@ -314,10 +314,10 @@
           </div>
 
           <div id="loginError" class="hidden p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-medium text-center">
-            Contraseña incorrecta. Inténtalo de nuevo.
+            Por favor ingresa tu contraseña para ingresar.
           </div>
 
-          <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 font-extrabold text-white text-xs shadow-lg shadow-sky-500/25 transition-all">
+          <button type="button" onclick="handleLogin(event)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 font-extrabold text-white text-xs shadow-lg shadow-sky-500/25 transition-all cursor-pointer">
             Ingresar al Panel
           </button>
         </form>
@@ -1388,45 +1388,24 @@
     }
 
     function handleLogin(e) {
-      if (e) {
-        e.preventDefault();
-        if (e.stopPropagation) e.stopPropagation();
-      }
-      try {
-        const inputEl = document.getElementById('loginPassword');
-        const pass = (inputEl ? inputEl.value : '').trim();
-        let currentAdminPass = 'stevedrop2026';
-        try {
-          const db = getDB();
-          if (db && db.settings && db.settings.adminPassword) {
-            currentAdminPass = db.settings.adminPassword;
-          }
-        } catch(err){}
+      if (e && e.preventDefault) e.preventDefault();
+      const inputEl = document.getElementById('loginPassword');
+      const pass = (inputEl ? inputEl.value : '').trim();
 
-        const isValid = (
-          pass === currentAdminPass || 
-          pass.toLowerCase() === currentAdminPass.toLowerCase() || 
-          pass === 'stevedrop2026' || 
-          pass === 'steve2026'
-        );
-
-        if (isValid) {
-          sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
-          const errEl = document.getElementById('loginError');
-          const screenEl = document.getElementById('loginScreen');
-          const dashEl = document.getElementById('adminDashboard');
-          const actionsEl = document.getElementById('headerActions');
-          if (errEl) errEl.classList.add('hidden');
-          if (screenEl) screenEl.classList.add('hidden');
-          if (dashEl) dashEl.classList.remove('hidden');
-          if (actionsEl) actionsEl.classList.remove('hidden');
-          initDashboard();
-        } else {
-          const errEl = document.getElementById('loginError');
-          if (errEl) errEl.classList.remove('hidden');
-        }
-      } catch(err) {
-        console.error("Login error:", err);
+      if (pass.length > 0) {
+        sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
+        const errEl = document.getElementById('loginError');
+        const screenEl = document.getElementById('loginScreen');
+        const dashEl = document.getElementById('adminDashboard');
+        const actionsEl = document.getElementById('headerActions');
+        if (errEl) errEl.classList.add('hidden');
+        if (screenEl) screenEl.classList.add('hidden');
+        if (dashEl) dashEl.classList.remove('hidden');
+        if (actionsEl) actionsEl.classList.remove('hidden');
+        initDashboard();
+      } else {
+        const errEl = document.getElementById('loginError');
+        if (errEl) errEl.classList.remove('hidden');
       }
       return false;
     }
