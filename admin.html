@@ -1246,6 +1246,7 @@
     let undoHistory = [];
     let redoHistory = [];
     let lastSavedStateString = "";
+    let hasUnsavedChanges = false;
 
     function formatPyPrice(val) {
       if (val === null || val === undefined) return '';
@@ -1302,6 +1303,7 @@
       if (!draftState) return;
       saveDB(draftState);
       lastSavedStateString = JSON.stringify(draftState);
+      hasUnsavedChanges = false;
       updateSaveAndUndoUI();
       alert("✓ ¡Todos los cambios han sido guardados exitosamente en la base de datos y la nube!");
     }
@@ -1314,6 +1316,7 @@
 
       const currentStr = JSON.stringify(draftState || {});
       const isDirty = lastSavedStateString !== "" && currentStr !== lastSavedStateString;
+      hasUnsavedChanges = isDirty;
 
       // UNDO BUTTON (Arrow icon only)
       if (btnUndo) {
