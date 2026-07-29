@@ -251,7 +251,7 @@
       </a>
 
       <!-- Header Quick Actions (visible when logged in) -->
-      <div id="headerActions" class="hidden flex items-center gap-2 text-xs flex-wrap justify-end">
+      <div id="headerActions" class="hidden flex items-center gap-2.5 text-xs flex-wrap justify-end">
         
         <!-- Status Indicator -->
         <div id="dbSyncStatusBadge" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
@@ -259,24 +259,29 @@
           <span>Base de datos guardada</span>
         </div>
         
-        <!-- UNDO BUTTON (Arrow icon only) -->
-        <button id="btnUndoChange" onclick="undoLastChange()" title="Deshacer (Ctrl+Z)" disabled class="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-600 transition-all text-xs font-medium cursor-not-allowed opacity-40 flex items-center justify-center">
-          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+        <!-- UNDO BUTTON -->
+        <button id="btnUndoChange" onclick="undoLastChange()" title="Deshacer último cambio realizado (Ctrl+Z)" disabled class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center gap-1.5 text-xs font-medium cursor-not-allowed opacity-50">
+          <i data-lucide="undo-2" class="w-3.5 h-3.5"></i>
+          <span>↩ Deshacer</span>
         </button>
 
-        <!-- REDO BUTTON (Arrow icon only) -->
-        <button id="btnRedoChange" onclick="redoLastChange()" title="Rehacer (Ctrl+Y)" disabled class="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-600 transition-all text-xs font-medium cursor-not-allowed opacity-40 flex items-center justify-center">
-          <i data-lucide="rotate-cw" class="w-4 h-4"></i>
-        </button>
-
-        <!-- SMART SAVE CHANGES BUTTON -->
-        <button id="btnSaveChanges" onclick="saveAllChangesToDB()" title="Guardar cambios pendientes" disabled class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-400 font-semibold text-xs flex items-center gap-1.5 opacity-60 cursor-not-allowed">
+        <!-- SAVE CHANGES BUTTON -->
+        <button id="btnSaveChanges" onclick="saveAllChangesToDB()" title="Guardar todos los cambios realizados en el borrador" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-semibold text-xs flex items-center gap-1.5">
           <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
           <span>Sin cambios pendientes</span>
         </button>
 
-        <!-- FUSED SALIR / IR A LA WEB BUTTON -->
-        <button onclick="logoutAdmin()" title="Cerrar sesión e ir a la web pública" class="px-3.5 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 transition-all font-semibold flex items-center gap-1.5">
+        <a href="index.html" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 hover:text-white transition-all flex items-center gap-1.5 font-medium">
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Ver Sitio Público</span>
+        </a>
+
+        <button onclick="exportBackup()" title="Descargar Backup de Base de Datos" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 transition-all flex items-center gap-1.5">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span class="hidden md:inline">Respaldar BD</span>
+        </button>
+
+        <button onclick="logoutAdmin()" class="px-3.5 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 transition-all font-semibold flex items-center gap-1.5">
           <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
           <span>Salir</span>
         </button>
@@ -986,7 +991,7 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Precio Gs *</label>
-            <input id="formPlanPrice" oninput="handlePriceInput(this)" type="text" required placeholder="Ej: 527.000" class="w-full px-3.5 py-2.5 rounded-xl glass-input font-mono font-bold text-sky-400" />
+            <input id="formPlanPrice" type="text" required placeholder="Ej: 527.000" class="w-full px-3.5 py-2.5 rounded-xl glass-input" />
           </div>
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Distintivo / Badge *</label>
@@ -1198,6 +1203,44 @@
           updated = true;
         }
 
+        // Permanent migration: Basic -> Inicio
+        if (parsed.plans && Array.isArray(parsed.plans)) {
+          parsed.plans.forEach(p => {
+            if (p.name && (p.name.toLowerCase() === 'basic' || p.name.toLowerCase() === 'inicio')) {
+              if (p.name !== 'Inicio') {
+                p.name = 'Inicio';
+                updated = true;
+              }
+              if (p.ctaText !== 'Seleccionar Inicio') {
+                p.ctaText = 'Seleccionar Inicio';
+                updated = true;
+              }
+            }
+            if (p.features && Array.isArray(p.features)) {
+              p.features = p.features.map(f => {
+                let newF = f.replace(/nivel Basic/gi, 'nivel Inicio').replace(/nivel Impulso/gi, 'nivel Pro');
+                if (newF !== f) updated = true;
+                return newF;
+              });
+            }
+          });
+        }
+        if (parsed.members && Array.isArray(parsed.members)) {
+          parsed.members.forEach(m => {
+            if (m.planName && (m.planName.toLowerCase() === 'basic' || m.planName.toLowerCase() === 'inicio')) {
+              if (m.planName !== 'Inicio') {
+                m.planName = 'Inicio';
+                updated = true;
+              }
+            }
+            if (m.planName && (m.planName.toLowerCase() === 'impulso' || m.planName.toLowerCase() === 'pro')) {
+              if (m.planName !== 'Pro') {
+                m.planName = 'Pro';
+                updated = true;
+              }
+            }
+          });
+        }
         if (updated) {
           localStorage.setItem(DB_KEY, JSON.stringify(parsed));
         }
@@ -1243,29 +1286,9 @@
         .catch(err => console.error("Error al cargar la base de datos del servidor:", err));
     }
 
-    let undoHistory = [];
-    let redoHistory = [];
-    let lastSavedStateString = "";
-    let hasUnsavedChanges = false;
-
-    function formatPyPrice(val) {
-      if (val === null || val === undefined) return '';
-      const clean = String(val).replace(/\D/g, '');
-      if (!clean) return '';
-      return clean.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-
-    function handlePriceInput(inputEl) {
-      if (!inputEl) return;
-      const formatted = formatPyPrice(inputEl.value);
-      inputEl.value = formatted;
-    }
-
     function initDraftState() {
       draftState = JSON.parse(JSON.stringify(getDB()));
-      lastSavedStateString = JSON.stringify(draftState);
       undoHistory = [];
-      redoHistory = [];
       hasUnsavedChanges = false;
       updateSaveAndUndoUI();
     }
@@ -1274,84 +1297,57 @@
       if (draftState) {
         undoHistory.push(JSON.parse(JSON.stringify(draftState)));
         if (undoHistory.length > MAX_UNDO_HISTORY) undoHistory.shift();
-        redoHistory = []; // Reset redo stack when a new action is performed
-        updateSaveAndUndoUI();
       }
     }
 
     function markUnsavedChanges() {
+      hasUnsavedChanges = true;
       updateSaveAndUndoUI();
     }
 
     function undoLastChange() {
       if (undoHistory.length === 0) return;
-      redoHistory.push(JSON.parse(JSON.stringify(draftState)));
       draftState = undoHistory.pop();
-      updateSaveAndUndoUI();
-      renderAllDashboardViews();
-    }
-
-    function redoLastChange() {
-      if (redoHistory.length === 0) return;
-      undoHistory.push(JSON.parse(JSON.stringify(draftState)));
-      draftState = redoHistory.pop();
       updateSaveAndUndoUI();
       renderAllDashboardViews();
     }
 
     function saveAllChangesToDB() {
       if (!draftState) return;
-      saveDB(draftState);
-      lastSavedStateString = JSON.stringify(draftState);
+      localStorage.setItem(DB_KEY, JSON.stringify(draftState));
       hasUnsavedChanges = false;
+      undoHistory = [];
       updateSaveAndUndoUI();
-      alert("✓ ¡Todos los cambios han sido guardados exitosamente en la base de datos y la nube!");
+      window.dispatchEvent(new Event('storage'));
+      alert("✓ ¡Todos los cambios han sido guardados exitosamente en la base de datos!");
     }
 
     function updateSaveAndUndoUI() {
       const btnSave = document.getElementById('btnSaveChanges');
       const btnUndo = document.getElementById('btnUndoChange');
-      const btnRedo = document.getElementById('btnRedoChange');
       const statusBadge = document.getElementById('dbSyncStatusBadge');
 
-      const currentStr = JSON.stringify(draftState || {});
-      const isDirty = lastSavedStateString !== "" && currentStr !== lastSavedStateString;
-      hasUnsavedChanges = isDirty;
-
-      // UNDO BUTTON (Arrow icon only)
       if (btnUndo) {
         btnUndo.disabled = undoHistory.length === 0;
         if (undoHistory.length > 0) {
-          btnUndo.className = "p-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-all flex items-center justify-center text-xs font-bold shadow-md cursor-pointer";
+          btnUndo.className = "px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-all flex items-center gap-1.5 text-xs font-bold shadow-md cursor-pointer";
         } else {
-          btnUndo.className = "p-2 rounded-xl bg-white/5 border border-white/10 text-slate-600 transition-all flex items-center justify-center text-xs font-medium cursor-not-allowed opacity-40";
+          btnUndo.className = "px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center gap-1.5 text-xs font-medium cursor-not-allowed opacity-50";
         }
       }
 
-      // REDO BUTTON (Arrow icon only)
-      if (btnRedo) {
-        btnRedo.disabled = redoHistory.length === 0;
-        if (redoHistory.length > 0) {
-          btnRedo.className = "p-2 rounded-xl bg-sky-500/20 border border-sky-500/40 text-sky-300 hover:bg-sky-500/30 transition-all flex items-center justify-center text-xs font-bold shadow-md cursor-pointer";
-        } else {
-          btnRedo.className = "p-2 rounded-xl bg-white/5 border border-white/10 text-slate-600 transition-all flex items-center justify-center text-xs font-medium cursor-not-allowed opacity-40";
-        }
-      }
-
-      // SMART SAVE BUTTON (Illuminates ONLY if current state differs from lastSavedStateString)
       if (btnSave) {
-        btnSave.disabled = !isDirty;
-        if (isDirty) {
+        if (hasUnsavedChanges) {
           btnSave.className = "px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-slate-950 font-black text-xs transition-all shadow-lg shadow-emerald-500/30 animate-pulse flex items-center gap-1.5 cursor-pointer";
-          btnSave.innerHTML = `<i data-lucide="save" class="w-3.5 h-3.5"></i> <span>💾 Guardar Cambios</span>`;
+          btnSave.innerHTML = `<i data-lucide="save" class="w-3.5 h-3.5"></i> <span>💾 Guardar Cambios*</span>`;
         } else {
-          btnSave.className = "px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-400 font-semibold text-xs flex items-center gap-1.5 opacity-60 cursor-not-allowed";
+          btnSave.className = "px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-semibold text-xs flex items-center gap-1.5 cursor-default";
           btnSave.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> <span>Sin cambios pendientes</span>`;
         }
       }
 
       if (statusBadge) {
-        if (isDirty) {
+        if (hasUnsavedChanges) {
           statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> <span>Cambios sin guardar en borrador</span>`;
           statusBadge.className = "px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold flex items-center gap-2";
         } else {
@@ -1363,23 +1359,15 @@
       if (window.lucide) lucide.createIcons();
     }
 
-    // Keyboard shortcuts for Undo (Ctrl+Z) and Redo (Ctrl+Y / Ctrl+Shift+Z)
+    // Keyboard shortcut Ctrl+Z / Cmd+Z for undoing edits
     window.addEventListener('keydown', function(e) {
-      const activeElem = document.activeElement;
-      const isInput = activeElem && (activeElem.tagName === 'INPUT' || activeElem.tagName === 'TEXTAREA');
-      if (isInput) return;
-
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
-        if (e.shiftKey) {
-          e.preventDefault();
-          redoLastChange();
-        } else {
+        const activeElem = document.activeElement;
+        const isInput = activeElem && (activeElem.tagName === 'INPUT' || activeElem.tagName === 'TEXTAREA');
+        if (!isInput && undoHistory.length > 0) {
           e.preventDefault();
           undoLastChange();
         }
-      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
-        e.preventDefault();
-        redoLastChange();
       }
     });
 
@@ -1471,7 +1459,7 @@
 
     function logoutAdmin() {
       sessionStorage.removeItem('STEVE_ADMIN_AUTH');
-      window.location.href = 'index.html';
+      window.location.reload();
     }
 
     // INITIALIZATION & TAB SWITCHING
@@ -2266,26 +2254,35 @@
         features: features
       };
 
-      if (!draftState.plans) draftState.plans = [];
+      const db = getDB();
+      if (!db.plans) db.plans = [];
 
-      if (idx >= 0 && idx < draftState.plans.length) {
-        draftState.plans[idx] = planObj;
+      if (idx >= 0 && idx < db.plans.length) {
+        db.plans[idx] = planObj;
       } else {
-        draftState.plans.push(planObj);
+        db.plans.push(planObj);
       }
 
-      saveDB(getDB());
+      saveDB(db);
       closePlanModal();
       renderPlans();
     }
 
     function deletePlan(index) {
+      if (!confirm("¿Seguro que deseas eliminar este nivel de la oferta?")) return;
+      const db = getDB();
+      if (db.plans && db.plans[index]) {
+        db.plans.splice(index, 1);
+        saveDB(db);
+        renderPlans();
+      }
+    }
       if (!confirm("¿Estás seguro de eliminar este nivel de precios?")) return;
       pushUndoState();
       if (draftState.plans) {
         draftState.plans.splice(index, 1);
       }
-      saveDB(getDB());
+      markUnsavedChanges();
       renderPlans();
     }
 
