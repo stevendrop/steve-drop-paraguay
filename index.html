@@ -2358,6 +2358,86 @@
       if (sEl) sEl.textContent = String(seconds).padStart(2, '0');
     }
 
+    function renderPublicPlans(plans) {
+      const container = document.getElementById('dynamicPublicPlansGrid');
+      if (!container || !plans || !Array.isArray(plans) || plans.length === 0) return;
+
+      container.innerHTML = '';
+      plans.forEach((plan, idx) => {
+        const isHighlight = plan.highlight === true;
+        const iconName = idx === 0 ? 'zap' : (idx === 1 ? 'sparkles' : 'crown');
+        
+        const card = document.createElement('div');
+        card.className = `glass-card rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${
+          isHighlight 
+            ? 'border-blue-500/60 bg-gradient-to-b from-blue-500/15 via-indigo-500/10 to-transparent shadow-2xl shadow-blue-500/20 relative md:-translate-y-3' 
+            : 'border-white/10 hover:border-white/20'
+        }`;
+
+        card.innerHTML = `
+          ${isHighlight ? `
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-sky-400 via-blue-600 to-indigo-600 text-white font-extrabold text-[10px] uppercase tracking-widest shadow-lg shadow-blue-500/40">
+                ${plan.badge || 'Nivel Más Popular'}
+              </span>
+            </div>
+          ` : ''}
+
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                <i data-lucide="${iconName}" class="w-5 h-5 text-sky-400"></i>
+              </div>
+              ${!isHighlight && plan.badge ? `
+                <span class="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                  ${plan.badge}
+                </span>
+              ` : ''}
+            </div>
+            
+            <h3 class="font-heading text-2xl font-black text-white uppercase tracking-tight mb-0.5">${plan.name}</h3>
+            <p class="text-slate-400 text-sm font-medium mb-4">${plan.tagline || ''}</p>
+            
+            <div class="mb-6 pb-4 border-b border-white/10">
+              <div class="flex items-baseline gap-1">
+                <span class="font-heading text-4xl md:text-5xl font-black text-white tracking-tighter">${plan.price}</span>
+                <span class="text-sky-400 font-extrabold text-base uppercase">Gs</span>
+              </div>
+              <span class="text-[11px] text-slate-400 italic mt-1 block font-medium">Pago único · Acceso al contenido</span>
+            </div>
+
+            <ul class="space-y-2.5 mb-6 text-xs text-slate-200">
+              ${(plan.features || []).map(f => `<li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>${f}</span></li>`).join('')}
+            </ul>
+          </div>
+
+          <button onclick="openCheckout('${plan.name}', '${plan.price}')" class="w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 ${
+            isHighlight 
+              ? 'bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-[1.02]' 
+              : 'bg-white/10 border border-white/15 text-white hover:bg-white/20'
+          } transition-all">
+            <span>${plan.ctaText || ('Seleccionar ' + plan.name)}</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        `;
+
+        container.appendChild(card);
+      });
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function syncPublicPlansFromServer() {
+      fetch('/api/public-content')
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.plans && Array.isArray(data.plans)) {
+            renderPublicPlans(data.plans);
+          }
+        })
+        .catch(err => console.error("Error cargando planes dinámicos:", err));
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       initClonedRealStories();
       startRealStoriesAutoPlay();
@@ -2367,6 +2447,8 @@
       
       updateLiveMentorshipTimer();
       setInterval(updateLiveMentorshipTimer, 1000);
+
+      syncPublicPlansFromServer();
     });
   </script>
 </body>

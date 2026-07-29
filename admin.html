@@ -1203,44 +1203,6 @@
           updated = true;
         }
 
-        // Permanent migration: Basic -> Inicio
-        if (parsed.plans && Array.isArray(parsed.plans)) {
-          parsed.plans.forEach(p => {
-            if (p.name && (p.name.toLowerCase() === 'basic' || p.name.toLowerCase() === 'inicio')) {
-              if (p.name !== 'Inicio') {
-                p.name = 'Inicio';
-                updated = true;
-              }
-              if (p.ctaText !== 'Seleccionar Inicio') {
-                p.ctaText = 'Seleccionar Inicio';
-                updated = true;
-              }
-            }
-            if (p.features && Array.isArray(p.features)) {
-              p.features = p.features.map(f => {
-                let newF = f.replace(/nivel Basic/gi, 'nivel Inicio').replace(/nivel Impulso/gi, 'nivel Pro');
-                if (newF !== f) updated = true;
-                return newF;
-              });
-            }
-          });
-        }
-        if (parsed.members && Array.isArray(parsed.members)) {
-          parsed.members.forEach(m => {
-            if (m.planName && (m.planName.toLowerCase() === 'basic' || m.planName.toLowerCase() === 'inicio')) {
-              if (m.planName !== 'Inicio') {
-                m.planName = 'Inicio';
-                updated = true;
-              }
-            }
-            if (m.planName && (m.planName.toLowerCase() === 'impulso' || m.planName.toLowerCase() === 'pro')) {
-              if (m.planName !== 'Pro') {
-                m.planName = 'Pro';
-                updated = true;
-              }
-            }
-          });
-        }
         if (updated) {
           localStorage.setItem(DB_KEY, JSON.stringify(parsed));
         }
@@ -2262,7 +2224,7 @@
         draftState.plans.push(planObj);
       }
 
-      markUnsavedChanges();
+      saveDB(getDB());
       closePlanModal();
       renderPlans();
     }
@@ -2273,7 +2235,7 @@
       if (draftState.plans) {
         draftState.plans.splice(index, 1);
       }
-      markUnsavedChanges();
+      saveDB(getDB());
       renderPlans();
     }
 
