@@ -1068,6 +1068,8 @@
   <!-- JAVASCRIPT LOGIC & LOCALSTORAGE DATABASE ENGINE -->
   <script>
     const DB_KEY = 'STEVE_DROP_DB_V1';
+    const MAX_UNDO_HISTORY = 50;
+    let draftState = null;
 
     // DEFAULT SEED DATABASE
     const defaultDatabase = {
