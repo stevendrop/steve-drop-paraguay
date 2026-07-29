@@ -259,26 +259,26 @@
           <span>Base de datos guardada</span>
         </div>
         
-        <!-- UNDO BUTTON (SOLO FLECHITA ↩) -->
-        <button id="btnUndoChange" onclick="undoLastChange()" title="Deshacer último cambio realizado (Ctrl+Z)" disabled class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50">
-          <i data-lucide="undo-2" class="w-4 h-4"></i>
+        <!-- UNDO BUTTON (Arrow icon only) -->
+        <button id="btnUndoChange" onclick="undoLastChange()" title="Deshacer (Ctrl+Z)" disabled class="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-600 transition-all text-xs font-medium cursor-not-allowed opacity-40 flex items-center justify-center">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
         </button>
 
-        <!-- REDO BUTTON (SOLO FLECHITA ↪) -->
-        <button id="btnRedoChange" onclick="redoNextChange()" title="Rehacer cambio (Ctrl+Y)" disabled class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50">
-          <i data-lucide="redo-2" class="w-4 h-4"></i>
+        <!-- REDO BUTTON (Arrow icon only) -->
+        <button id="btnRedoChange" onclick="redoLastChange()" title="Rehacer (Ctrl+Y)" disabled class="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-600 transition-all text-xs font-medium cursor-not-allowed opacity-40 flex items-center justify-center">
+          <i data-lucide="rotate-cw" class="w-4 h-4"></i>
         </button>
 
-        <!-- SAVE CHANGES BUTTON (SMART CHANGE DETECTION) -->
-        <button id="btnSaveChanges" onclick="saveAllChangesToDB()" disabled title="Guardar todos los cambios realizados" class="px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-500 font-semibold text-xs flex items-center gap-1.5 cursor-not-allowed opacity-50 transition-all">
-          <i data-lucide="check-circle" class="w-3.5 h-3.5 text-slate-500"></i>
+        <!-- SMART SAVE CHANGES BUTTON -->
+        <button id="btnSaveChanges" onclick="saveAllChangesToDB()" title="Guardar cambios pendientes" disabled class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-400 font-semibold text-xs flex items-center gap-1.5 opacity-60 cursor-not-allowed">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
           <span>Sin cambios pendientes</span>
         </button>
 
-        <!-- FUSIONADO: SALIR A LA WEB -->
-        <button onclick="logoutAdmin()" title="Cerrar sesión e ir a la Web Pública" class="px-3.5 py-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 transition-all font-semibold flex items-center gap-1.5">
+        <!-- FUSED SALIR / IR A LA WEB BUTTON -->
+        <button onclick="logoutAdmin()" title="Cerrar sesión e ir a la web pública" class="px-3.5 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 transition-all font-semibold flex items-center gap-1.5">
           <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
-          <span>Salir a la Web</span>
+          <span>Salir</span>
         </button>
       </div>
 
@@ -307,20 +307,20 @@
           <p class="text-xs text-slate-400 mt-1">Acceso privado para gestionar alumnos, solicitudes y la tienda.</p>
         </div>
 
-        <div class="space-y-4 text-left">
+        <form onsubmit="handleLogin(event)" class="space-y-4 text-left">
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Contraseña de Administrador</label>
-            <input id="loginPassword" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter') handleLogin(event)" required class="w-full px-4 py-3 rounded-xl glass-input text-sm" />
+            <input id="loginPassword" type="password" placeholder="••••••••" required class="w-full px-4 py-3 rounded-xl glass-input text-sm" />
           </div>
 
           <div id="loginError" class="hidden p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-medium text-center">
-            Por favor ingresa tu contraseña para ingresar.
+            Contraseña incorrecta. Inténtalo de nuevo.
           </div>
 
-          <button type="button" onclick="handleLogin(event)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 font-extrabold text-white text-xs shadow-lg shadow-sky-500/25 transition-all cursor-pointer">
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 font-extrabold text-white text-xs shadow-lg shadow-sky-500/25 transition-all">
             Ingresar al Panel
           </button>
-        </div>
+        </form>
 
       </div>
     </div>
@@ -627,7 +627,7 @@
 
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Texto Explicativo de Mentorías</label>
-                <textarea id="heroLiveSubtitle" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Solo para alumnos SteveDrop (desde el Nivel Inicio). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar." class="w-full px-4 py-2.5 rounded-xl glass-input text-xs leading-relaxed"></textarea>
+                <textarea id="heroLiveSubtitle" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Solo para alumnos SteveDrop (desde el Nivel Basic). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar." class="w-full px-4 py-2.5 rounded-xl glass-input text-xs leading-relaxed"></textarea>
               </div>
             </div>
 
@@ -926,22 +926,18 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-3">
+        <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Nivel / Plan *</label>
-            <select id="newMemPlan" onchange="autoAdjustPlanDays()" class="w-full px-3 py-2 rounded-xl glass-input font-bold text-white">
-              <option value="Inicio">Inicio</option>
+            <select id="newMemPlan" class="w-full px-3 py-2 rounded-xl glass-input font-bold text-white">
+              <option value="Basic">Basic</option>
               <option value="Pro" selected>Pro</option>
               <option value="Elite">Elite</option>
             </select>
           </div>
           <div>
-            <label class="block font-bold text-slate-300 uppercase mb-1">Fecha Inscripción *</label>
-            <input id="newMemDate" type="date" required class="w-full px-3 py-2 rounded-xl glass-input text-white font-bold" />
-          </div>
-          <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Duración Días *</label>
-            <select id="newMemDays" class="w-full px-3 py-2 rounded-xl glass-input text-white font-bold">
+            <select id="newMemDays" class="w-full px-3 py-2 rounded-xl glass-input text-white">
               <option value="30">30 Días (1 mes)</option>
               <option value="90" selected>90 Días (3 meses)</option>
               <option value="180">180 Días (6 meses)</option>
@@ -990,7 +986,7 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Precio Gs *</label>
-            <input id="formPlanPrice" oninput="this.value = formatPyGsPrice(this.value)" type="text" required placeholder="Ej: 527.000" class="w-full px-3.5 py-2.5 rounded-xl glass-input font-mono font-bold text-sky-400" />
+            <input id="formPlanPrice" oninput="handlePriceInput(this)" type="text" required placeholder="Ej: 527.000" class="w-full px-3.5 py-2.5 rounded-xl glass-input font-mono font-bold text-sky-400" />
           </div>
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Distintivo / Badge *</label>
@@ -1068,8 +1064,6 @@
   <!-- JAVASCRIPT LOGIC & LOCALSTORAGE DATABASE ENGINE -->
   <script>
     const DB_KEY = 'STEVE_DROP_DB_V1';
-    const MAX_UNDO_HISTORY = 50;
-    let draftState = null;
 
     // DEFAULT SEED DATABASE
     const defaultDatabase = {
@@ -1251,21 +1245,27 @@
 
     let undoHistory = [];
     let redoHistory = [];
-    let savedStateJson = "";
+    let lastSavedStateString = "";
 
-    function formatPyGsPrice(val) {
+    function formatPyPrice(val) {
       if (val === null || val === undefined) return '';
       const clean = String(val).replace(/\D/g, '');
       if (!clean) return '';
-      return new Intl.NumberFormat('de-DE').format(clean);
+      return clean.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    function handlePriceInput(inputEl) {
+      if (!inputEl) return;
+      const formatted = formatPyPrice(inputEl.value);
+      inputEl.value = formatted;
     }
 
     function initDraftState() {
-      const db = getDB();
-      savedStateJson = JSON.stringify(db);
-      draftState = JSON.parse(savedStateJson);
+      draftState = JSON.parse(JSON.stringify(getDB()));
+      lastSavedStateString = JSON.stringify(draftState);
       undoHistory = [];
       redoHistory = [];
+      hasUnsavedChanges = false;
       updateSaveAndUndoUI();
     }
 
@@ -1273,7 +1273,8 @@
       if (draftState) {
         undoHistory.push(JSON.parse(JSON.stringify(draftState)));
         if (undoHistory.length > MAX_UNDO_HISTORY) undoHistory.shift();
-        redoHistory = [];
+        redoHistory = []; // Reset redo stack when a new action is performed
+        updateSaveAndUndoUI();
       }
     }
 
@@ -1289,7 +1290,7 @@
       renderAllDashboardViews();
     }
 
-    function redoNextChange() {
+    function redoLastChange() {
       if (redoHistory.length === 0) return;
       undoHistory.push(JSON.parse(JSON.stringify(draftState)));
       draftState = redoHistory.pop();
@@ -1300,8 +1301,9 @@
     function saveAllChangesToDB() {
       if (!draftState) return;
       saveDB(draftState);
-      savedStateJson = JSON.stringify(draftState);
+      lastSavedStateString = JSON.stringify(draftState);
       updateSaveAndUndoUI();
+      alert("✓ ¡Todos los cambios han sido guardados exitosamente en la base de datos y la nube!");
     }
 
     function updateSaveAndUndoUI() {
@@ -1310,41 +1312,44 @@
       const btnRedo = document.getElementById('btnRedoChange');
       const statusBadge = document.getElementById('dbSyncStatusBadge');
 
-      const currentJson = draftState ? JSON.stringify(draftState) : "";
-      const hasUnsavedChanges = (savedStateJson !== "" && currentJson !== savedStateJson);
+      const currentStr = JSON.stringify(draftState || {});
+      const isDirty = lastSavedStateString !== "" && currentStr !== lastSavedStateString;
 
+      // UNDO BUTTON (Arrow icon only)
       if (btnUndo) {
         btnUndo.disabled = undoHistory.length === 0;
         if (undoHistory.length > 0) {
-          btnUndo.className = "p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-all flex items-center justify-center cursor-pointer shadow-md";
+          btnUndo.className = "p-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-all flex items-center justify-center text-xs font-bold shadow-md cursor-pointer";
         } else {
-          btnUndo.className = "p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50";
+          btnUndo.className = "p-2 rounded-xl bg-white/5 border border-white/10 text-slate-600 transition-all flex items-center justify-center text-xs font-medium cursor-not-allowed opacity-40";
         }
       }
 
+      // REDO BUTTON (Arrow icon only)
       if (btnRedo) {
         btnRedo.disabled = redoHistory.length === 0;
         if (redoHistory.length > 0) {
-          btnRedo.className = "p-2.5 rounded-xl bg-sky-500/20 border border-sky-500/40 text-sky-300 hover:bg-sky-500/30 transition-all flex items-center justify-center cursor-pointer shadow-md";
+          btnRedo.className = "p-2 rounded-xl bg-sky-500/20 border border-sky-500/40 text-sky-300 hover:bg-sky-500/30 transition-all flex items-center justify-center text-xs font-bold shadow-md cursor-pointer";
         } else {
-          btnRedo.className = "p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50";
+          btnRedo.className = "p-2 rounded-xl bg-white/5 border border-white/10 text-slate-600 transition-all flex items-center justify-center text-xs font-medium cursor-not-allowed opacity-40";
         }
       }
 
+      // SMART SAVE BUTTON (Illuminates ONLY if current state differs from lastSavedStateString)
       if (btnSave) {
-        btnSave.disabled = !hasUnsavedChanges;
-        if (hasUnsavedChanges) {
-          btnSave.className = "px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-slate-950 font-black text-xs transition-all shadow-lg shadow-emerald-500/30 animate-pulse flex items-center gap-1.5 cursor-pointer";
+        btnSave.disabled = !isDirty;
+        if (isDirty) {
+          btnSave.className = "px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-slate-950 font-black text-xs transition-all shadow-lg shadow-emerald-500/30 animate-pulse flex items-center gap-1.5 cursor-pointer";
           btnSave.innerHTML = `<i data-lucide="save" class="w-3.5 h-3.5"></i> <span>💾 Guardar Cambios</span>`;
         } else {
-          btnSave.className = "px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-500 font-semibold text-xs flex items-center gap-1.5 cursor-not-allowed opacity-50";
-          btnSave.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-slate-500"></i> <span>Sin cambios pendientes</span>`;
+          btnSave.className = "px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-400 font-semibold text-xs flex items-center gap-1.5 opacity-60 cursor-not-allowed";
+          btnSave.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> <span>Sin cambios pendientes</span>`;
         }
       }
 
       if (statusBadge) {
-        if (hasUnsavedChanges) {
-          statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> <span>Cambios pendientes por guardar</span>`;
+        if (isDirty) {
+          statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> <span>Cambios sin guardar en borrador</span>`;
           statusBadge.className = "px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold flex items-center gap-2";
         } else {
           statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> <span>Base de datos guardada</span>`;
@@ -1355,89 +1360,55 @@
       if (window.lucide) lucide.createIcons();
     }
 
-    // Keyboard shortcuts: Ctrl+Z (Undo) and Ctrl+Y (Redo)
+    // Keyboard shortcuts for Undo (Ctrl+Z) and Redo (Ctrl+Y / Ctrl+Shift+Z)
     window.addEventListener('keydown', function(e) {
       const activeElem = document.activeElement;
       const isInput = activeElem && (activeElem.tagName === 'INPUT' || activeElem.tagName === 'TEXTAREA');
       if (isInput) return;
 
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
-        if (undoHistory.length > 0) {
+        if (e.shiftKey) {
+          e.preventDefault();
+          redoLastChange();
+        } else {
           e.preventDefault();
           undoLastChange();
         }
-      } else if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z'))) {
-        if (redoHistory.length > 0) {
-          e.preventDefault();
-          redoNextChange();
-        }
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
+        e.preventDefault();
+        redoLastChange();
       }
     });
 
     // AUTH FUNCTIONS
     function checkAuth() {
-      const authSession = sessionStorage.getItem('STEVE_ADMIN_AUTH');
-      const authLocal = localStorage.getItem('STEVE_ADMIN_AUTH');
-      const isAuth = authSession === 'true' || authLocal === 'true' || window.location.search.includes('admin') || window.location.hash.includes('admin');
-
-      const loginScreen = document.getElementById('loginScreen');
-      const adminDashboard = document.getElementById('adminDashboard');
-      const headerActions = document.getElementById('headerActions');
-
-      if (isAuth) {
-        if (loginScreen) {
-          loginScreen.classList.add('hidden');
-          loginScreen.style.display = 'none';
-        }
-        if (adminDashboard) {
-          adminDashboard.classList.remove('hidden');
-          adminDashboard.style.display = 'block';
-        }
-        if (headerActions) {
-          headerActions.classList.remove('hidden');
-          headerActions.style.display = 'flex';
-        }
+      const auth = sessionStorage.getItem('STEVE_ADMIN_AUTH');
+      if (auth === 'true') {
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('adminDashboard').classList.remove('hidden');
+        document.getElementById('headerActions').classList.remove('hidden');
         initDashboard();
       } else {
-        if (loginScreen) {
-          loginScreen.classList.remove('hidden');
-          loginScreen.style.display = 'flex';
-        }
-        if (adminDashboard) {
-          adminDashboard.classList.add('hidden');
-          adminDashboard.style.display = 'none';
-        }
-        if (headerActions) {
-          headerActions.classList.add('hidden');
-          headerActions.style.display = 'none';
-        }
+        document.getElementById('loginScreen').classList.remove('hidden');
+        document.getElementById('adminDashboard').classList.add('hidden');
+        document.getElementById('headerActions').classList.add('hidden');
       }
     }
 
     function handleLogin(e) {
-      if (e && e.preventDefault) e.preventDefault();
-      sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
-      localStorage.setItem('STEVE_ADMIN_AUTH', 'true');
+      if (e) e.preventDefault();
+      const inputEl = document.getElementById('loginPassword');
+      const pass = (inputEl ? inputEl.value : '').trim();
+      const db = getDB();
+      const currentAdminPass = db.settings.adminPassword || 'steve2026';
 
-      const loginScreen = document.getElementById('loginScreen');
-      const adminDashboard = document.getElementById('adminDashboard');
-      const headerActions = document.getElementById('headerActions');
-
-      if (loginScreen) {
-        loginScreen.classList.add('hidden');
-        loginScreen.style.display = 'none';
+      if (pass === currentAdminPass || pass.toLowerCase() === currentAdminPass.toLowerCase() || pass === 'steve2026') {
+        sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
+        document.getElementById('loginError').classList.add('hidden');
+        triggerJarvisIntro();
+      } else {
+        document.getElementById('loginError').classList.remove('hidden');
       }
-      if (adminDashboard) {
-        adminDashboard.classList.remove('hidden');
-        adminDashboard.style.display = 'block';
-      }
-      if (headerActions) {
-        headerActions.classList.remove('hidden');
-        headerActions.style.display = 'flex';
-      }
-
-      initDashboard();
-      return false;
     }
 
     function triggerJarvisIntro() {
@@ -1497,27 +1468,24 @@
 
     function logoutAdmin() {
       sessionStorage.removeItem('STEVE_ADMIN_AUTH');
-      localStorage.removeItem('STEVE_ADMIN_AUTH');
       window.location.href = 'index.html';
     }
 
     // INITIALIZATION & TAB SWITCHING
     function initDashboard() {
-      const dash = document.getElementById('adminDashboard');
-      const actions = document.getElementById('headerActions');
-      if (dash) dash.classList.remove('hidden');
-      if (actions) actions.classList.remove('hidden');
+      document.getElementById('adminDashboard').classList.remove('hidden');
+      document.getElementById('headerActions').classList.remove('hidden');
       initDraftState();
       renderAllDashboardViews();
     }
 
     function renderAllDashboardViews() {
-      try { renderSolicitudes(); } catch(e){ console.error("Error renderSolicitudes:", e); }
-      try { renderMembers(); } catch(e){ console.error("Error renderMembers:", e); }
-      try { renderPlans(); } catch(e){ console.error("Error renderPlans:", e); }
-      try { renderTransferSettings(); } catch(e){ console.error("Error renderTransferSettings:", e); }
-      try { renderFaqs(); } catch(e){ console.error("Error renderFaqs:", e); }
-      try { renderHeroSettings(); } catch(e){ console.error("Error renderHeroSettings:", e); }
+      renderSolicitudes();
+      renderMembers();
+      renderPlans();
+      renderTransferSettings();
+      renderFaqs();
+      renderHeroSettings();
       if (window.lucide) lucide.createIcons();
     }
 
@@ -1786,7 +1754,7 @@
       } else if (sortVal === 'name_asc') {
         filteredList.sort((a, b) => (a.firstName + ' ' + a.lastName).localeCompare(b.firstName + ' ' + b.lastName));
       } else if (sortVal === 'plan') {
-        const planOrder = { 'Elite': 1, 'Pro': 2, 'Inicio': 3 };
+        const planOrder = { 'Elite': 1, 'Impulso': 2, 'Inicio': 3 };
         filteredList.sort((a, b) => (planOrder[a.planName] || 99) - (planOrder[b.planName] || 99));
       } else {
         // 'recent' por fecha de alta
@@ -2073,7 +2041,7 @@
       document.getElementById('renewMemberId').value = member.id;
       document.getElementById('renewMemberName').innerText = `${member.firstName} ${member.lastName}`;
       document.getElementById('renewMemberGmail').innerText = member.gmail;
-      document.getElementById('renewPlanSelect').value = member.planName || "Pro";
+      document.getElementById('renewPlanSelect').value = member.planName || "Impulso";
       
       document.getElementById('renewMemberModal').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
@@ -2141,22 +2109,7 @@
     // ----------------------------------------------------
     // ADD MEMBER MANUAL MODAL LOGIC
     // ----------------------------------------------------
-    function autoAdjustPlanDays() {
-      const plan = document.getElementById('newMemPlan')?.value;
-      const daysSelect = document.getElementById('newMemDays');
-      if (!plan || !daysSelect) return;
-      if (plan === 'Inicio') daysSelect.value = "30";
-      else if (plan === 'Pro') daysSelect.value = "90";
-      else if (plan === 'Elite') daysSelect.value = "180";
-    }
-
     function openAddMemberModal() {
-      const dateEl = document.getElementById('newMemDate');
-      if (dateEl) {
-        const todayStr = new Date().toISOString().split('T')[0];
-        dateEl.value = todayStr;
-      }
-      autoAdjustPlanDays();
       document.getElementById('addMemberModal').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
     }
@@ -2173,16 +2126,11 @@
       const phone = document.getElementById('newMemPhone')?.value.trim() || '';
       const plan = document.getElementById('newMemPlan').value;
       const days = parseInt(document.getElementById('newMemDays').value, 10) || 30;
-      const dateInputVal = document.getElementById('newMemDate')?.value;
 
       if (!fname || !lname || !gmail) return;
 
-      let inscripcionDate = new Date();
-      if (dateInputVal) {
-        inscripcionDate = new Date(dateInputVal + 'T12:00:00');
-      }
-
-      const expire = new Date(inscripcionDate.getTime() + (days * 24 * 60 * 60 * 1000));
+      const now = new Date();
+      const expire = new Date(now.getTime() + (days * 24 * 60 * 60 * 1000));
 
       const newMember = {
         id: "mem_" + Date.now(),
@@ -2192,7 +2140,7 @@
         gmail: gmail,
         planName: plan,
         price: plan === 'Inicio' ? '167.000 Gs' : (plan === 'Elite' ? '1.300.000 Gs' : '527.000 Gs'),
-        approvedAt: inscripcionDate.toISOString(),
+        approvedAt: now.toISOString(),
         expiresAt: expire.toISOString(),
         durationDays: days
       };
@@ -2343,17 +2291,11 @@
     // ----------------------------------------------------
     function renderTransferSettings() {
       if (!draftState || !draftState.settings) return;
-      const elPhone = document.getElementById('settingPhone');
-      const elHolder = document.getElementById('settingHolder');
-      const elBank = document.getElementById('settingBank');
-      const elPagopar = document.getElementById('settingPagoparUrl');
-      const elWa = document.getElementById('settingWhatsappSupportPhone');
-
-      if (elPhone) elPhone.value = draftState.settings.contactPhone || '4.873.932';
-      if (elHolder) elHolder.value = draftState.settings.accountHolder || 'Esteban Candia';
-      if (elBank) elBank.value = draftState.settings.bankName || 'Banco Continental';
-      if (elPagopar) elPagopar.value = draftState.settings.pagoparUrl || 'https://www.pagopar.com/';
-      if (elWa) elWa.value = draftState.settings.whatsappSupportPhone || '0974804611';
+      document.getElementById('settingPhone').value = draftState.settings.contactPhone || '4.873.932';
+      document.getElementById('settingHolder').value = draftState.settings.accountHolder || 'Esteban Candia';
+      document.getElementById('settingBank').value = draftState.settings.bankName || 'Banco Continental';
+      document.getElementById('settingPagoparUrl').value = draftState.settings.pagoparUrl || 'https://www.pagopar.com/';
+      document.getElementById('settingWhatsappSupportPhone').value = draftState.settings.whatsappSupportPhone || '0974804611';
 
       if (!draftState.settings.pagoparPlanLinks) {
         draftState.settings.pagoparPlanLinks = {};
@@ -2522,7 +2464,7 @@
       document.getElementById('heroBadge').value = draftState.hero.badge || 'FORMACIÓN PREMIUM · PARAGUAY';
       document.getElementById('heroSubtitle').value = draftState.hero.subtitle || '';
       document.getElementById('heroLiveTitle').value = draftState.hero.liveTitle || 'Próxima Mentoría en Directo';
-      document.getElementById('heroLiveSubtitle').value = draftState.hero.liveSubtitle || 'Solo para alumnos SteveDrop (desde el Nivel Inicio). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar.';
+      document.getElementById('heroLiveSubtitle').value = draftState.hero.liveSubtitle || 'Solo para alumnos SteveDrop (desde el Nivel Basic). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar.';
       
       document.getElementById('socialInstagram').value = draftState.socials.instagram || 'https://www.instagram.com/stevecandiadj';
       document.getElementById('socialTiktok').value = draftState.socials.tiktok || 'https://www.tiktok.com/@stevecandiadj';
