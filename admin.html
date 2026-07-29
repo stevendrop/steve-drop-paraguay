@@ -307,7 +307,7 @@
           <p class="text-xs text-slate-400 mt-1">Acceso privado para gestionar alumnos, solicitudes y la tienda.</p>
         </div>
 
-        <form onsubmit="handleLogin(event)" class="space-y-4 text-left">
+        <form onsubmit="handleLogin(event); return false;" class="space-y-4 text-left">
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Contraseña de Administrador</label>
             <input id="loginPassword" type="password" placeholder="••••••••" required class="w-full px-4 py-3 rounded-xl glass-input text-sm" />
@@ -1388,22 +1388,47 @@
     }
 
     function handleLogin(e) {
-      if (e) e.preventDefault();
-      const inputEl = document.getElementById('loginPassword');
-      const pass = (inputEl ? inputEl.value : '').trim();
-      const db = getDB();
-      const currentAdminPass = (db && db.settings && db.settings.adminPassword) ? db.settings.adminPassword : 'stevedrop2026';
-
-      if (pass === currentAdminPass || pass.toLowerCase() === currentAdminPass.toLowerCase() || pass === 'stevedrop2026' || pass === 'steve2026') {
-        sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
-        document.getElementById('loginError').classList.add('hidden');
-        document.getElementById('loginScreen').classList.add('hidden');
-        document.getElementById('adminDashboard').classList.remove('hidden');
-        document.getElementById('headerActions').classList.remove('hidden');
-        initDashboard();
-      } else {
-        document.getElementById('loginError').classList.remove('hidden');
+      if (e) {
+        e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
       }
+      try {
+        const inputEl = document.getElementById('loginPassword');
+        const pass = (inputEl ? inputEl.value : '').trim();
+        let currentAdminPass = 'stevedrop2026';
+        try {
+          const db = getDB();
+          if (db && db.settings && db.settings.adminPassword) {
+            currentAdminPass = db.settings.adminPassword;
+          }
+        } catch(err){}
+
+        const isValid = (
+          pass === currentAdminPass || 
+          pass.toLowerCase() === currentAdminPass.toLowerCase() || 
+          pass === 'stevedrop2026' || 
+          pass === 'steve2026'
+        );
+
+        if (isValid) {
+          sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
+          const errEl = document.getElementById('loginError');
+          const screenEl = document.getElementById('loginScreen');
+          const dashEl = document.getElementById('adminDashboard');
+          const actionsEl = document.getElementById('headerActions');
+          if (errEl) errEl.classList.add('hidden');
+          if (screenEl) screenEl.classList.add('hidden');
+          if (dashEl) dashEl.classList.remove('hidden');
+          if (actionsEl) actionsEl.classList.remove('hidden');
+          initDashboard();
+        } else {
+          const errEl = document.getElementById('loginError');
+          if (errEl) errEl.classList.remove('hidden');
+        }
+      } catch(err) {
+        console.error("Login error:", err);
+      }
+      return false;
     }
 
     function triggerJarvisIntro() {
