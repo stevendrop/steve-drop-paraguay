@@ -1,7 +1,12 @@
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 
 const DB_FILE = path.join(__dirname, 'database.json');
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mkazgkqikpsocjexlefx.supabase.co';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rYXpna3Fpa3Bzb2NqZXhsZWZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyODk1MjIsImV4cCI6MjEwMDg2NTUyMn0.afvBmodqrxpIJRWHkujt1xu5_-a-2rI2qNHY8HKPx3A';
+
+let inMemoryCache = null;
 
 const INITIAL_DB = {
   admin: {
@@ -83,24 +88,115 @@ const INITIAL_DB = {
     { id: "faq1", question: "¿Cuánto tiempo tengo acceso al contenido?", answer: "El acceso al curso es de por vida. La comunidad, soporte y mentorías dependen del nivel que elijas." },
     { id: "faq2", question: "¿Las mentorías son en vivo?", answer: "Sí. Cada nivel incluye mentorías grupales o privadas en vivo, donde resolvemos casos reales." },
     { id: "faq3", question: "¿Funciona en Paraguay?", answer: "Sí. El sistema está adaptado al mercado local, incluyendo pasarela de pago, logística y productos." }
-  ]
+  ],
+  solicitudes: [],
+  members: []
 };
 
+// Helper: HTTP request to Supabase REST API
+function supabaseRequest(endpoint, method = 'GET', body = null) {
+  return new Promise((resolve) => {
+    if (!SUPABASE_URL || !SUPABASE_KEY) return resolve(null);
+    try {
+      const url = new URL(SUPABASE_URL + endpoint);
+      const dataString = body ? JSON.stringify(body) : null;
+
+      const options = {
+        hostname: url.hostname,
+        path: url.pathname + url.search,
+        method: method,
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates,return=representation'
+        }
+      };
+
+      if (dataString) {
+        options.headers['Content-Length'] = Buffer.byteLength(dataString);
+      }
+
+      const req = https.request(options, (res) => {
+        let responseData = '';
+        res.on('data', chunk => responseData += chunk);
+        res.on('end', () => {
+          try {
+            resolve(responseData ? JSON.parse(responseData) : null);
+          } catch(e) {
+            resolve(null);
+          }
+        });
+      });
+
+      req.on('error', (err) => {
+        console.error('Supabase HTTP Error:', err.message);
+        resolve(null);
+      });
+
+      if (dataString) req.write(dataString);
+      req.end();
+    } catch(e) {
+      resolve(null);
+    }
+  });
+}
+
+// Initial sync from Supabase Cloud on boot
+async function initSupabaseSync() {
+  try {
+    const cloudData = await supabaseRequest('/rest/v1/kv_store?key=eq.STEVE_DROP_DB_V1&select=value');
+    if (cloudData && Array.isArray(cloudData) && cloudData.length > 0 && cloudData[0].value) {
+      inMemoryCache = cloudData[0].value;
+      try {
+        fs.writeFileSync(DB_FILE, JSON.stringify(inMemoryCache, null, 2), 'utf8');
+        console.log('✓ Base de datos sincronizada y restaurada con éxito desde Supabase Cloud');
+      } catch(e){}
+    } else {
+      console.log('ℹ️ Inicializando tabla en Supabase Cloud...');
+      const current = readDB();
+      await supabaseRequest('/rest/v1/kv_store', 'POST', {
+        key: 'STEVE_DROP_DB_V1',
+        value: current
+      });
+    }
+  } catch(e) {
+    console.error('Error al sincronizar con Supabase:', e);
+  }
+}
+
+// Boot background sync
+initSupabaseSync();
+
 function readDB() {
+  if (inMemoryCache) {
+    return inMemoryCache;
+  }
   if (!fs.existsSync(DB_FILE)) {
     fs.writeFileSync(DB_FILE, JSON.stringify(INITIAL_DB, null, 2), 'utf8');
+    inMemoryCache = INITIAL_DB;
     return INITIAL_DB;
   }
   try {
     const data = fs.readFileSync(DB_FILE, 'utf8');
-    return JSON.parse(data);
+    inMemoryCache = JSON.parse(data);
+    return inMemoryCache;
   } catch (err) {
     return INITIAL_DB;
   }
 }
 
 function writeDB(data) {
-  fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
+  inMemoryCache = data;
+  try {
+    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
+  } catch(e){}
+
+  // Async push to Supabase Cloud
+  supabaseRequest('/rest/v1/kv_store', 'POST', {
+    key: 'STEVE_DROP_DB_V1',
+    value: data
+  });
 }
 
 module.exports = { readDB, writeDB, DB_FILE };
