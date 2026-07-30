@@ -251,7 +251,7 @@
       </a>
 
       <!-- Header Quick Actions (visible when logged in) -->
-      <div id="headerActions" class="hidden flex items-center gap-2 text-xs flex-wrap justify-end">
+      <div id="headerActions" class="hidden flex items-center gap-2.5 text-xs flex-wrap justify-end">
         
         <!-- Status Indicator -->
         <div id="dbSyncStatusBadge" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
@@ -259,26 +259,31 @@
           <span>Base de datos guardada</span>
         </div>
         
-        <!-- UNDO BUTTON (SOLO FLECHITA ↩) -->
-        <button id="btnUndoChange" onclick="undoLastChange()" title="Deshacer último cambio realizado (Ctrl+Z)" disabled class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50">
-          <i data-lucide="undo-2" class="w-4 h-4"></i>
+        <!-- UNDO BUTTON -->
+        <button id="btnUndoChange" onclick="undoLastChange()" title="Deshacer último cambio realizado (Ctrl+Z)" disabled class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center gap-1.5 text-xs font-medium cursor-not-allowed opacity-50">
+          <i data-lucide="undo-2" class="w-3.5 h-3.5"></i>
+          <span>↩ Deshacer</span>
         </button>
 
-        <!-- REDO BUTTON (SOLO FLECHITA ↪) -->
-        <button id="btnRedoChange" onclick="redoNextChange()" title="Rehacer cambio (Ctrl+Y)" disabled class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50">
-          <i data-lucide="redo-2" class="w-4 h-4"></i>
-        </button>
-
-        <!-- SAVE CHANGES BUTTON (SMART CHANGE DETECTION) -->
-        <button id="btnSaveChanges" onclick="saveAllChangesToDB()" disabled title="Guardar todos los cambios realizados" class="px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-500 font-semibold text-xs flex items-center gap-1.5 cursor-not-allowed opacity-50 transition-all">
-          <i data-lucide="check-circle" class="w-3.5 h-3.5 text-slate-500"></i>
+        <!-- SAVE CHANGES BUTTON -->
+        <button id="btnSaveChanges" onclick="saveAllChangesToDB()" title="Guardar todos los cambios realizados en el borrador" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-semibold text-xs flex items-center gap-1.5">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
           <span>Sin cambios pendientes</span>
         </button>
 
-        <!-- FUSIONADO: SALIR A LA WEB -->
-        <button onclick="logoutAdmin()" title="Cerrar sesión e ir a la Web Pública" class="px-3.5 py-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 transition-all font-semibold flex items-center gap-1.5">
+        <a href="index.html" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 hover:text-white transition-all flex items-center gap-1.5 font-medium">
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Ver Sitio Público</span>
+        </a>
+
+        <button onclick="exportBackup()" title="Descargar Backup de Base de Datos" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 transition-all flex items-center gap-1.5">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span class="hidden md:inline">Respaldar BD</span>
+        </button>
+
+        <button onclick="logoutAdmin()" class="px-3.5 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 transition-all font-semibold flex items-center gap-1.5">
           <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
-          <span>Salir a la Web</span>
+          <span>Salir</span>
         </button>
       </div>
 
@@ -627,7 +632,7 @@
 
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Texto Explicativo de Mentorías</label>
-                <textarea id="heroLiveSubtitle" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Solo para alumnos SteveDrop (desde el Nivel Inicio). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar." class="w-full px-4 py-2.5 rounded-xl glass-input text-xs leading-relaxed"></textarea>
+                <textarea id="heroLiveSubtitle" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Solo para alumnos SteveDrop (desde el Nivel Basic). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar." class="w-full px-4 py-2.5 rounded-xl glass-input text-xs leading-relaxed"></textarea>
               </div>
             </div>
 
@@ -926,22 +931,18 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-3">
+        <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Nivel / Plan *</label>
-            <select id="newMemPlan" onchange="autoAdjustPlanDays()" class="w-full px-3 py-2 rounded-xl glass-input font-bold text-white">
-              <option value="Inicio">Inicio</option>
+            <select id="newMemPlan" class="w-full px-3 py-2 rounded-xl glass-input font-bold text-white">
+              <option value="Basic">Basic</option>
               <option value="Pro" selected>Pro</option>
               <option value="Elite">Elite</option>
             </select>
           </div>
           <div>
-            <label class="block font-bold text-slate-300 uppercase mb-1">Fecha Inscripción *</label>
-            <input id="newMemDate" type="date" required class="w-full px-3 py-2 rounded-xl glass-input text-white font-bold" />
-          </div>
-          <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Duración Días *</label>
-            <select id="newMemDays" class="w-full px-3 py-2 rounded-xl glass-input text-white font-bold">
+            <select id="newMemDays" class="w-full px-3 py-2 rounded-xl glass-input text-white">
               <option value="30">30 Días (1 mes)</option>
               <option value="90" selected>90 Días (3 meses)</option>
               <option value="180">180 Días (6 meses)</option>
@@ -990,7 +991,7 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Precio Gs *</label>
-            <input id="formPlanPrice" oninput="this.value = formatPyGsPrice(this.value)" type="text" required placeholder="Ej: 527.000" class="w-full px-3.5 py-2.5 rounded-xl glass-input font-mono font-bold text-sky-400" />
+            <input id="formPlanPrice" type="text" required placeholder="Ej: 527.000" class="w-full px-3.5 py-2.5 rounded-xl glass-input" />
           </div>
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Distintivo / Badge *</label>
@@ -1247,23 +1248,10 @@
         .catch(err => console.error("Error al cargar la base de datos del servidor:", err));
     }
 
-    let undoHistory = [];
-    let redoHistory = [];
-    let savedStateJson = "";
-
-    function formatPyGsPrice(val) {
-      if (val === null || val === undefined) return '';
-      const clean = String(val).replace(/\D/g, '');
-      if (!clean) return '';
-      return new Intl.NumberFormat('de-DE').format(clean);
-    }
-
     function initDraftState() {
-      const db = getDB();
-      savedStateJson = JSON.stringify(db);
-      draftState = JSON.parse(savedStateJson);
+      draftState = JSON.parse(JSON.stringify(getDB()));
       undoHistory = [];
-      redoHistory = [];
+      hasUnsavedChanges = false;
       updateSaveAndUndoUI();
     }
 
@@ -1271,78 +1259,58 @@
       if (draftState) {
         undoHistory.push(JSON.parse(JSON.stringify(draftState)));
         if (undoHistory.length > MAX_UNDO_HISTORY) undoHistory.shift();
-        redoHistory = [];
       }
     }
 
     function markUnsavedChanges() {
+      hasUnsavedChanges = true;
       updateSaveAndUndoUI();
     }
 
     function undoLastChange() {
       if (undoHistory.length === 0) return;
-      redoHistory.push(JSON.parse(JSON.stringify(draftState)));
       draftState = undoHistory.pop();
-      updateSaveAndUndoUI();
-      renderAllDashboardViews();
-    }
-
-    function redoNextChange() {
-      if (redoHistory.length === 0) return;
-      undoHistory.push(JSON.parse(JSON.stringify(draftState)));
-      draftState = redoHistory.pop();
       updateSaveAndUndoUI();
       renderAllDashboardViews();
     }
 
     function saveAllChangesToDB() {
       if (!draftState) return;
-      saveDB(draftState);
-      savedStateJson = JSON.stringify(draftState);
+      localStorage.setItem(DB_KEY, JSON.stringify(draftState));
+      hasUnsavedChanges = false;
+      undoHistory = [];
       updateSaveAndUndoUI();
+      window.dispatchEvent(new Event('storage'));
+      alert("✓ ¡Todos los cambios han sido guardados exitosamente en la base de datos!");
     }
 
     function updateSaveAndUndoUI() {
       const btnSave = document.getElementById('btnSaveChanges');
       const btnUndo = document.getElementById('btnUndoChange');
-      const btnRedo = document.getElementById('btnRedoChange');
       const statusBadge = document.getElementById('dbSyncStatusBadge');
-
-      const currentJson = draftState ? JSON.stringify(draftState) : "";
-      const hasUnsavedChanges = (savedStateJson !== "" && currentJson !== savedStateJson);
 
       if (btnUndo) {
         btnUndo.disabled = undoHistory.length === 0;
         if (undoHistory.length > 0) {
-          btnUndo.className = "p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-all flex items-center justify-center cursor-pointer shadow-md";
+          btnUndo.className = "px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-all flex items-center gap-1.5 text-xs font-bold shadow-md cursor-pointer";
         } else {
-          btnUndo.className = "p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50";
-        }
-      }
-
-      if (btnRedo) {
-        btnRedo.disabled = redoHistory.length === 0;
-        if (redoHistory.length > 0) {
-          btnRedo.className = "p-2.5 rounded-xl bg-sky-500/20 border border-sky-500/40 text-sky-300 hover:bg-sky-500/30 transition-all flex items-center justify-center cursor-pointer shadow-md";
-        } else {
-          btnRedo.className = "p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50";
+          btnUndo.className = "px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center gap-1.5 text-xs font-medium cursor-not-allowed opacity-50";
         }
       }
 
       if (btnSave) {
-        btnSave.disabled = !hasUnsavedChanges;
         if (hasUnsavedChanges) {
-          btnSave.className = "px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-slate-950 font-black text-xs transition-all shadow-lg shadow-emerald-500/30 animate-pulse flex items-center gap-1.5 cursor-pointer";
-          btnSave.innerHTML = `<i data-lucide="save" class="w-3.5 h-3.5"></i> <span>💾 Guardar Cambios</span>`;
+          btnSave.className = "px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-slate-950 font-black text-xs transition-all shadow-lg shadow-emerald-500/30 animate-pulse flex items-center gap-1.5 cursor-pointer";
+          btnSave.innerHTML = `<i data-lucide="save" class="w-3.5 h-3.5"></i> <span>💾 Guardar Cambios*</span>`;
         } else {
-          btnSave.className = "px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-500 font-semibold text-xs flex items-center gap-1.5 cursor-not-allowed opacity-50";
-          btnSave.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-slate-500"></i> <span>Sin cambios pendientes</span>`;
+          btnSave.className = "px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-semibold text-xs flex items-center gap-1.5 cursor-default";
+          btnSave.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> <span>Sin cambios pendientes</span>`;
         }
       }
 
       if (statusBadge) {
         if (hasUnsavedChanges) {
-          statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> <span>Cambios pendientes por guardar</span>`;
+          statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> <span>Cambios sin guardar en borrador</span>`;
           statusBadge.className = "px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold flex items-center gap-2";
         } else {
           statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> <span>Base de datos guardada</span>`;
@@ -1353,21 +1321,14 @@
       if (window.lucide) lucide.createIcons();
     }
 
-    // Keyboard shortcuts: Ctrl+Z (Undo) and Ctrl+Y (Redo)
+    // Keyboard shortcut Ctrl+Z / Cmd+Z for undoing edits
     window.addEventListener('keydown', function(e) {
-      const activeElem = document.activeElement;
-      const isInput = activeElem && (activeElem.tagName === 'INPUT' || activeElem.tagName === 'TEXTAREA');
-      if (isInput) return;
-
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
-        if (undoHistory.length > 0) {
+        const activeElem = document.activeElement;
+        const isInput = activeElem && (activeElem.tagName === 'INPUT' || activeElem.tagName === 'TEXTAREA');
+        if (!isInput && undoHistory.length > 0) {
           e.preventDefault();
           undoLastChange();
-        }
-      } else if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z'))) {
-        if (redoHistory.length > 0) {
-          e.preventDefault();
-          redoNextChange();
         }
       }
     });
@@ -1392,15 +1353,12 @@
       const inputEl = document.getElementById('loginPassword');
       const pass = (inputEl ? inputEl.value : '').trim();
       const db = getDB();
-      const currentAdminPass = (db && db.settings && db.settings.adminPassword) ? db.settings.adminPassword : 'stevedrop2026';
+      const currentAdminPass = db.settings.adminPassword || 'steve2026';
 
-      if (pass === currentAdminPass || pass.toLowerCase() === currentAdminPass.toLowerCase() || pass === 'stevedrop2026' || pass === 'steve2026') {
+      if (pass === currentAdminPass || pass.toLowerCase() === currentAdminPass.toLowerCase() || pass === 'steve2026') {
         sessionStorage.setItem('STEVE_ADMIN_AUTH', 'true');
         document.getElementById('loginError').classList.add('hidden');
-        document.getElementById('loginScreen').classList.add('hidden');
-        document.getElementById('adminDashboard').classList.remove('hidden');
-        document.getElementById('headerActions').classList.remove('hidden');
-        initDashboard();
+        triggerJarvisIntro();
       } else {
         document.getElementById('loginError').classList.remove('hidden');
       }
@@ -1749,7 +1707,7 @@
       } else if (sortVal === 'name_asc') {
         filteredList.sort((a, b) => (a.firstName + ' ' + a.lastName).localeCompare(b.firstName + ' ' + b.lastName));
       } else if (sortVal === 'plan') {
-        const planOrder = { 'Elite': 1, 'Pro': 2, 'Inicio': 3 };
+        const planOrder = { 'Elite': 1, 'Impulso': 2, 'Inicio': 3 };
         filteredList.sort((a, b) => (planOrder[a.planName] || 99) - (planOrder[b.planName] || 99));
       } else {
         // 'recent' por fecha de alta
@@ -2036,7 +1994,7 @@
       document.getElementById('renewMemberId').value = member.id;
       document.getElementById('renewMemberName').innerText = `${member.firstName} ${member.lastName}`;
       document.getElementById('renewMemberGmail').innerText = member.gmail;
-      document.getElementById('renewPlanSelect').value = member.planName || "Pro";
+      document.getElementById('renewPlanSelect').value = member.planName || "Impulso";
       
       document.getElementById('renewMemberModal').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
@@ -2104,22 +2062,7 @@
     // ----------------------------------------------------
     // ADD MEMBER MANUAL MODAL LOGIC
     // ----------------------------------------------------
-    function autoAdjustPlanDays() {
-      const plan = document.getElementById('newMemPlan')?.value;
-      const daysSelect = document.getElementById('newMemDays');
-      if (!plan || !daysSelect) return;
-      if (plan === 'Inicio') daysSelect.value = "30";
-      else if (plan === 'Pro') daysSelect.value = "90";
-      else if (plan === 'Elite') daysSelect.value = "180";
-    }
-
     function openAddMemberModal() {
-      const dateEl = document.getElementById('newMemDate');
-      if (dateEl) {
-        const todayStr = new Date().toISOString().split('T')[0];
-        dateEl.value = todayStr;
-      }
-      autoAdjustPlanDays();
       document.getElementById('addMemberModal').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
     }
@@ -2136,16 +2079,11 @@
       const phone = document.getElementById('newMemPhone')?.value.trim() || '';
       const plan = document.getElementById('newMemPlan').value;
       const days = parseInt(document.getElementById('newMemDays').value, 10) || 30;
-      const dateInputVal = document.getElementById('newMemDate')?.value;
 
       if (!fname || !lname || !gmail) return;
 
-      let inscripcionDate = new Date();
-      if (dateInputVal) {
-        inscripcionDate = new Date(dateInputVal + 'T12:00:00');
-      }
-
-      const expire = new Date(inscripcionDate.getTime() + (days * 24 * 60 * 60 * 1000));
+      const now = new Date();
+      const expire = new Date(now.getTime() + (days * 24 * 60 * 60 * 1000));
 
       const newMember = {
         id: "mem_" + Date.now(),
@@ -2155,7 +2093,7 @@
         gmail: gmail,
         planName: plan,
         price: plan === 'Inicio' ? '167.000 Gs' : (plan === 'Elite' ? '1.300.000 Gs' : '527.000 Gs'),
-        approvedAt: inscripcionDate.toISOString(),
+        approvedAt: now.toISOString(),
         expiresAt: expire.toISOString(),
         durationDays: days
       };
@@ -2479,7 +2417,7 @@
       document.getElementById('heroBadge').value = draftState.hero.badge || 'FORMACIÓN PREMIUM · PARAGUAY';
       document.getElementById('heroSubtitle').value = draftState.hero.subtitle || '';
       document.getElementById('heroLiveTitle').value = draftState.hero.liveTitle || 'Próxima Mentoría en Directo';
-      document.getElementById('heroLiveSubtitle').value = draftState.hero.liveSubtitle || 'Solo para alumnos SteveDrop (desde el Nivel Inicio). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar.';
+      document.getElementById('heroLiveSubtitle').value = draftState.hero.liveSubtitle || 'Solo para alumnos SteveDrop (desde el Nivel Basic). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar.';
       
       document.getElementById('socialInstagram').value = draftState.socials.instagram || 'https://www.instagram.com/stevecandiadj';
       document.getElementById('socialTiktok').value = draftState.socials.tiktok || 'https://www.tiktok.com/@stevecandiadj';
