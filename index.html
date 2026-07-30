@@ -1659,6 +1659,18 @@
           if (document.getElementById('footerWhatsappLink')) document.getElementById('footerWhatsappLink').href = `https://api.whatsapp.com/send?phone=${adminWhatsappPhone}`;
         }
 
+        if (db.settings) {
+          if (db.settings.contactPhone && document.getElementById('modalDisplayAlias')) {
+            document.getElementById('modalDisplayAlias').innerText = db.settings.contactPhone;
+          }
+          if (db.settings.accountHolder && document.getElementById('modalDisplayHolder')) {
+            document.getElementById('modalDisplayHolder').innerText = db.settings.accountHolder;
+          }
+          if (db.settings.bankName && document.getElementById('modalDisplayBank')) {
+            document.getElementById('modalDisplayBank').innerText = db.settings.bankName;
+          }
+        }
+
         if (db.hero) {
           if (db.hero.badge && document.getElementById('displayHeroBadge')) {
             document.getElementById('displayHeroBadge').innerText = db.hero.badge;
@@ -2255,43 +2267,68 @@
     });
 
     // LIVE MENTORSHIP COUNTDOWN TIMER & SUNDAY LIVE EVENT CONTROLLER (15:00 - 16:30 HS PARAGUAY)
-    function checkIsLiveNow() {
-      const now = new Date();
-      const options = { timeZone: 'America/Asuncion', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false };
-      try {
-        const formatter = new Intl.DateTimeFormat('en-US', options);
-        const parts = formatter.formatToParts(now);
-        let weekday = '', hour = 0, minute = 0;
-        parts.forEach(p => {
-          if (p.type === 'weekday') weekday = p.value;
-          if (p.type === 'hour') hour = parseInt(p.value, 10);
-          if (p.type === 'minute') minute = parseInt(p.value, 10);
-        });
+    function getLiveConfig() {
+      let liveDay = 0; // 0 = Domingo
+      let startHour = 15, startMin = 0;
+      let endHour = 16, endMin = 30;
 
-        const isSun = weekday === 'Sun';
-        const totalMinutes = (hour * 60) + minute;
-        // Sunday 15:00 hs (900 min) to 16:30 hs (990 min)
-        return isSun && (totalMinutes >= 900 && totalMinutes < 990);
+      try {
+        const stored = localStorage.getItem('STEVE_DROP_DB_V1');
+        if (stored) {
+          const db = JSON.parse(stored);
+          if (db.hero) {
+            if (db.hero.liveDay !== undefined && db.hero.liveDay !== '') liveDay = parseInt(db.hero.liveDay, 10);
+            if (db.hero.liveStartTime) {
+              const parts = db.hero.liveStartTime.split(':');
+              if (parts.length === 2) {
+                startHour = parseInt(parts[0], 10);
+                startMin = parseInt(parts[1], 10);
+              }
+            }
+            if (db.hero.liveEndTime) {
+              const parts = db.hero.liveEndTime.split(':');
+              if (parts.length === 2) {
+                endHour = parseInt(parts[0], 10);
+                endMin = parseInt(parts[1], 10);
+              }
+            }
+          }
+        }
+      } catch(e) {}
+
+      return { liveDay, startHour, startMin, endHour, endMin };
+    }
+
+    function checkIsLiveNow() {
+      const cfg = getLiveConfig();
+      const now = new Date();
+      try {
+        const day = now.getDay();
+        const totalMin = (now.getHours() * 60) + now.getMinutes();
+        const startMin = (cfg.startHour * 60) + cfg.startMin;
+        const endMin = (cfg.endHour * 60) + cfg.endMin;
+        return (day === cfg.liveDay && totalMin >= startMin && totalMin < endMin);
       } catch (e) {
         const day = now.getDay();
         const totalMin = (now.getHours() * 60) + now.getMinutes();
-        return (day === 0 && totalMin >= 900 && totalMin < 990);
+        return (day === cfg.liveDay && totalMin >= 900 && totalMin < 990);
       }
     }
 
     function getNextSunday1500() {
+      const cfg = getLiveConfig();
       const now = new Date();
-      let dayOfWeek = now.getDay();
-      let target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 15, 0, 0, 0);
+      let currentDay = now.getDay();
+      let target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), cfg.startHour, cfg.startMin, 0, 0);
 
-      if (dayOfWeek === 0 && now < target) {
+      if (currentDay === cfg.liveDay && now < target) {
         return target;
       }
 
-      let daysUntilSunday = (7 - dayOfWeek) % 7;
-      if (daysUntilSunday === 0) daysUntilSunday = 7;
+      let daysUntilTarget = (cfg.liveDay - currentDay + 7) % 7;
+      if (daysUntilTarget === 0) daysUntilTarget = 7;
 
-      target.setDate(target.getDate() + daysUntilSunday);
+      target.setDate(target.getDate() + daysUntilTarget);
       return target;
     }
 
@@ -2355,7 +2392,16 @@
       if (dEl) dEl.textContent = String(days).padStart(2, '0');
       if (hEl) hEl.textContent = String(hours).padStart(2, '0');
       if (mEl) mEl.textContent = String(minutes).padStart(2, '0');
-      if (sEl) sEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    function formatDurationPublic(days) {
+      const d = parseInt(days, 10);
+      if (!d || isNaN(d)) return '1 mes';
+      if (d < 30) return `${d} días`;
+      const months = Math.round(d / 30);
+      if (months === 12) return '1 año (12 meses)';
+      if (months > 12 && months % 12 === 0) return `${months / 12} años`;
+      return months === 1 ? '1 mes' : `${months} meses`;
     }
 
     function renderPublicPlans(plans) {
@@ -2403,7 +2449,10 @@
                 <span class="font-heading text-4xl md:text-5xl font-black text-white tracking-tighter">${plan.price}</span>
                 <span class="text-sky-400 font-extrabold text-base uppercase">Gs</span>
               </div>
-              <span class="text-[11px] text-slate-400 italic mt-1 block font-medium">Pago único · Acceso al contenido</span>
+              <div class="flex items-center justify-between text-[11px] mt-1 font-medium">
+                <span class="text-slate-400 italic">Pago único</span>
+                <span class="text-sky-300 font-extrabold bg-sky-500/10 border border-sky-500/20 px-2 py-0.5 rounded-full">⏱️ ${formatDurationPublic(plan.durationDays || (plan.name === 'Inicio' ? 30 : (plan.name === 'Elite' ? 180 : 90)))} de acceso</span>
+              </div>
             </div>
 
             <ul class="space-y-2.5 mb-6 text-xs text-slate-200">

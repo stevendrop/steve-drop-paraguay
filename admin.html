@@ -254,36 +254,15 @@
       <div id="headerActions" class="hidden flex items-center gap-2.5 text-xs flex-wrap justify-end">
         
         <!-- Status Indicator -->
-        <div id="dbSyncStatusBadge" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+        <div id="dbSyncStatusBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
           <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
           <span>Base de datos guardada</span>
         </div>
-        
-        <!-- UNDO BUTTON -->
-        <button id="btnUndoChange" onclick="undoLastChange()" title="Deshacer último cambio realizado (Ctrl+Z)" disabled class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center gap-1.5 text-xs font-medium cursor-not-allowed opacity-50">
-          <i data-lucide="undo-2" class="w-3.5 h-3.5"></i>
-          <span>↩ Deshacer</span>
-        </button>
 
-        <!-- SAVE CHANGES BUTTON -->
-        <button id="btnSaveChanges" onclick="saveAllChangesToDB()" title="Guardar todos los cambios realizados en el borrador" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-semibold text-xs flex items-center gap-1.5">
-          <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-          <span>Sin cambios pendientes</span>
-        </button>
-
-        <a href="index.html" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 hover:text-white transition-all flex items-center gap-1.5 font-medium">
-          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-          <span class="hidden sm:inline">Ver Sitio Público</span>
-        </a>
-
-        <button onclick="exportBackup()" title="Descargar Backup de Base de Datos" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 transition-all flex items-center gap-1.5">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i>
-          <span class="hidden md:inline">Respaldar BD</span>
-        </button>
-
-        <button onclick="logoutAdmin()" class="px-3.5 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 transition-all font-semibold flex items-center gap-1.5">
+        <!-- SALIR A LA WEB -->
+        <button onclick="logoutAdmin()" title="Cerrar sesión e ir a la Web Pública" class="px-3.5 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 hover:bg-rose-500/20 transition-all font-semibold flex items-center gap-1.5">
           <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
-          <span>Salir</span>
+          <span>Salir a la Web</span>
         </button>
       </div>
 
@@ -618,11 +597,11 @@
               </div>
             </div>
 
-            <!-- SECCIÓN 2: PRÓXIMA MENTORÍA EN DIRECTO -->
+            <!-- SECCIÓN 2: PRÓXIMA MENTORÍA EN DIRECTO & MODO EN VIVO -->
             <div class="space-y-4 p-5 rounded-2xl bg-white/[0.02] border border-sky-500/30">
               <h4 class="text-xs font-extrabold uppercase tracking-wider text-sky-400 flex items-center gap-1.5">
                 <i data-lucide="video" class="w-4 h-4"></i>
-                <span>Sección Próxima Mentoría en Directo</span>
+                <span>Sección Próxima Mentoría en Directo & Horario "En Vivo"</span>
               </h4>
 
               <div>
@@ -632,7 +611,39 @@
 
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Texto Explicativo de Mentorías</label>
-                <textarea id="heroLiveSubtitle" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Solo para alumnos SteveDrop (desde el Nivel Basic). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar." class="w-full px-4 py-2.5 rounded-xl glass-input text-xs leading-relaxed"></textarea>
+                <textarea id="heroLiveSubtitle" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Solo para alumnos SteveDrop (desde el Nivel Inicio). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar." class="w-full px-4 py-2.5 rounded-xl glass-input text-xs leading-relaxed"></textarea>
+              </div>
+
+              <!-- HORARIO DE ACTIVACIÓN DEL MODO EN VIVO -->
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-rose-500/30 space-y-3">
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                  <i data-lucide="radio" class="w-3.5 h-3.5 animate-pulse text-rose-500"></i>
+                  <span>Configuración del Modo "🔴 En Vivo Ahora"</span>
+                </span>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Día de la Semana *</label>
+                    <select id="heroLiveDay" onchange="updateHeroSettingsDraft()" class="w-full px-3 py-2 rounded-xl glass-input text-xs font-bold text-white">
+                      <option value="0">Domingo</option>
+                      <option value="1">Lunes</option>
+                      <option value="2">Martes</option>
+                      <option value="3">Miércoles</option>
+                      <option value="4">Jueves</option>
+                      <option value="5">Viernes</option>
+                      <option value="6">Sábado</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Hora Inicio En Vivo *</label>
+                    <input id="heroLiveStartTime" type="time" oninput="updateHeroSettingsDraft()" value="15:00" class="w-full px-3 py-2 rounded-xl glass-input text-xs font-mono font-bold text-rose-400" />
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Hora Fin En Vivo *</label>
+                    <input id="heroLiveEndTime" type="time" oninput="updateHeroSettingsDraft()" value="16:30" class="w-full px-3 py-2 rounded-xl glass-input text-xs font-mono font-bold text-rose-400" />
+                  </div>
+                </div>
+                <p class="text-[10px] text-slate-400 italic">En este rango horario (ej: Domingos de 15:00 a 16:30 hs), la portada de la web mostrará la señal parpadeante 🔴 EN VIVO AHORA.</p>
               </div>
             </div>
 
@@ -706,20 +717,6 @@
               <span>Actualizar Contraseña</span>
             </button>
           </form>
-        </div>
-
-        <div class="glass-card p-6 md:p-8 rounded-3xl max-w-3xl space-y-4">
-          <h3 class="font-heading text-lg font-bold text-white flex items-center gap-2">
-            <i data-lucide="database" class="w-5 h-5 text-purple-400"></i>
-            <span>Copia de Seguridad y Mantenimiento</span>
-          </h3>
-          <p class="text-xs text-slate-400">Descarga un respaldo completo de tu base de datos (solicitudes, miembros, precios y configuraciones).</p>
-          <div class="pt-2">
-            <button onclick="exportBackup()" class="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 font-semibold text-xs transition-all flex items-center gap-2">
-              <i data-lucide="download" class="w-4 h-4 text-sky-400"></i>
-              <span>Descargar Respaldo JSON Completo</span>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -838,21 +835,14 @@
 
         <div>
           <label class="block font-bold text-slate-300 uppercase mb-1">Nivel a Asignar / Actualizar *</label>
-          <select id="renewPlanSelect" class="w-full px-3.5 py-2.5 rounded-xl glass-input font-bold text-white">
-            <option value="Inicio">Inicio (Básico)</option>
-            <option value="Pro">Pro (Aceleración)</option>
-            <option value="Elite">Elite (VIP Acompañamiento)</option>
+          <select id="renewPlanSelect" onchange="updateRenewPlanDurationBadge()" class="w-full px-3.5 py-2.5 rounded-xl glass-input font-bold text-sky-400">
+            <!-- Dynamically populated from db.plans -->
           </select>
         </div>
 
-        <div>
-          <label class="block font-bold text-slate-300 uppercase mb-1">Tiempo de Vigencia a Asignar *</label>
-          <select id="renewDurationSelect" class="w-full px-3.5 py-2.5 rounded-xl glass-input text-white">
-            <option value="30">30 Días (1 mes)</option>
-            <option value="90">90 Días (3 meses)</option>
-            <option value="180">180 Días (6 meses)</option>
-            <option value="365">365 Días (1 año)</option>
-          </select>
+        <div id="renewDurationBadge" class="p-3 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs flex items-center gap-2 font-medium">
+          <i data-lucide="info" class="w-4 h-4 text-sky-400 shrink-0"></i>
+          <span id="renewDurationText">Duración asignada automáticamente según el plan.</span>
         </div>
 
         <div class="pt-2 flex items-center gap-3">
@@ -934,21 +924,19 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Nivel / Plan *</label>
-            <select id="newMemPlan" class="w-full px-3 py-2 rounded-xl glass-input font-bold text-white">
-              <option value="Basic">Basic</option>
-              <option value="Pro" selected>Pro</option>
-              <option value="Elite">Elite</option>
+            <select id="newMemPlan" onchange="updateAddMemberPlanDurationBadge()" class="w-full px-3 py-2 rounded-xl glass-input font-bold text-sky-400">
+              <!-- Dynamically populated from db.plans -->
             </select>
           </div>
           <div>
-            <label class="block font-bold text-slate-300 uppercase mb-1">Duración Días *</label>
-            <select id="newMemDays" class="w-full px-3 py-2 rounded-xl glass-input text-white">
-              <option value="30">30 Días (1 mes)</option>
-              <option value="90" selected>90 Días (3 meses)</option>
-              <option value="180">180 Días (6 meses)</option>
-              <option value="365">365 Días (1 año)</option>
-            </select>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Fecha Suscripción *</label>
+            <input id="newMemSubDate" type="date" required class="w-full px-3 py-2 rounded-xl glass-input text-sky-400 font-mono font-bold" />
           </div>
+        </div>
+
+        <div id="addMemberDurationBadge" class="p-3 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs flex items-center gap-2 font-medium">
+          <i data-lucide="info" class="w-4 h-4 text-sky-400 shrink-0"></i>
+          <span id="addMemberDurationText">Duración asignada automáticamente según el plan seleccionado.</span>
         </div>
 
         <div class="pt-2 flex items-center gap-3">
@@ -991,7 +979,7 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Precio Gs *</label>
-            <input id="formPlanPrice" type="text" required placeholder="Ej: 527.000" class="w-full px-3.5 py-2.5 rounded-xl glass-input" />
+            <input id="formPlanPrice" type="text" oninput="this.value = formatPricePY(this.value)" required placeholder="Ej: 527.000" class="w-full px-3.5 py-2.5 rounded-xl glass-input font-mono font-bold text-sky-400" />
           </div>
           <div>
             <label class="block font-bold text-slate-300 uppercase mb-1">Distintivo / Badge *</label>
@@ -999,9 +987,15 @@
           </div>
         </div>
 
-        <div>
-          <label class="block font-bold text-slate-300 uppercase mb-1">Texto Botón CTA *</label>
-          <input id="formPlanCta" type="text" required placeholder="Ej: Seleccionar Pro" class="w-full px-3.5 py-2.5 rounded-xl glass-input" />
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Duración del Plan (en Días) *</label>
+            <input id="formPlanDuration" type="number" required min="1" placeholder="Ej: 30 (Inicio), 90 (Pro), 180 (Elite)" class="w-full px-3.5 py-2.5 rounded-xl glass-input font-mono font-bold text-amber-400" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Texto Botón CTA *</label>
+            <input id="formPlanCta" type="text" required placeholder="Ej: Seleccionar Pro" class="w-full px-3.5 py-2.5 rounded-xl glass-input" />
+          </div>
         </div>
 
         <div>
@@ -1164,10 +1158,19 @@
     };
 
     let draftState = null;
+    let lastSavedState = null;
     let undoHistory = [];
-    const MAX_UNDO_HISTORY = 30;
-    let hasUnsavedChanges = false;
+    let redoHistory = [];
+    const MAX_UNDO_HISTORY = 50;
     let currentMemberFilter = 'all'; // 'all', 'expiring', 'expired'
+
+    // Formateador de moneda en Guaraníes Paraguay (agrega puntos cada 3 ceros: 167.000, 1.300.000)
+    function formatPricePY(val) {
+      if (val === null || val === undefined) return '';
+      const cleanDigits = String(val).replace(/\D/g, '');
+      if (!cleanDigits) return '';
+      return cleanDigits.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
 
     function getDB() {
       const stored = localStorage.getItem(DB_KEY);
@@ -1178,39 +1181,40 @@
       try {
         const parsed = JSON.parse(stored);
         if (!parsed.settings) parsed.settings = defaultDatabase.settings;
-        parsed.settings.bankName = "Banco Continental";
-        parsed.settings.accountHolder = "Esteban Candia";
-        parsed.settings.contactPhone = "4.873.932";
-
-        if (!parsed.settings.adminPassword) parsed.settings.adminPassword = "steve2026";
+        if (!parsed.settings.bankName) parsed.settings.bankName = "Banco Familiar";
+        if (!parsed.settings.accountHolder) parsed.settings.accountHolder = "Esteban Candia";
+        if (!parsed.settings.contactPhone) parsed.settings.contactPhone = "0974804611";
+        if (!parsed.settings.adminPassword) parsed.settings.adminPassword = "stevedrop2026";
         if (!parsed.solicitudes) parsed.solicitudes = [];
         if (!parsed.members) parsed.members = [];
-
-        let updated = false;
         if (!parsed.faqs || !Array.isArray(parsed.faqs)) parsed.faqs = [];
-        const cellFaq = parsed.faqs.find(f => f.question.toLowerCase().includes('celular'));
-        const newAnswer = "¡Claro que sí! Puedes vender, operar y gestionar tu negocio directamente desde tu teléfono celular. Sin embargo, recomendamos contar con una computadora (PC o notebook) para trabajar con mayor velocidad, comodidad y mejor organización al momento de armar tu tienda y configurar tus campañas.";
-        
-        if (!cellFaq) {
-          parsed.faqs.unshift({
-            id: "faq-cell",
-            question: "¿Puedo iniciar desde mi celular?",
-            answer: newAnswer
-          });
-          updated = true;
-        } else if (cellFaq.answer !== newAnswer) {
-          cellFaq.answer = newAnswer;
-          updated = true;
-        }
 
-        if (updated) {
-          localStorage.setItem(DB_KEY, JSON.stringify(parsed));
+        // Formatear precios y asegurar duraciones por defecto si no existen
+        if (parsed.plans && Array.isArray(parsed.plans)) {
+          parsed.plans.forEach(p => {
+            if (p.price) p.price = formatPricePY(p.price);
+            if (!p.durationDays || isNaN(parseInt(p.durationDays))) {
+              const pName = (p.name || '').toLowerCase();
+              p.durationDays = pName.includes('inicio') ? 30 : (pName.includes('elite') ? 180 : 90);
+            }
+          });
         }
 
         return parsed;
       } catch(e) {
         return defaultDatabase;
       }
+    }
+
+    // Helper robusto para obtener los días exactos de cualquier plan (con respaldo inteligente)
+    function getPlanDurationDays(planObj, planName) {
+      if (planObj && planObj.durationDays && !isNaN(parseInt(planObj.durationDays))) {
+        return parseInt(planObj.durationDays);
+      }
+      const name = String(planName || (planObj ? planObj.name : '')).toLowerCase();
+      if (name.includes('inicio') || name.includes('basic')) return 30;
+      if (name.includes('elite') || name.includes('vip')) return 180;
+      return 90; // Pro / Impulso
     }
 
     function saveDB(db) {
@@ -1223,9 +1227,12 @@
       }
       localStorage.setItem(DB_KEY, JSON.stringify(db));
       draftState = JSON.parse(JSON.stringify(db));
+      lastSavedState = JSON.parse(JSON.stringify(db));
+      updateSaveAndUndoUI();
       window.dispatchEvent(new Event('storage'));
 
-      // Send updated DB to central cloud server
+      if (window.location.protocol === 'file:') return;
+
       fetch('/api/admin/db', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1233,14 +1240,19 @@
       }).catch(err => console.error("Error al sincronizar con el servidor:", err));
     }
 
-    // Sync database from central cloud server on admin load
     function syncServerDB() {
+      if (window.location.protocol === 'file:') return;
+
       fetch('/api/admin/db')
         .then(res => res.json())
         .then(serverDb => {
           if (serverDb && typeof serverDb === 'object') {
             localStorage.setItem(DB_KEY, JSON.stringify(serverDb));
-            if (typeof initDraftState === 'function') initDraftState();
+            const hasDraftEdits = lastSavedState && JSON.stringify(draftState) !== JSON.stringify(lastSavedState);
+            if (!hasDraftEdits) {
+              lastSavedState = JSON.parse(JSON.stringify(serverDb));
+              initDraftState(false);
+            }
             if (typeof renderSolicitudes === 'function') renderSolicitudes();
             if (typeof renderMembers === 'function') renderMembers();
           }
@@ -1248,10 +1260,14 @@
         .catch(err => console.error("Error al cargar la base de datos del servidor:", err));
     }
 
-    function initDraftState() {
-      draftState = JSON.parse(JSON.stringify(getDB()));
-      undoHistory = [];
-      hasUnsavedChanges = false;
+    function initDraftState(resetHistory = true) {
+      const db = getDB();
+      draftState = JSON.parse(JSON.stringify(db));
+      if (resetHistory) {
+        lastSavedState = JSON.parse(JSON.stringify(db));
+        undoHistory = [];
+        redoHistory = [];
+      }
       updateSaveAndUndoUI();
     }
 
@@ -1259,57 +1275,76 @@
       if (draftState) {
         undoHistory.push(JSON.parse(JSON.stringify(draftState)));
         if (undoHistory.length > MAX_UNDO_HISTORY) undoHistory.shift();
+        redoHistory = []; // Reset redo on new user action
+        updateSaveAndUndoUI();
       }
     }
 
     function markUnsavedChanges() {
-      hasUnsavedChanges = true;
       updateSaveAndUndoUI();
     }
 
     function undoLastChange() {
       if (undoHistory.length === 0) return;
+      redoHistory.push(JSON.parse(JSON.stringify(draftState)));
       draftState = undoHistory.pop();
+      updateSaveAndUndoUI();
+      renderAllDashboardViews();
+    }
+
+    function redoNextChange() {
+      if (redoHistory.length === 0) return;
+      undoHistory.push(JSON.parse(JSON.stringify(draftState)));
+      draftState = redoHistory.pop();
       updateSaveAndUndoUI();
       renderAllDashboardViews();
     }
 
     function saveAllChangesToDB() {
       if (!draftState) return;
-      localStorage.setItem(DB_KEY, JSON.stringify(draftState));
-      hasUnsavedChanges = false;
-      undoHistory = [];
-      updateSaveAndUndoUI();
-      window.dispatchEvent(new Event('storage'));
+      saveDB(draftState);
       alert("✓ ¡Todos los cambios han sido guardados exitosamente en la base de datos!");
     }
 
     function updateSaveAndUndoUI() {
       const btnSave = document.getElementById('btnSaveChanges');
       const btnUndo = document.getElementById('btnUndoChange');
+      const btnRedo = document.getElementById('btnRedoChange');
       const statusBadge = document.getElementById('dbSyncStatusBadge');
+
+      const isChanged = lastSavedState ? (JSON.stringify(draftState) !== JSON.stringify(lastSavedState)) : false;
 
       if (btnUndo) {
         btnUndo.disabled = undoHistory.length === 0;
         if (undoHistory.length > 0) {
-          btnUndo.className = "px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-all flex items-center gap-1.5 text-xs font-bold shadow-md cursor-pointer";
+          btnUndo.className = "p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 transition-all flex items-center justify-center cursor-pointer shadow-md";
         } else {
-          btnUndo.className = "px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center gap-1.5 text-xs font-medium cursor-not-allowed opacity-50";
+          btnUndo.className = "p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50";
+        }
+      }
+
+      if (btnRedo) {
+        btnRedo.disabled = redoHistory.length === 0;
+        if (redoHistory.length > 0) {
+          btnRedo.className = "p-2.5 rounded-xl bg-sky-500/20 border border-sky-500/40 text-sky-300 hover:bg-sky-500/30 transition-all flex items-center justify-center cursor-pointer shadow-md";
+        } else {
+          btnRedo.className = "p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 transition-all flex items-center justify-center cursor-not-allowed opacity-50";
         }
       }
 
       if (btnSave) {
-        if (hasUnsavedChanges) {
+        btnSave.disabled = !isChanged;
+        if (isChanged) {
           btnSave.className = "px-4 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-slate-950 font-black text-xs transition-all shadow-lg shadow-emerald-500/30 animate-pulse flex items-center gap-1.5 cursor-pointer";
           btnSave.innerHTML = `<i data-lucide="save" class="w-3.5 h-3.5"></i> <span>💾 Guardar Cambios*</span>`;
         } else {
-          btnSave.className = "px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-semibold text-xs flex items-center gap-1.5 cursor-default";
-          btnSave.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> <span>Sin cambios pendientes</span>`;
+          btnSave.className = "px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 font-semibold text-xs flex items-center gap-1.5 cursor-not-allowed opacity-50";
+          btnSave.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-slate-500"></i> <span>Sin cambios pendientes</span>`;
         }
       }
 
       if (statusBadge) {
-        if (hasUnsavedChanges) {
+        if (isChanged) {
           statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> <span>Cambios sin guardar en borrador</span>`;
           statusBadge.className = "px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold flex items-center gap-2";
         } else {
@@ -1321,14 +1356,20 @@
       if (window.lucide) lucide.createIcons();
     }
 
-    // Keyboard shortcut Ctrl+Z / Cmd+Z for undoing edits
+    // Keyboard shortcuts: Ctrl+Z (Undo), Ctrl+Y / Ctrl+Shift+Z (Redo)
     window.addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
-        const activeElem = document.activeElement;
-        const isInput = activeElem && (activeElem.tagName === 'INPUT' || activeElem.tagName === 'TEXTAREA');
+      const activeElem = document.activeElement;
+      const isInput = activeElem && (activeElem.tagName === 'INPUT' || activeElem.tagName === 'TEXTAREA');
+      
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z' && !e.shiftKey) {
         if (!isInput && undoHistory.length > 0) {
           e.preventDefault();
           undoLastChange();
+        }
+      } else if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 'y' || (e.key.toLowerCase() === 'z' && e.shiftKey))) {
+        if (!isInput && redoHistory.length > 0) {
+          e.preventDefault();
+          redoNextChange();
         }
       }
     });
@@ -1984,6 +2025,68 @@
     }
 
     // ----------------------------------------------------
+    // PLAN DURATION AUTOMATIC BINDING HELPERS
+    // ----------------------------------------------------
+    function populatePlanDropdowns() {
+      const db = getDB();
+      const plans = (db.plans || []).filter(p => p.active !== false);
+
+      const addSelect = document.getElementById('newMemPlan');
+      const renewSelect = document.getElementById('renewPlanSelect');
+
+      if (addSelect) {
+        const currentVal = addSelect.value;
+        addSelect.innerHTML = plans.map(p => {
+          const duration = getPlanDurationDays(p, p.name);
+          return `<option value="${p.name}">${p.name} (${duration} días)</option>`;
+        }).join('');
+        if (currentVal && plans.some(p => p.name === currentVal)) {
+          addSelect.value = currentVal;
+        }
+      }
+
+      if (renewSelect) {
+        const currentVal = renewSelect.value;
+        renewSelect.innerHTML = plans.map(p => {
+          const duration = getPlanDurationDays(p, p.name);
+          return `<option value="${p.name}">${p.name} (${duration} días)</option>`;
+        }).join('');
+        if (currentVal && plans.some(p => p.name === currentVal)) {
+          renewSelect.value = currentVal;
+        }
+      }
+
+      updateAddMemberPlanDurationBadge();
+      updateRenewPlanDurationBadge();
+    }
+
+    function updateAddMemberPlanDurationBadge() {
+      const select = document.getElementById('newMemPlan');
+      const textEl = document.getElementById('addMemberDurationText');
+      if (!select || !textEl) return;
+      const planName = select.value;
+      const db = getDB();
+      const planObj = (db.plans || []).find(p => p.name === planName);
+      const days = getPlanDurationDays(planObj, planName);
+      const months = Math.round(days / 30);
+      const monthText = months === 1 ? '1 mes' : `${months} meses`;
+      textEl.innerText = `Duración vinculada al Plan ${planName}: ${days} días (${monthText}).`;
+    }
+
+    function updateRenewPlanDurationBadge() {
+      const select = document.getElementById('renewPlanSelect');
+      const textEl = document.getElementById('renewDurationText');
+      if (!select || !textEl) return;
+      const planName = select.value;
+      const db = getDB();
+      const planObj = (db.plans || []).find(p => p.name === planName);
+      const days = getPlanDurationDays(planObj, planName);
+      const months = Math.round(days / 30);
+      const monthText = months === 1 ? '1 mes' : `${months} meses`;
+      textEl.innerText = `Duración vinculada al Plan ${planName}: +${days} días (${monthText}).`;
+    }
+
+    // ----------------------------------------------------
     // RENEW MEMBER MODAL LOGIC
     // ----------------------------------------------------
     function openRenewModal(memberId) {
@@ -1991,10 +2094,12 @@
       const member = (db.members || []).find(m => m.id === memberId);
       if (!member) return;
 
+      populatePlanDropdowns();
       document.getElementById('renewMemberId').value = member.id;
       document.getElementById('renewMemberName').innerText = `${member.firstName} ${member.lastName}`;
       document.getElementById('renewMemberGmail').innerText = member.gmail;
-      document.getElementById('renewPlanSelect').value = member.planName || "Impulso";
+      document.getElementById('renewPlanSelect').value = member.planName || "Pro";
+      updateRenewPlanDurationBadge();
       
       document.getElementById('renewMemberModal').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
@@ -2006,13 +2111,16 @@
 
     function saveMemberRenewal(e) {
       e.preventDefault();
+      pushUndoState();
       const memberId = document.getElementById('renewMemberId').value;
       const newPlan = document.getElementById('renewPlanSelect').value;
-      const daysToAdd = parseInt(document.getElementById('renewDurationSelect').value, 10) || 30;
 
       const db = getDB();
       const memberIndex = db.members.findIndex(m => m.id === memberId);
       if (memberIndex === -1) return;
+
+      const planObj = (db.plans || []).find(p => p.name === newPlan);
+      const daysToAdd = getPlanDurationDays(planObj, newPlan);
 
       const now = new Date();
       const newExpireDate = new Date(now.getTime() + (daysToAdd * 24 * 60 * 60 * 1000));
@@ -2025,7 +2133,7 @@
       closeRenewModal();
       renderMembers();
 
-      alert(`✓ Membresía de ${db.members[memberIndex].firstName} renovada con éxito a Nivel ${newPlan} (+${daysToAdd} días activos).`);
+      alert(`✓ Membresía de ${db.members[memberIndex].firstName} renovada con éxito a Nivel ${newPlan} (+${daysToAdd} días activos por configuración de plan).`);
     }
 
     // ----------------------------------------------------
@@ -2051,6 +2159,7 @@
     function executeDeleteMember() {
       const memberId = document.getElementById('deleteTargetId').value;
       if (!memberId) return;
+      pushUndoState();
       const db = getDB();
       db.members = (db.members || []).filter(m => String(m.id) !== String(memberId));
       saveDB(db);
@@ -2063,6 +2172,11 @@
     // ADD MEMBER MANUAL MODAL LOGIC
     // ----------------------------------------------------
     function openAddMemberModal() {
+      populatePlanDropdowns();
+      const todayStr = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('newMemSubDate');
+      if (dateInput) dateInput.value = todayStr;
+
       document.getElementById('addMemberModal').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
     }
@@ -2073,17 +2187,29 @@
 
     function submitAddMember(e) {
       e.preventDefault();
+      pushUndoState();
+
       const fname = document.getElementById('newMemFirstName').value.trim();
       const lname = document.getElementById('newMemLastName').value.trim();
       const gmail = document.getElementById('newMemGmail').value.trim();
       const phone = document.getElementById('newMemPhone')?.value.trim() || '';
       const plan = document.getElementById('newMemPlan').value;
-      const days = parseInt(document.getElementById('newMemDays').value, 10) || 30;
+      const subDateInput = document.getElementById('newMemSubDate').value;
 
       if (!fname || !lname || !gmail) return;
 
-      const now = new Date();
-      const expire = new Date(now.getTime() + (days * 24 * 60 * 60 * 1000));
+      const db = getDB();
+      const planObj = (db.plans || []).find(p => p.name === plan);
+      const days = getPlanDurationDays(planObj, plan);
+
+      // Calcular fecha de suscripción/inscripción elegida
+      let subDate = new Date();
+      if (subDateInput) {
+        subDate = new Date(subDateInput + 'T12:00:00');
+      }
+
+      // Vencimiento = Fecha de Suscripción + Duración del Plan vinculado
+      const expireDate = new Date(subDate.getTime() + (days * 24 * 60 * 60 * 1000));
 
       const newMember = {
         id: "mem_" + Date.now(),
@@ -2092,19 +2218,20 @@
         phone: phone,
         gmail: gmail,
         planName: plan,
-        price: plan === 'Inicio' ? '167.000 Gs' : (plan === 'Elite' ? '1.300.000 Gs' : '527.000 Gs'),
-        approvedAt: now.toISOString(),
-        expiresAt: expire.toISOString(),
+        price: planObj ? (planObj.price + ' Gs') : (plan === 'Inicio' ? '167.000 Gs' : (plan === 'Elite' ? '1.300.000 Gs' : '527.000 Gs')),
+        approvedAt: subDate.toISOString(),
+        expiresAt: expireDate.toISOString(),
         durationDays: days
       };
 
-      const db = getDB();
       if (!db.members) db.members = [];
       db.members.unshift(newMember);
       saveDB(db);
 
       closeAddMemberModal();
       renderMembers();
+
+      alert(`✓ Alumno ${fname} ${lname} registrado con éxito en Nivel ${plan} (${days} días).\n• Fecha de suscripción: ${subDate.toLocaleDateString('es-PY')}\n• Fecha de vencimiento: ${expireDate.toLocaleDateString('es-PY')}`);
     }
 
     // ----------------------------------------------------
@@ -2135,9 +2262,15 @@
             <h4 class="font-heading text-2xl font-black text-white mb-0.5">${plan.name}</h4>
             <p class="text-xs text-slate-400 mb-4">${plan.tagline || ''}</p>
 
-            <div class="flex items-baseline gap-1 mb-4 pb-4 border-b border-white/10">
-              <span class="font-heading text-3xl font-extrabold text-white">${plan.price}</span>
-              <span class="text-sky-400 font-bold text-xs">Gs</span>
+            <div class="flex items-center justify-between gap-1 mb-4 pb-4 border-b border-white/10">
+              <div>
+                <span class="font-heading text-3xl font-extrabold text-white">${plan.price}</span>
+                <span class="text-sky-400 font-bold text-xs">Gs</span>
+              </div>
+              <span class="text-[11px] font-bold font-mono px-2.5 py-1 rounded-xl bg-amber-500/10 text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                <i data-lucide="clock" class="w-3 h-3 text-amber-400"></i>
+                <span>${plan.durationDays || (plan.name === 'Inicio' ? 30 : (plan.name === 'Elite' ? 180 : 90))} días</span>
+              </span>
             </div>
 
             <ul class="space-y-2 mb-6 text-xs text-slate-300">
@@ -2173,6 +2306,7 @@
         document.getElementById('formPlanName').value = p.name || '';
         document.getElementById('formPlanTagline').value = p.tagline || '';
         document.getElementById('formPlanPrice').value = p.price || '';
+        document.getElementById('formPlanDuration').value = p.durationDays || (p.name === 'Inicio' ? 30 : (p.name === 'Elite' ? 180 : 90));
         document.getElementById('formPlanBadge').value = p.badge || '';
         document.getElementById('formPlanCta').value = p.ctaText || ('Seleccionar ' + (p.name || ''));
         document.getElementById('formPlanFeatures').value = Array.isArray(p.features) ? p.features.join('\n') : (p.features || '');
@@ -2182,6 +2316,7 @@
         document.getElementById('formPlanName').value = '';
         document.getElementById('formPlanTagline').value = '';
         document.getElementById('formPlanPrice').value = '';
+        document.getElementById('formPlanDuration').value = '90';
         document.getElementById('formPlanBadge').value = '';
         document.getElementById('formPlanCta').value = 'Seleccionar Nivel';
         document.getElementById('formPlanFeatures').value = 'Curso completo Dropshipping con Dropi + Meta Ads\nMentorías grupales en vivo\nAcceso a la comunidad privada';
@@ -2204,11 +2339,14 @@
       const rawFeatures = document.getElementById('formPlanFeatures').value;
       const features = rawFeatures.split('\n').map(f => f.trim()).filter(Boolean);
       const planName = document.getElementById('formPlanName').value.trim();
+      const rawPrice = document.getElementById('formPlanPrice').value.trim();
+      const durationDays = parseInt(document.getElementById('formPlanDuration').value, 10) || 30;
 
       const planObj = {
         name: planName,
         tagline: document.getElementById('formPlanTagline').value.trim(),
-        price: document.getElementById('formPlanPrice').value.trim(),
+        price: formatPricePY(rawPrice) || rawPrice,
+        durationDays: durationDays,
         badge: document.getElementById('formPlanBadge').value.trim(),
         highlight: document.getElementById('formPlanHighlight').checked,
         ctaText: document.getElementById('formPlanCta').value.trim() || ("Seleccionar " + planName),
@@ -2254,16 +2392,20 @@
         draftState.settings.pagoparPlanLinks = {};
       }
 
-      // Pre-fill defaults for standard plans if missing
-      if (!draftState.settings.pagoparPlanLinks['Inicio']) {
-        draftState.settings.pagoparPlanLinks['Inicio'] = draftState.settings.pagoparUrlBasic || 'https://pago.pagopar.com/86zdi';
-      }
-      if (!draftState.settings.pagoparPlanLinks['Pro']) {
-        draftState.settings.pagoparPlanLinks['Pro'] = draftState.settings.pagoparUrlPro || 'https://pago.pagopar.com/86zgq';
-      }
-      if (!draftState.settings.pagoparPlanLinks['Elite']) {
-        draftState.settings.pagoparPlanLinks['Elite'] = draftState.settings.pagoparUrlElite || 'https://pago.pagopar.com/86zhg';
-      }
+      const planLinks = draftState.settings.pagoparPlanLinks;
+
+      const getLinkForPlan = (name) => {
+        if (!name) return '';
+        if (planLinks[name]) return planLinks[name];
+        for (let k in planLinks) {
+          if (k.toLowerCase() === name.toLowerCase()) return planLinks[k];
+        }
+        const nameLower = name.toLowerCase();
+        if (nameLower.includes('pro') || nameLower.includes('impulso')) return draftState.settings.pagoparUrlPro || 'https://pago.pagopar.com/86zgq';
+        if (nameLower.includes('inicio') || nameLower.includes('basic')) return draftState.settings.pagoparUrlBasic || 'https://pago.pagopar.com/86zdi';
+        if (nameLower.includes('elite')) return draftState.settings.pagoparUrlElite || 'https://pago.pagopar.com/86zhg';
+        return '';
+      };
 
       const container = document.getElementById('dynamicPlanPaymentLinksContainer');
       if (container) {
@@ -2276,7 +2418,9 @@
 
         const plans = draftState.plans || [];
         plans.forEach((plan) => {
-          const currentUrl = draftState.settings.pagoparPlanLinks[plan.name] || '';
+          const currentUrl = getLinkForPlan(plan.name);
+          planLinks[plan.name] = currentUrl;
+
           const div = document.createElement('div');
           div.className = "p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1.5";
           div.innerHTML = `
@@ -2305,14 +2449,24 @@
       linkInputs.forEach(inp => {
         const pName = inp.getAttribute('data-plan-name');
         if (pName) {
-          draftState.settings.pagoparPlanLinks[pName] = inp.value.trim();
+          const val = inp.value.trim();
+          draftState.settings.pagoparPlanLinks[pName] = val;
+          if (pName.toLowerCase() === 'pro' || pName.toLowerCase() === 'impulso') {
+            draftState.settings.pagoparUrlPro = val;
+            draftState.settings.pagoparPlanLinks['Pro'] = val;
+            draftState.settings.pagoparPlanLinks['PRO'] = val;
+          } else if (pName.toLowerCase() === 'inicio' || pName.toLowerCase() === 'basic') {
+            draftState.settings.pagoparUrlBasic = val;
+            draftState.settings.pagoparPlanLinks['Inicio'] = val;
+            draftState.settings.pagoparPlanLinks['INICIO'] = val;
+          } else if (pName.toLowerCase() === 'elite') {
+            draftState.settings.pagoparUrlElite = val;
+            draftState.settings.pagoparPlanLinks['Elite'] = val;
+            draftState.settings.pagoparPlanLinks['ELITE'] = val;
+          }
         }
       });
 
-      if (draftState.settings.pagoparPlanLinks['Inicio']) draftState.settings.pagoparUrlBasic = draftState.settings.pagoparPlanLinks['Inicio'];
-      if (draftState.settings.pagoparPlanLinks['Pro']) draftState.settings.pagoparUrlPro = draftState.settings.pagoparPlanLinks['Pro'];
-      if (draftState.settings.pagoparPlanLinks['Elite']) draftState.settings.pagoparUrlElite = draftState.settings.pagoparPlanLinks['Elite'];
-      
       markUnsavedChanges();
     }
 
@@ -2417,8 +2571,12 @@
       document.getElementById('heroBadge').value = draftState.hero.badge || 'FORMACIÓN PREMIUM · PARAGUAY';
       document.getElementById('heroSubtitle').value = draftState.hero.subtitle || '';
       document.getElementById('heroLiveTitle').value = draftState.hero.liveTitle || 'Próxima Mentoría en Directo';
-      document.getElementById('heroLiveSubtitle').value = draftState.hero.liveSubtitle || 'Solo para alumnos SteveDrop (desde el Nivel Basic). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar.';
+      document.getElementById('heroLiveSubtitle').value = draftState.hero.liveSubtitle || 'Solo para alumnos SteveDrop (desde el Nivel Inicio). Únete hoy y nos conectamos cada domingo a las 15:00 hs sin faltar.';
       
+      document.getElementById('heroLiveDay').value = draftState.hero.liveDay !== undefined ? draftState.hero.liveDay : '0';
+      document.getElementById('heroLiveStartTime').value = draftState.hero.liveStartTime || '15:00';
+      document.getElementById('heroLiveEndTime').value = draftState.hero.liveEndTime || '16:30';
+
       document.getElementById('socialInstagram').value = draftState.socials.instagram || 'https://www.instagram.com/stevecandiadj';
       document.getElementById('socialTiktok').value = draftState.socials.tiktok || 'https://www.tiktok.com/@stevecandiadj';
       document.getElementById('socialYoutube').value = draftState.socials.youtube || 'https://youtube.com/@stevecandia1272';
@@ -2434,6 +2592,10 @@
       draftState.hero.subtitle = document.getElementById('heroSubtitle').value.trim();
       draftState.hero.liveTitle = document.getElementById('heroLiveTitle').value.trim();
       draftState.hero.liveSubtitle = document.getElementById('heroLiveSubtitle').value.trim();
+
+      draftState.hero.liveDay = document.getElementById('heroLiveDay').value;
+      draftState.hero.liveStartTime = document.getElementById('heroLiveStartTime').value;
+      draftState.hero.liveEndTime = document.getElementById('heroLiveEndTime').value;
 
       draftState.socials.instagram = document.getElementById('socialInstagram').value.trim();
       draftState.socials.tiktok = document.getElementById('socialTiktok').value.trim();
