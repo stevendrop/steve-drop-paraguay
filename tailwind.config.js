@@ -1,58 +1,17 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        background: "#07090e",
-        card: "rgba(13, 19, 34, 0.7)",
-        "card-hover": "rgba(20, 29, 50, 0.85)",
-        border: "rgba(255, 255, 255, 0.08)",
-        "border-glow": "rgba(6, 182, 212, 0.3)",
-        brand: {
-          DEFAULT: "#06b6d4",
-          light: "#38bdf8",
-          dark: "#0284c7",
-          gradient: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%)",
-        },
-        accent: {
-          cyan: "#06b6d4",
-          blue: "#3b82f6",
-          indigo: "#6366f1",
-          emerald: "#10b981",
-        },
-        muted: {
-          DEFAULT: "#94a3b8",
-          foreground: "#64748b",
-        }
-      },
-      fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-        heading: ['Plus Jakarta Sans', 'sans-serif'],
-      },
-      animation: {
-        'fade-up': 'fadeUp 0.6s ease-out forwards',
-        'pulse-glow': 'pulseGlow 3s infinite ease-in-out',
-        'float': 'float 4s infinite ease-in-out',
-      },
-      keyframes: {
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4', filter: 'blur(30px)' },
-          '50%': { opacity: '0.8', filter: 'blur(45px)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' },
-        }
-      }
-    },
-  },
-  plugins: [],
-}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="18" fill="#040711"/>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="none" stroke="url(#grad)" stroke-width="3"/>
+  <!-- Headphones Icon Glyph -->
+  <path d="M 20 38 V 32 A 12 12 0 0 1 44 32 V 38" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Left Ear Cup -->
+  <rect x="16" y="34" width="6" height="12" rx="3" fill="#040711" stroke="#38bdf8" stroke-width="3"/>
+  <!-- Right Ear Cup -->
+  <rect x="42" y="34" width="6" height="12" rx="3" fill="#040711" stroke="#38bdf8" stroke-width="3"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+</svg>
