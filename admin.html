@@ -2173,9 +2173,14 @@
     // ----------------------------------------------------
     function openAddMemberModal() {
       populatePlanDropdowns();
-      const todayStr = new Date().toISOString().split('T')[0];
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const localTodayStr = `${year}-${month}-${day}`;
+      
       const dateInput = document.getElementById('newMemSubDate');
-      if (dateInput) dateInput.value = todayStr;
+      if (dateInput) dateInput.value = localTodayStr;
 
       document.getElementById('addMemberModal').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
