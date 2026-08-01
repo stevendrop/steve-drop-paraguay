@@ -645,9 +645,96 @@
                 </div>
                 <p class="text-[10px] text-slate-400 italic">En este rango horario (ej: Domingos de 15:00 a 16:30 hs), la portada de la web mostrará la señal parpadeante 🔴 EN VIVO AHORA.</p>
               </div>
+            <!-- SECCIÓN 3: HERRAMIENTAS EXCLUSIVAS STEVE CANDIA AI -->
+            <div class="space-y-4 p-5 rounded-2xl bg-white/[0.02] border border-purple-500/30">
+              <h4 class="text-xs font-extrabold uppercase tracking-wider text-purple-400 flex items-center gap-1.5">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+                <span>Herramientas Exclusivas Steve Candia AI (Beneficios & Nombres Editables)</span>
+              </h4>
+
+              <!-- HERRAMIENTA 1: AI COPY -->
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-500/20 space-y-3">
+                <span class="text-[11px] font-extrabold uppercase text-purple-300 block">🤖 Herramienta 1 (AI Copy)</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Categoría / Badge</label>
+                    <input id="aiCopyBadge" oninput="updateHeroSettingsDraft()" type="text" placeholder="Copywriting" class="w-full px-3 py-2 rounded-xl glass-input text-xs" />
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Nombre de Herramienta</label>
+                    <input id="aiCopyName" oninput="updateHeroSettingsDraft()" type="text" placeholder="Steve Candia AI Copy" class="w-full px-3 py-2 rounded-xl glass-input text-xs font-bold text-white" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Descripción Principal</label>
+                  <textarea id="aiCopyDesc" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Genera textos, anuncios y guiones de venta..." class="w-full px-3 py-2 rounded-xl glass-input text-xs leading-relaxed"></textarea>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Beneficios / Viñetas (1 por línea)</label>
+                  <textarea id="aiCopyFeaturesText" oninput="updateHeroSettingsDraft()" rows="3" placeholder="Estructura probada (+200 Millones facturados)&#10;Generador de copies para contenido publicitario&#10;Copies publicitarios persuasivos para Meta Ads" class="w-full px-3 py-2 rounded-xl glass-input text-xs leading-relaxed font-mono"></textarea>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Nota Inferior de Inclusión</label>
+                  <input id="aiCopyFooter" oninput="updateHeroSettingsDraft()" type="text" placeholder="Incluido con acceso a la plataforma (Nivel Inicio)" class="w-full px-3 py-2 rounded-xl glass-input text-xs text-purple-300" />
+                </div>
+              </div>
+
+              <!-- HERRAMIENTA 2: AI HUNTER -->
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-500/20 space-y-3">
+                <span class="text-[11px] font-extrabold uppercase text-purple-300 block">🔎 Herramienta 2 (AI Hunter)</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Categoría / Badge</label>
+                    <input id="aiHunterBadge" oninput="updateHeroSettingsDraft()" type="text" placeholder="Product Research" class="w-full px-3 py-2 rounded-xl glass-input text-xs" />
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Nombre de Herramienta</label>
+                    <input id="aiHunterName" oninput="updateHeroSettingsDraft()" type="text" placeholder="Steve Candia AI Hunter" class="w-full px-3 py-2 rounded-xl glass-input text-xs font-bold text-white" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Descripción Principal</label>
+                  <textarea id="aiHunterDesc" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Detecta productos con potencial real..." class="w-full px-3 py-2 rounded-xl glass-input text-xs leading-relaxed"></textarea>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Beneficios / Viñetas (1 por línea)</label>
+                  <textarea id="aiHunterFeaturesText" oninput="updateHeroSettingsDraft()" rows="3" placeholder="Filtro de productos ganadores&#10;Análisis de demanda local&#10;Estimación de márgenes reales" class="w-full px-3 py-2 rounded-xl glass-input text-xs leading-relaxed font-mono"></textarea>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Nota Inferior de Inclusión</label>
+                  <input id="aiHunterFooter" oninput="updateHeroSettingsDraft()" type="text" placeholder="Incluido en Nivel Pro y Elite..." class="w-full px-3 py-2 rounded-xl glass-input text-xs text-purple-300" />
+                </div>
+              </div>
+
+              <!-- HERRAMIENTA 3: AI BUILDER -->
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-500/20 space-y-3">
+                <span class="text-[11px] font-extrabold uppercase text-purple-300 block">🏗️ Herramienta 3 (AI Builder)</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Categoría / Badge</label>
+                    <input id="aiBuilderBadge" oninput="updateHeroSettingsDraft()" type="text" placeholder="Store Building" class="w-full px-3 py-2 rounded-xl glass-input text-xs" />
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Nombre de Herramienta</label>
+                    <input id="aiBuilderName" oninput="updateHeroSettingsDraft()" type="text" placeholder="Steve Candia AI Builder" class="w-full px-3 py-2 rounded-xl glass-input text-xs font-bold text-white" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Descripción Principal</label>
+                  <textarea id="aiBuilderDesc" oninput="updateHeroSettingsDraft()" rows="2" placeholder="Un asistente virtual que construye por ti tus páginas..." class="w-full px-3 py-2 rounded-xl glass-input text-xs leading-relaxed"></textarea>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Beneficios / Viñetas (1 por línea)</label>
+                  <textarea id="aiBuilderFeaturesText" oninput="updateHeroSettingsDraft()" rows="4" placeholder="Ahorra horas de trabajo en cada lanzamiento&#10;Crea páginas de producto en segundos&#10;No necesitas experiencia en diseño ni copywriting&#10;Reduce errores al crear páginas" class="w-full px-3 py-2 rounded-xl glass-input text-xs leading-relaxed font-mono"></textarea>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-300 mb-1">Nota Inferior de Inclusión</label>
+                  <input id="aiBuilderFooter" oninput="updateHeroSettingsDraft()" type="text" placeholder="Exclusivo Nivel Elite..." class="w-full px-3 py-2 rounded-xl glass-input text-xs text-purple-300" />
+                </div>
+              </div>
             </div>
 
-            <!-- SECCIÓN 3: REDES SOCIALES Y CONTACTO -->
+            <!-- SECCIÓN 4: REDES SOCIALES Y CONTACTO -->
             <div class="space-y-4 p-5 rounded-2xl bg-white/[0.02] border border-white/10">
               <h4 class="text-xs font-extrabold uppercase tracking-wider text-sky-400 flex items-center gap-1.5">
                 <i data-lucide="share-2" class="w-4 h-4"></i>
@@ -2572,6 +2659,7 @@
       if (!draftState) return;
       if (!draftState.hero) draftState.hero = {};
       if (!draftState.socials) draftState.socials = {};
+      if (!draftState.aiTools) draftState.aiTools = {};
 
       document.getElementById('heroBadge').value = draftState.hero.badge || 'FORMACIÓN PREMIUM · PARAGUAY';
       document.getElementById('heroSubtitle').value = draftState.hero.subtitle || '';
@@ -2581,6 +2669,28 @@
       document.getElementById('heroLiveDay').value = draftState.hero.liveDay !== undefined ? draftState.hero.liveDay : '0';
       document.getElementById('heroLiveStartTime').value = draftState.hero.liveStartTime || '15:00';
       document.getElementById('heroLiveEndTime').value = draftState.hero.liveEndTime || '16:30';
+
+      // AI TOOLS PREFILL
+      const copy = draftState.aiTools.copy || {};
+      document.getElementById('aiCopyBadge').value = copy.badge || 'Copywriting';
+      document.getElementById('aiCopyName').value = copy.name || 'Steve Candia AI Copy';
+      document.getElementById('aiCopyDesc').value = copy.desc || 'Genera textos, anuncios y guiones de venta en el tono que mejor convierte. Este es el asistente virtual que te hace la estructura que ya vendió más de 200 millones en PY.';
+      document.getElementById('aiCopyFeaturesText').value = Array.isArray(copy.features) ? copy.features.join('\n') : (copy.features || "Estructura probada (+200 Millones facturados)\nGenerador de copies para contenido publicitario\nCopies publicitarios persuasivos para Meta Ads");
+      document.getElementById('aiCopyFooter').value = copy.footer || 'Incluido con acceso a la plataforma (Nivel Inicio)';
+
+      const hunter = draftState.aiTools.hunter || {};
+      document.getElementById('aiHunterBadge').value = hunter.badge || 'Product Research';
+      document.getElementById('aiHunterName').value = hunter.name || 'Steve Candia AI Hunter';
+      document.getElementById('aiHunterDesc').value = hunter.desc || 'Detecta productos con potencial real basándose en tendencias, demanda y competencia.';
+      document.getElementById('aiHunterFeaturesText').value = Array.isArray(hunter.features) ? hunter.features.join('\n') : (hunter.features || "Filtro de productos ganadores\nAnálisis de demanda local\nEstimación de márgenes reales");
+      document.getElementById('aiHunterFooter').value = hunter.footer || 'Incluido en Nivel Pro y Elite (incluye todos los beneficios de Nivel Inicio)';
+
+      const builder = draftState.aiTools.builder || {};
+      document.getElementById('aiBuilderBadge').value = builder.badge || 'Store Building';
+      document.getElementById('aiBuilderName').value = builder.name || 'Steve Candia AI Builder';
+      document.getElementById('aiBuilderDesc').value = builder.desc || 'Un asistente virtual que construye por ti tus páginas de productos en segundos.';
+      document.getElementById('aiBuilderFeaturesText').value = Array.isArray(builder.features) ? builder.features.join('\n') : (builder.features || "Ahorra horas de trabajo en cada lanzamiento\nCrea páginas de producto en segundos sin empezar de cero\nNo necesitas experiencia en diseño ni copywriting\nReduce errores al crear páginas, ya que sigue una estructura comprobada\nIdeal para lanzar productos rápidamente y validar nuevas oportunidades\nCompatible con cualquier nicho (hogar, belleza, tecnología, etc.)");
+      document.getElementById('aiBuilderFooter').value = builder.footer || 'Exclusivo Nivel Elite (incluye todos los beneficios de Inicio y Pro)';
 
       document.getElementById('socialInstagram').value = draftState.socials.instagram || 'https://www.instagram.com/stevecandiadj';
       document.getElementById('socialTiktok').value = draftState.socials.tiktok || 'https://www.tiktok.com/@stevecandiadj';
@@ -2592,6 +2702,7 @@
       if (!draftState) return;
       if (!draftState.hero) draftState.hero = {};
       if (!draftState.socials) draftState.socials = {};
+      if (!draftState.aiTools) draftState.aiTools = {};
 
       draftState.hero.badge = document.getElementById('heroBadge').value.trim();
       draftState.hero.subtitle = document.getElementById('heroSubtitle').value.trim();
@@ -2601,6 +2712,31 @@
       draftState.hero.liveDay = document.getElementById('heroLiveDay').value;
       draftState.hero.liveStartTime = document.getElementById('heroLiveStartTime').value;
       draftState.hero.liveEndTime = document.getElementById('heroLiveEndTime').value;
+
+      // AI TOOLS SAVE TO DRAFT
+      draftState.aiTools.copy = {
+        badge: document.getElementById('aiCopyBadge').value.trim(),
+        name: document.getElementById('aiCopyName').value.trim(),
+        desc: document.getElementById('aiCopyDesc').value.trim(),
+        features: document.getElementById('aiCopyFeaturesText').value.split('\n').map(s => s.trim()).filter(Boolean),
+        footer: document.getElementById('aiCopyFooter').value.trim()
+      };
+
+      draftState.aiTools.hunter = {
+        badge: document.getElementById('aiHunterBadge').value.trim(),
+        name: document.getElementById('aiHunterName').value.trim(),
+        desc: document.getElementById('aiHunterDesc').value.trim(),
+        features: document.getElementById('aiHunterFeaturesText').value.split('\n').map(s => s.trim()).filter(Boolean),
+        footer: document.getElementById('aiHunterFooter').value.trim()
+      };
+
+      draftState.aiTools.builder = {
+        badge: document.getElementById('aiBuilderBadge').value.trim(),
+        name: document.getElementById('aiBuilderName').value.trim(),
+        desc: document.getElementById('aiBuilderDesc').value.trim(),
+        features: document.getElementById('aiBuilderFeaturesText').value.split('\n').map(s => s.trim()).filter(Boolean),
+        footer: document.getElementById('aiBuilderFooter').value.trim()
+      };
 
       draftState.socials.instagram = document.getElementById('socialInstagram').value.trim();
       draftState.socials.tiktok = document.getElementById('socialTiktok').value.trim();
