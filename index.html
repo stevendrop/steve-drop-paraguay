@@ -327,9 +327,9 @@
           </nav>
         </div>
 
-        <!-- "Unirme ahora" CTA Button (Visible on both Mobile and Desktop) -->
+        <!-- "Unirme ahora" CTA Button (Visible on both Mobile and Desktop - Dynamically opens Popular Plan) -->
         <div class="flex items-center gap-2">
-          <button onclick="openCheckout('Pro', '527.000')" class="relative group overflow-hidden rounded-full p-[1px] focus:outline-none animate-gentle-shake shrink-0">
+          <button onclick="openPopularCheckout()" class="relative group overflow-hidden rounded-full p-[1px] focus:outline-none animate-gentle-shake shrink-0" title="Unirme al plan más popular">
             <span id="navCtaGradient" class="absolute inset-0 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600 rounded-full group-hover:opacity-90 transition-all duration-700"></span>
             <span class="relative px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#040711] flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-white transition-colors group-hover:bg-transparent">
               <span>Unirme ahora</span>
@@ -2086,6 +2086,31 @@
         ans.classList.toggle('hidden');
         if (icon) icon.classList.toggle('rotate-180');
       }
+    }
+
+    function openPopularCheckout() {
+      const stored = localStorage.getItem('STEVE_DROP_DB_V1');
+      let targetName = 'Pro';
+      let targetPrice = '527.000';
+
+      if (stored) {
+        try {
+          const db = JSON.parse(stored);
+          if (db.plans && Array.isArray(db.plans) && db.plans.length > 0) {
+            const popPlan = db.plans.find(p => p.highlight === true && p.active !== false) || 
+                            db.plans.find(p => p.badge && (p.badge.toLowerCase().includes('popular') || p.badge.toLowerCase().includes('vendido') || p.badge.toLowerCase().includes('destacado')) && p.active !== false) || 
+                            db.plans.find(p => (p.name.toLowerCase().includes('pro') || p.name.toLowerCase().includes('impulso')) && p.active !== false) ||
+                            db.plans.find(p => p.active !== false) ||
+                            db.plans[0];
+            if (popPlan) {
+              targetName = popPlan.name || targetName;
+              targetPrice = popPlan.price || targetPrice;
+            }
+          }
+        } catch(e){}
+      }
+
+      openCheckout(targetName, targetPrice);
     }
 
     function openCheckout(planName, price) {
