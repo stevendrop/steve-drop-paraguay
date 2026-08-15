@@ -645,6 +645,8 @@
                 </div>
                 <p class="text-[10px] text-slate-400 italic">En este rango horario (ej: Domingos de 15:00 a 16:30 hs), la portada de la web mostrará la señal parpadeante 🔴 EN VIVO AHORA.</p>
               </div>
+            </div>
+
             <!-- SECCIÓN 3: HERRAMIENTAS EXCLUSIVAS STEVE CANDIA AI -->
             <div class="space-y-4 p-5 rounded-2xl bg-white/[0.02] border border-purple-500/30">
               <h4 class="text-xs font-extrabold uppercase tracking-wider text-purple-400 flex items-center gap-1.5">
@@ -1032,6 +1034,75 @@
           </button>
           <button type="submit" class="w-1/2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold shadow-md">
             + Registrar Alumno
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL EDITAR DATOS COMPLETOS DE MIEMBRO -->
+  <div id="editMemberModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="relative w-full max-w-md bg-[#0b1220] p-6 rounded-3xl border border-sky-500/40 shadow-2xl space-y-5">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <h3 class="font-heading text-lg font-bold text-white flex items-center gap-2">
+          <i data-lucide="user-cog" class="w-5 h-5 text-sky-400"></i>
+          <span>Editar Datos del Alumno</span>
+        </h3>
+        <button onclick="closeEditMemberModal()" class="p-1 rounded-lg bg-slate-800 text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <form onsubmit="submitEditMember(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="editMemberId" />
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Nombre *</label>
+            <input id="editMemFirstName" type="text" required placeholder="Ej: Lucas" class="w-full px-3.5 py-2 rounded-xl glass-input text-white font-semibold" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Apellido *</label>
+            <input id="editMemLastName" type="text" required placeholder="Ej: Benítez" class="w-full px-3.5 py-2 rounded-xl glass-input text-white font-semibold" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Correo Gmail *</label>
+            <input id="editMemGmail" type="email" required placeholder="ejemplo@gmail.com" class="w-full px-3.5 py-2 rounded-xl glass-input font-mono text-sky-400" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Teléfono / WhatsApp *</label>
+            <input id="editMemPhone" type="tel" required placeholder="Ej: 0986 529 937" class="w-full px-3.5 py-2 rounded-xl glass-input font-mono text-emerald-400 font-bold" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Nivel / Plan *</label>
+            <select id="editMemPlan" onchange="updateEditMemberPlanDurationBadge()" class="w-full px-3 py-2 rounded-xl glass-input font-bold text-sky-400">
+              <!-- Dynamically populated from db.plans -->
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-300 uppercase mb-1">Fecha Suscripción *</label>
+            <input id="editMemSubDate" type="date" required class="w-full px-3 py-2 rounded-xl glass-input text-sky-400 font-mono font-bold" />
+          </div>
+        </div>
+
+        <div id="editMemberDurationBadge" class="p-3 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs flex items-center gap-2 font-medium">
+          <i data-lucide="info" class="w-4 h-4 text-sky-400 shrink-0"></i>
+          <span id="editMemberDurationText">Duración asignada automáticamente según el plan seleccionado.</span>
+        </div>
+
+        <div class="pt-2 flex items-center gap-3">
+          <button type="button" onclick="closeEditMemberModal()" class="w-1/2 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold">
+            Cancelar
+          </button>
+          <button type="submit" class="w-1/2 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-extrabold shadow-md flex items-center justify-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            <span>✓ Guardar Cambios</span>
           </button>
         </div>
       </form>
@@ -1945,7 +2016,7 @@
                 ${daysLeft > 0 ? daysLeft + ' días' : 'Expirado'}
               </span>
 
-              <button onclick="openAdjustDaysModal('${m.id}')" title="Ajustar días de este alumno" class="p-1 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 transition-all border border-sky-500/20 ml-1">
+              <button onclick="openEditMemberModal('${m.id}')" title="Editar datos completos de este alumno" class="p-1 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 transition-all border border-sky-500/20 ml-1">
                 <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -1960,7 +2031,12 @@
           <div class="flex items-center gap-2 shrink-0">
             ${notifyBtnHTML}
 
-            <button onclick="openRenewModal('${m.id}')" class="px-3.5 py-1.5 rounded-xl bg-sky-500/10 border border-sky-500/30 hover:bg-sky-500/20 text-sky-400 font-bold text-xs flex items-center gap-1.5 transition-all">
+            <button onclick="openEditMemberModal('${m.id}')" class="px-3.5 py-1.5 rounded-xl bg-sky-500/10 border border-sky-500/30 hover:bg-sky-500/20 text-sky-400 font-bold text-xs flex items-center gap-1.5 transition-all" title="Editar datos de este alumno">
+              <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
+              <span>Editar</span>
+            </button>
+
+            <button onclick="openRenewModal('${m.id}')" class="px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center gap-1.5 transition-all" title="Renovar membresía del alumno">
               <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
               <span>Renovar</span>
             </button>
@@ -2120,13 +2196,16 @@
 
       const addSelect = document.getElementById('newMemPlan');
       const renewSelect = document.getElementById('renewPlanSelect');
+      const editSelect = document.getElementById('editMemPlan');
+
+      const optionsHTML = plans.map(p => {
+        const duration = getPlanDurationDays(p, p.name);
+        return `<option value="${p.name}">${p.name} (${duration} días)</option>`;
+      }).join('');
 
       if (addSelect) {
         const currentVal = addSelect.value;
-        addSelect.innerHTML = plans.map(p => {
-          const duration = getPlanDurationDays(p, p.name);
-          return `<option value="${p.name}">${p.name} (${duration} días)</option>`;
-        }).join('');
+        addSelect.innerHTML = optionsHTML;
         if (currentVal && plans.some(p => p.name === currentVal)) {
           addSelect.value = currentVal;
         }
@@ -2134,17 +2213,23 @@
 
       if (renewSelect) {
         const currentVal = renewSelect.value;
-        renewSelect.innerHTML = plans.map(p => {
-          const duration = getPlanDurationDays(p, p.name);
-          return `<option value="${p.name}">${p.name} (${duration} días)</option>`;
-        }).join('');
+        renewSelect.innerHTML = optionsHTML;
         if (currentVal && plans.some(p => p.name === currentVal)) {
           renewSelect.value = currentVal;
         }
       }
 
+      if (editSelect) {
+        const currentVal = editSelect.value;
+        editSelect.innerHTML = optionsHTML;
+        if (currentVal && plans.some(p => p.name === currentVal)) {
+          editSelect.value = currentVal;
+        }
+      }
+
       updateAddMemberPlanDurationBadge();
       updateRenewPlanDurationBadge();
+      updateEditMemberPlanDurationBadge();
     }
 
     function updateAddMemberPlanDurationBadge() {
@@ -2171,6 +2256,109 @@
       const months = Math.round(days / 30);
       const monthText = months === 1 ? '1 mes' : `${months} meses`;
       textEl.innerText = `Duración vinculada al Plan ${planName}: +${days} días (${monthText}).`;
+    }
+
+    function updateEditMemberPlanDurationBadge() {
+      const select = document.getElementById('editMemPlan');
+      const textEl = document.getElementById('editMemberDurationText');
+      if (!select || !textEl) return;
+      const planName = select.value;
+      const db = getDB();
+      const planObj = (db.plans || []).find(p => p.name === planName);
+      const days = getPlanDurationDays(planObj, planName);
+      const months = Math.round(days / 30);
+      const monthText = months === 1 ? '1 mes' : `${months} meses`;
+      textEl.innerText = `Duración vinculada al Plan ${planName}: ${days} días (${monthText}).`;
+    }
+
+    // ----------------------------------------------------
+    // EDIT MEMBER MODAL LOGIC
+    // ----------------------------------------------------
+    function openEditMemberModal(memberId) {
+      const db = getDB();
+      const member = (db.members || []).find(m => String(m.id) === String(memberId));
+      if (!member) return;
+
+      populatePlanDropdowns();
+
+      document.getElementById('editMemberId').value = member.id;
+      document.getElementById('editMemFirstName').value = member.firstName || '';
+      document.getElementById('editMemLastName').value = member.lastName || '';
+      document.getElementById('editMemGmail').value = member.gmail || '';
+      document.getElementById('editMemPhone').value = member.phone || '';
+
+      const planSelect = document.getElementById('editMemPlan');
+      if (planSelect) planSelect.value = member.planName || 'Pro';
+
+      const dateInput = document.getElementById('editMemSubDate');
+      if (dateInput) {
+        if (member.approvedAt) {
+          const appDate = new Date(member.approvedAt);
+          const y = appDate.getFullYear();
+          const m = String(appDate.getMonth() + 1).padStart(2, '0');
+          const d = String(appDate.getDate()).padStart(2, '0');
+          dateInput.value = `${y}-${m}-${d}`;
+        } else {
+          const now = new Date();
+          const y = now.getFullYear();
+          const m = String(now.getMonth() + 1).padStart(2, '0');
+          const d = String(now.getDate()).padStart(2, '0');
+          dateInput.value = `${y}-${m}-${d}`;
+        }
+      }
+
+      updateEditMemberPlanDurationBadge();
+
+      document.getElementById('editMemberModal').classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeEditMemberModal() {
+      document.getElementById('editMemberModal').classList.add('hidden');
+    }
+
+    function submitEditMember(e) {
+      e.preventDefault();
+      pushUndoState();
+
+      const memberId = document.getElementById('editMemberId').value;
+      const fname = document.getElementById('editMemFirstName').value.trim();
+      const lname = document.getElementById('editMemLastName').value.trim();
+      const gmail = document.getElementById('editMemGmail').value.trim();
+      const phone = document.getElementById('editMemPhone').value.trim();
+      const planName = document.getElementById('editMemPlan').value;
+      const subDateInput = document.getElementById('editMemSubDate').value;
+
+      if (!memberId || !fname || !lname || !gmail) return;
+
+      const db = getDB();
+      const memberIndex = db.members.findIndex(m => String(m.id) === String(memberId));
+      if (memberIndex === -1) return;
+
+      const planObj = (db.plans || []).find(p => p.name === planName);
+      const days = getPlanDurationDays(planObj, planName);
+
+      let subDate = new Date();
+      if (subDateInput) {
+        subDate = new Date(subDateInput + 'T12:00:00');
+      }
+
+      const expireDate = new Date(subDate.getTime() + (days * 24 * 60 * 60 * 1000));
+
+      db.members[memberIndex].firstName = fname;
+      db.members[memberIndex].lastName = lname;
+      db.members[memberIndex].gmail = gmail;
+      db.members[memberIndex].phone = phone;
+      db.members[memberIndex].planName = planName;
+      db.members[memberIndex].durationDays = days;
+      db.members[memberIndex].approvedAt = subDate.toISOString();
+      db.members[memberIndex].expiresAt = expireDate.toISOString();
+
+      saveDB(db);
+      closeEditMemberModal();
+      renderMembers();
+
+      alert(`✓ Datos del alumno ${fname} ${lname} actualizados con éxito.`);
     }
 
     // ----------------------------------------------------

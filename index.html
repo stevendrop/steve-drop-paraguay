@@ -73,6 +73,26 @@
       color: #f8fafc;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      text-rendering: optimizeSpeed;
+    }
+
+    button, a, select, input, label {
+      touch-action: manipulation;
+    }
+
+    .glass-card, img {
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .glass-card {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
     }
 
     .text-gradient-brand {
@@ -1491,6 +1511,14 @@
           <i data-lucide="message-circle" class="w-4 h-4 fill-slate-950"></i>
           <span>Confirmar por WhatsApp</span>
         </button>
+
+        <!-- AVISO ANTI COMPROBANTES FALSOS & SOLICITUDES REPETIDAS AL PIE DE PÁGINA -->
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 text-slate-400 text-[11px] leading-relaxed flex items-start gap-2.5">
+          <i data-lucide="shield-alert" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+          <div>
+            Queda estrictamente prohibido enviar comprobantes falsos, solicitudes ficticias o enviar solicitudes dobles/repetidas. Todos los pagos se verifican de forma estricta. El intento de fraude o spam de solicitudes resultará en el <strong class="text-slate-200">bloqueo permanente y baneo definitivo</strong> de acceso a la plataforma SteveDrop.
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1909,6 +1937,7 @@
 
     let isMouseTicking = false;
     document.addEventListener('mousemove', function(e) {
+      if (window.innerWidth < 768) return;
       if (!isMouseTicking) {
         requestAnimationFrame(() => {
           var mouseX = e.clientX / window.innerWidth;
