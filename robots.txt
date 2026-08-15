@@ -1,0 +1,22 @@
+# robots.txt for Steve Drop Paraguay (SEO & GEO AI Search Engine Optimization)
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+# Allow AI Search Engines & LLMs (GEO - Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://stevedrop.com/sitemap.xml
