@@ -1,0 +1,17 @@
+name: Supabase Keep Alive
+
+on:
+  schedule:
+    # Se ejecuta automáticamente cada 3 días a las 12:00 UTC
+    - cron: '0 12 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase Database
+        run: |
+          echo "Enviando ping de actividad a Supabase..."
+          curl -s -f "https://mkazgkqikpsocjexlefx.supabase.co/rest/v1/" || curl -s "https://mkazgkqikpsocjexlefx.supabase.co" > /dev/null
+          echo "Ping completado con éxito. Base de datos activa."
