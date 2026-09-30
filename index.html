@@ -323,6 +323,7 @@
             <a id="nav-herramientas" href="#herramientas" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Herramientas</a>
             <a id="nav-niveles" href="#niveles" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Niveles</a>
             <a id="nav-resultados" href="#resultados" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Resultados</a>
+            <a id="nav-youtube" href="#youtube" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">YouTube</a>
             <a id="nav-preguntas" href="#preguntas" class="nav-link text-[11px] font-semibold py-1 px-2.5 rounded-full transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5">Preguntas</a>
           </nav>
         </div>
@@ -349,6 +350,7 @@
           <a id="mobnav-herramientas" href="#herramientas" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Herramientas</a>
           <a id="mobnav-niveles" href="#niveles" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Niveles</a>
           <a id="mobnav-resultados" href="#resultados" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Resultados</a>
+          <a id="mobnav-youtube" href="#youtube" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">YouTube</a>
           <a id="mobnav-preguntas" href="#preguntas" class="nav-link text-[11px] font-medium py-1 px-2.5 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/10 shrink-0">Preguntas</a>
         </nav>
       </div>
@@ -1266,6 +1268,133 @@
       </div>
     </div>
 
+    <!-- SECCIÓN CANAL DE YOUTUBE / ÚLTIMO VIDEO SUBIDO -->
+    <section id="youtube" class="relative py-14 md:py-20 overflow-hidden">
+      <!-- SUBTLE RADIAL RED GLOW IN BACKGROUND -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.08)_0%,rgba(185,28,28,0.02)_50%,transparent_75%)] pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <!-- HEADER -->
+        <div class="max-w-3xl mx-auto text-center mb-10 reveal-on-scroll">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-xs font-extrabold text-rose-400 uppercase tracking-widest mb-3 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+            <svg class="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span id="displayYoutubeBadge">Canal Oficial de YouTube</span>
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 tracking-tight">
+            Aprende con nuestro <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-500 to-amber-400">Último Video</span>
+          </h2>
+          <p class="text-slate-300 text-sm md:text-base font-normal">
+            Contenido gratuito, clases prácticas y estrategias reales de Dropshipping en Paraguay.
+          </p>
+        </div>
+
+        <!-- SHOWCASE CARD -->
+        <div class="max-w-5xl mx-auto glass-card rounded-3xl p-5 sm:p-7 md:p-8 border border-white/10 hover:border-red-500/40 transition-all duration-500 shadow-2xl relative overflow-hidden group reveal-on-scroll">
+          <!-- Subtle Red Accent Glow behind card -->
+          <div class="absolute -top-24 -right-24 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none group-hover:bg-red-600/20 transition-all duration-700"></div>
+
+          <div class="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
+            <!-- INTERACTIVE THUMBNAIL (7 COLUMNS) -->
+            <div class="lg:col-span-7">
+              <a id="displayYoutubeThumbLink" href="https://youtube.com/@stevecandia1272" target="_blank" rel="noopener noreferrer" class="block relative aspect-video w-full rounded-2xl overflow-hidden bg-slate-950 border border-white/10 shadow-2xl group/thumb cursor-pointer" title="Ver video en YouTube">
+                <!-- Thumbnail Image with Fallback -->
+                <img id="displayYoutubeThumbnail" src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg';" alt="Miniatura del Video de YouTube" class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 ease-out" />
+
+                <!-- Dark vignette gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20 group-hover/thumb:via-black/10 transition-all duration-300"></div>
+
+                <!-- Top Badges -->
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                  <span id="displayYoutubeTopPill" class="px-3 py-1 rounded-full bg-red-600/90 text-white font-extrabold text-[10px] tracking-wider uppercase shadow-lg shadow-red-600/40 backdrop-blur-md flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                    <span>ÚLTIMO VIDEO</span>
+                  </span>
+                  <span class="px-2.5 py-1 rounded-lg bg-black/75 text-white/90 font-mono text-[10px] font-bold border border-white/10 backdrop-blur-md">
+                    HD 1080p
+                  </span>
+                </div>
+
+                <!-- Big Centered Glowing YouTube Play Button -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600 text-white flex items-center justify-center shadow-[0_0_40px_rgba(239,68,68,0.7)] group-hover/thumb:scale-115 group-hover/thumb:bg-red-500 transition-all duration-300 transform">
+                    <svg class="w-7 h-7 sm:w-9 sm:h-9 translate-x-0.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Bottom Floating Notice -->
+                <div class="absolute bottom-3 inset-x-3 flex items-center justify-between text-[11px] text-slate-200 pointer-events-none">
+                  <span class="flex items-center gap-1.5 bg-slate-900/90 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md">
+                    <svg class="w-3.5 h-3.5 text-red-500 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                    </svg>
+                    <span class="font-semibold">Haz clic para ver en YouTube</span>
+                  </span>
+                  <span class="bg-black/80 px-2.5 py-1 rounded-md text-[10px] font-mono text-slate-300">
+                    YouTube
+                  </span>
+                </div>
+              </a>
+            </div>
+
+            <!-- INFO & CALL TO ACTION (5 COLUMNS) -->
+            <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-4">
+              <div>
+                <!-- Channel info badge -->
+                <div class="flex items-center gap-3 mb-3 pb-3 border-b border-white/10">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-rose-700 p-[1px] shadow-md shadow-red-500/30">
+                    <div class="w-full h-full bg-[#040711] rounded-full flex items-center justify-center">
+                      <i data-lucide="youtube" class="w-5 h-5 text-red-500"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="font-heading text-sm font-bold text-white flex items-center gap-1.5">
+                      <span>Steve Candia</span>
+                      <svg class="w-4 h-4 text-sky-400 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                    </h4>
+                    <p class="text-[11px] text-slate-400 font-mono">@stevecandia1272 · Dropshipping Paraguay</p>
+                  </div>
+                </div>
+
+                <!-- Video Title -->
+                <h3 id="displayYoutubeTitle" class="font-heading text-lg sm:text-xl md:text-2xl font-black text-white leading-snug mb-3">
+                  Cómo hacer Dropshipping en Paraguay en 2026 (Paso a Paso con Dropi)
+                </h3>
+
+                <!-- Video Description -->
+                <p id="displayYoutubeDesc" class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+                  En este video te muestro la estrategia exacta para empezar a vender sin stock, configurar tus primeros productos ganadores y generar tus primeras ventas con Dropi y Meta Ads.
+                </p>
+              </div>
+
+              <!-- Action buttons -->
+              <div class="space-y-2.5 pt-2">
+                <a id="displayYoutubeActionBtn" href="https://youtube.com/@stevecandia1272" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 hover:to-rose-600 text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-red-600/30 hover:shadow-red-600/50 hover:scale-[1.02] transition-all group">
+                  <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  <span id="displayYoutubeBtnText">Ver Video en YouTube</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-white/80"></i>
+                </a>
+
+                <a id="displayYoutubeChannelBtn" href="https://youtube.com/@stevecandia1272?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+                  <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                  <span>Suscribirse al canal oficial</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- PREGUNTAS FRECUENTES (FAQ) SECTION -->
     <section id="preguntas" class="relative pt-6 pb-14 md:pt-8 md:pb-16 overflow-hidden">
       <div class="container mx-auto px-4 md:px-6 relative z-10">
@@ -1705,7 +1834,7 @@
       }
 
       // Detect Active Section
-      var sections = ['inicio', 'historia', 'metodo', 'herramientas', 'niveles', 'resultados', 'preguntas'];
+      var sections = ['inicio', 'historia', 'metodo', 'herramientas', 'niveles', 'resultados', 'youtube', 'preguntas'];
       var activeSectionId = 'inicio';
       var scrollPosition = winScroll + 200;
 
@@ -2018,11 +2147,42 @@
           updateAiCard('builder', 'aiBuilderBadgeDisplay', 'aiBuilderNameDisplay', 'aiBuilderDescDisplay', 'aiBuilderFeaturesDisplay', 'aiBuilderFooterDisplay');
         }
 
+        // SYNC YOUTUBE LATEST VIDEO FROM DB
+        if (db.youtubeVideo) {
+          const yData = db.youtubeVideo;
+          const vidId = getYoutubeVideoId(yData.url);
+          const targetUrl = yData.url || (vidId ? `https://www.youtube.com/watch?v=${vidId}` : 'https://youtube.com/@stevecandia1272');
+          
+          if (document.getElementById('displayYoutubeThumbLink')) document.getElementById('displayYoutubeThumbLink').href = targetUrl;
+          if (document.getElementById('displayYoutubeActionBtn')) document.getElementById('displayYoutubeActionBtn').href = targetUrl;
+          if (document.getElementById('displayYoutubeThumbnail') && vidId) {
+            document.getElementById('displayYoutubeThumbnail').src = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
+            document.getElementById('displayYoutubeThumbnail').onerror = function() {
+              this.onerror = null;
+              this.src = `https://img.youtube.com/vi/${vidId}/hqdefault.jpg`;
+            };
+          }
+          if (yData.title && document.getElementById('displayYoutubeTitle')) document.getElementById('displayYoutubeTitle').innerText = yData.title;
+          if (yData.desc && document.getElementById('displayYoutubeDesc')) document.getElementById('displayYoutubeDesc').innerText = yData.desc;
+          if (yData.badge && document.getElementById('displayYoutubeBadge')) document.getElementById('displayYoutubeBadge').innerText = yData.badge;
+          if (yData.topPill && document.getElementById('displayYoutubeTopPill')) document.getElementById('displayYoutubeTopPill').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span><span>${yData.topPill}</span>`;
+          if (yData.btnText && document.getElementById('displayYoutubeBtnText')) document.getElementById('displayYoutubeBtnText').innerText = yData.btnText;
+          if (yData.channelUrl && document.getElementById('displayYoutubeChannelBtn')) document.getElementById('displayYoutubeChannelBtn').href = yData.channelUrl;
+        }
+
         lucide.createIcons();
         initRevealOnScroll();
       } catch (e) {
         console.error("Public DB Sync Error:", e);
       }
+    }
+
+    function getYoutubeVideoId(url) {
+      if (!url) return null;
+      const str = url.trim();
+      if (/^[\w-]{11}$/.test(str)) return str;
+      const match = str.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|v\/|live\/))([\w-]{11})/i);
+      return match ? match[1] : null;
     }
 
     window.addEventListener('load', () => {

@@ -768,6 +768,74 @@
               </div>
             </div>
 
+            <!-- SECCIÓN 5: ÚLTIMO VIDEO DE YOUTUBE (MINIATURA E INFORMACIÓN) -->
+            <div class="space-y-4 p-5 rounded-2xl bg-white/[0.02] border border-red-500/30">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <h4 class="text-xs font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                  <i data-lucide="youtube" class="w-4 h-4 text-red-500"></i>
+                  <span>Último Video de YouTube (Miniatura & Contenido)</span>
+                </h4>
+                <span class="text-[10px] font-bold text-slate-300 bg-red-500/20 px-2 py-0.5 rounded border border-red-500/30">
+                  Detección Automática de Miniatura
+                </span>
+              </div>
+              <p class="text-xs text-slate-400">Pega el link de cualquier video o short de YouTube. El sistema extraerá automáticamente la miniatura en alta definición para mostrarla en la portada interactiva de tu web.</p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-3">
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Link del Video de YouTube *</label>
+                    <input id="youtubeVideoUrl" oninput="updateYoutubePreview(); updateHeroSettingsDraft();" type="url" placeholder="https://www.youtube.com/watch?v=... o https://youtu.be/..." class="w-full px-4 py-2 rounded-xl glass-input text-xs font-mono" />
+                    <span class="text-[10px] text-slate-500 block mt-1">Formatos soportados: enlaces estándar (watch?v=), enlaces cortos (youtu.be) o Shorts.</span>
+                  </div>
+
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Título del Video *</label>
+                    <input id="youtubeVideoTitle" oninput="updateYoutubePreview(); updateHeroSettingsDraft();" type="text" placeholder="Ej: Cómo hacer Dropshipping en Paraguay en 2026 (Paso a Paso con Dropi)" class="w-full px-4 py-2 rounded-xl glass-input text-xs" />
+                  </div>
+
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Texto / Descripción del Video *</label>
+                    <textarea id="youtubeVideoDesc" oninput="updateHeroSettingsDraft()" rows="3" placeholder="Explica brevemente de qué trata el video para captar la atención de tus visitantes..." class="w-full px-4 py-2 rounded-xl glass-input text-xs leading-relaxed"></textarea>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Insignia Superior</label>
+                      <input id="youtubeVideoBadge" oninput="updateHeroSettingsDraft()" type="text" placeholder="Canal Oficial de YouTube" class="w-full px-4 py-2 rounded-xl glass-input text-xs" />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Texto del Botón</label>
+                      <input id="youtubeVideoBtnText" oninput="updateHeroSettingsDraft()" type="text" placeholder="Ver Video en YouTube" class="w-full px-4 py-2 rounded-xl glass-input text-xs" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Link del Canal (para botón Suscribirse)</label>
+                    <input id="youtubeChannelUrl" oninput="updateHeroSettingsDraft()" type="url" placeholder="https://youtube.com/@stevecandia1272" class="w-full px-4 py-2 rounded-xl glass-input text-xs font-mono" />
+                  </div>
+
+                  <!-- VISTA PREVIA EN VIVO DE LA MINIATURA EN EL ADMIN -->
+                  <div>
+                    <span class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Vista Previa de la Miniatura en Vivo:</span>
+                    <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-slate-950 border border-white/10 shadow-lg">
+                      <img id="adminYoutubeThumbPreview" src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Vista previa de miniatura" class="w-full h-full object-cover" />
+                      <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg">
+                          <svg class="w-4 h-4 translate-x-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                      </div>
+                      <div class="absolute bottom-2 left-2 right-2 px-2.5 py-1 rounded bg-black/85 backdrop-blur-sm text-[11px] text-white font-medium truncate" id="adminYoutubeTitlePreview">
+                        Título del video
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <button onclick="saveHeroSettings()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 font-extrabold text-white text-xs transition-all shadow-lg shadow-sky-500/20 flex items-center gap-2">
               <i data-lucide="check-circle-2" class="w-4 h-4"></i>
               <span>✓ Guardar Todos los Textos & Contenido CMS</span>
@@ -2897,6 +2965,26 @@
       document.getElementById('socialTiktok').value = draftState.socials.tiktok || 'https://www.tiktok.com/@stevecandiadj';
       document.getElementById('socialYoutube').value = draftState.socials.youtube || 'https://youtube.com/@stevecandia1272';
       document.getElementById('socialFacebook').value = draftState.socials.facebook || 'https://www.facebook.com/stevecandiadj';
+
+      // YOUTUBE VIDEO SETTINGS PREFILL
+      if (!draftState.youtubeVideo) {
+        draftState.youtubeVideo = {
+          url: 'https://youtube.com/@stevecandia1272',
+          title: 'Cómo hacer Dropshipping en Paraguay en 2026 (Paso a Paso con Dropi)',
+          desc: 'En este video te muestro la estrategia exacta para empezar a vender sin stock, configurar tus primeros productos ganadores y generar tus primeras ventas con Dropi y Meta Ads.',
+          badge: 'Canal Oficial de YouTube',
+          btnText: 'Ver Video en YouTube',
+          channelUrl: 'https://youtube.com/@stevecandia1272?si=565jQKG-pwKS8gj3'
+        };
+      }
+      const yv = draftState.youtubeVideo;
+      if (document.getElementById('youtubeVideoUrl')) document.getElementById('youtubeVideoUrl').value = yv.url || '';
+      if (document.getElementById('youtubeVideoTitle')) document.getElementById('youtubeVideoTitle').value = yv.title || '';
+      if (document.getElementById('youtubeVideoDesc')) document.getElementById('youtubeVideoDesc').value = yv.desc || '';
+      if (document.getElementById('youtubeVideoBadge')) document.getElementById('youtubeVideoBadge').value = yv.badge || 'Canal Oficial de YouTube';
+      if (document.getElementById('youtubeVideoBtnText')) document.getElementById('youtubeVideoBtnText').value = yv.btnText || 'Ver Video en YouTube';
+      if (document.getElementById('youtubeChannelUrl')) document.getElementById('youtubeChannelUrl').value = yv.channelUrl || 'https://youtube.com/@stevecandia1272';
+      updateYoutubePreview();
     }
 
     function updateHeroSettingsDraft() {
@@ -2944,7 +3032,49 @@
       draftState.socials.youtube = document.getElementById('socialYoutube').value.trim();
       draftState.socials.facebook = document.getElementById('socialFacebook').value.trim();
 
+      // YOUTUBE VIDEO SETTINGS SAVE TO DRAFT
+      if (document.getElementById('youtubeVideoUrl')) {
+        draftState.youtubeVideo = {
+          url: document.getElementById('youtubeVideoUrl').value.trim(),
+          title: document.getElementById('youtubeVideoTitle').value.trim(),
+          desc: document.getElementById('youtubeVideoDesc').value.trim(),
+          badge: document.getElementById('youtubeVideoBadge').value.trim() || 'Canal Oficial de YouTube',
+          btnText: document.getElementById('youtubeVideoBtnText').value.trim() || 'Ver Video en YouTube',
+          channelUrl: document.getElementById('youtubeChannelUrl').value.trim() || 'https://youtube.com/@stevecandia1272'
+        };
+      }
+
       markUnsavedChanges();
+    }
+
+    function getAdminYoutubeVideoId(url) {
+      if (!url) return null;
+      const str = url.trim();
+      if (/^[\w-]{11}$/.test(str)) return str;
+      const match = str.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|v\/|live\/))([\w-]{11})/i);
+      return match ? match[1] : null;
+    }
+
+    function updateYoutubePreview() {
+      const url = document.getElementById('youtubeVideoUrl')?.value || '';
+      const title = document.getElementById('youtubeVideoTitle')?.value || 'Cómo hacer Dropshipping en Paraguay en 2026';
+      const imgEl = document.getElementById('adminYoutubeThumbPreview');
+      const titleEl = document.getElementById('adminYoutubeTitlePreview');
+      
+      if (titleEl) titleEl.innerText = title;
+      
+      const vidId = getAdminYoutubeVideoId(url);
+      if (imgEl) {
+        if (vidId) {
+          imgEl.src = `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
+          imgEl.onerror = function() {
+            this.onerror = null;
+            this.src = `https://img.youtube.com/vi/${vidId}/hqdefault.jpg`;
+          };
+        } else {
+          imgEl.src = 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg';
+        }
+      }
     }
 
     function saveHeroSettings() {
