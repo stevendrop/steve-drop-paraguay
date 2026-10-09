@@ -1,13 +1,21 @@
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+const mongoose = require('mongoose');
 
-const DB_FILE = path.join(__dirname, 'database.json');
-const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mkazgkqikpsocjexlefx.supabase.co';
-const SUPABASE_KEY = process.env.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rYXpna3Fpa3Bzb2NqZXhsZWZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyODk1MjIsImV4cCI6MjEwMDg2NTUyMn0.afvBmodqrxpIJRWHkujt1xu5_-a-2rI2qNHY8HKPx3A';
+const MONGODB_URI = process.env.MONGODB_URI;
+const DB_NAME = 'steve-drop';
+const COLLECTION_KEY = 'STEVE_DROP_DB_V1';
 
+// ─── Schema ───────────────────────────────────────────────────────────────────
+const kvSchema = new mongoose.Schema({
+  key:   { type: String, required: true, unique: true },
+  value: { type: mongoose.Schema.Types.Mixed, required: true }
+}, { collection: 'kv_store' });
+
+const KVStore = mongoose.models.KVStore || mongoose.model('KVStore', kvSchema);
+
+// ─── In-memory cache (desaparece solo si el proceso se reinicia; se restaura desde Mongo) ─
 let inMemoryCache = null;
 
+// ─── Base de datos inicial ────────────────────────────────────────────────────
 const INITIAL_DB = {
   admin: {
     passwordHash: "8c3df138bf64117b6a18d1eb081dc97f26f2a6cb8a49c952086e30b6c230623d" // stevedrop2026
@@ -93,110 +101,88 @@ const INITIAL_DB = {
   members: []
 };
 
-// Helper: HTTP request to Supabase REST API
-function supabaseRequest(endpoint, method = 'GET', body = null) {
-  return new Promise((resolve) => {
-    if (!SUPABASE_URL || !SUPABASE_KEY) return resolve(null);
-    try {
-      const url = new URL(SUPABASE_URL + endpoint);
-      const dataString = body ? JSON.stringify(body) : null;
+// ─── Conexión a MongoDB ───────────────────────────────────────────────────────
+let mongoConnected = false;
 
-      const options = {
-        hostname: url.hostname,
-        path: url.pathname + url.search,
-        method: method,
-        headers: {
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'resolution=merge-duplicates,return=representation'
-        }
-      };
-
-      if (dataString) {
-        options.headers['Content-Length'] = Buffer.byteLength(dataString);
-      }
-
-      const req = https.request(options, (res) => {
-        let responseData = '';
-        res.on('data', chunk => responseData += chunk);
-        res.on('end', () => {
-          try {
-            resolve(responseData ? JSON.parse(responseData) : null);
-          } catch(e) {
-            resolve(null);
-          }
-        });
-      });
-
-      req.on('error', (err) => {
-        console.error('Supabase HTTP Error:', err.message);
-        resolve(null);
-      });
-
-      if (dataString) req.write(dataString);
-      req.end();
-    } catch(e) {
-      resolve(null);
-    }
-  });
-}
-
-// Initial sync from Supabase Cloud on boot
-async function initSupabaseSync() {
-  try {
-    const cloudData = await supabaseRequest('/rest/v1/kv_store?key=eq.STEVE_DROP_DB_V1&select=value');
-    if (cloudData && Array.isArray(cloudData) && cloudData.length > 0 && cloudData[0].value) {
-      inMemoryCache = cloudData[0].value;
-      try {
-        fs.writeFileSync(DB_FILE, JSON.stringify(inMemoryCache, null, 2), 'utf8');
-        console.log('✓ Base de datos sincronizada y restaurada con éxito desde Supabase Cloud');
-      } catch(e){}
-    } else {
-      console.log('ℹ️ Inicializando tabla en Supabase Cloud...');
-      const current = readDB();
-      await supabaseRequest('/rest/v1/kv_store', 'POST', {
-        key: 'STEVE_DROP_DB_V1',
-        value: current
-      });
-    }
-  } catch(e) {
-    console.error('Error al sincronizar con Supabase:', e);
-  }
-}
-
-// Boot background sync
-initSupabaseSync();
-
-function readDB() {
-  if (inMemoryCache) {
-    return inMemoryCache;
-  }
-  if (!fs.existsSync(DB_FILE)) {
-    fs.writeFileSync(DB_FILE, JSON.stringify(INITIAL_DB, null, 2), 'utf8');
-    inMemoryCache = INITIAL_DB;
-    return INITIAL_DB;
+async function connectMongo() {
+  if (mongoConnected) return;
+  if (!MONGODB_URI) {
+    console.error('❌ MONGODB_URI no está definida. Agrega la variable de entorno en Render.');
+    return;
   }
   try {
-    const data = fs.readFileSync(DB_FILE, 'utf8');
-    inMemoryCache = JSON.parse(data);
-    return inMemoryCache;
+    await mongoose.connect(MONGODB_URI, { dbName: DB_NAME });
+    mongoConnected = true;
+    console.log('✅ Conectado a MongoDB Atlas correctamente');
+    await initFromMongo();
   } catch (err) {
-    return INITIAL_DB;
+    console.error('❌ Error al conectar con MongoDB:', err.message);
   }
 }
 
-function writeDB(data) {
-  inMemoryCache = data;
+// ─── Carga inicial desde MongoDB ─────────────────────────────────────────────
+async function initFromMongo() {
   try {
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
-  } catch(e){}
-
-  // Async push to Supabase Cloud
-  supabaseRequest('/rest/v1/kv_store', 'POST', {
-    key: 'STEVE_DROP_DB_V1',
-    value: data
-  });
+    const doc = await KVStore.findOne({ key: COLLECTION_KEY }).lean();
+    if (doc && doc.value) {
+      // Protección anti-borrado: si MongoDB tiene miembros, úsalos
+      inMemoryCache = doc.value;
+      console.log(`✅ DB restaurada desde MongoDB. Miembros: ${(doc.value.members || []).length}, Solicitudes: ${(doc.value.solicitudes || []).length}`);
+    } else {
+      // Primera vez: guardar el INITIAL_DB en MongoDB
+      console.log('ℹ️ Primera vez: inicializando DB en MongoDB Atlas...');
+      await KVStore.findOneAndUpdate(
+        { key: COLLECTION_KEY },
+        { key: COLLECTION_KEY, value: INITIAL_DB },
+        { upsert: true, new: true }
+      );
+      inMemoryCache = INITIAL_DB;
+      console.log('✅ DB inicial guardada en MongoDB Atlas');
+    }
+  } catch (err) {
+    console.error('❌ Error al inicializar desde MongoDB:', err.message);
+  }
 }
 
-module.exports = { readDB, writeDB, DB_FILE };
+// Conectar al iniciar el módulo
+connectMongo();
+
+// ─── readDB ───────────────────────────────────────────────────────────────────
+function readDB() {
+  // Siempre retorna el cache en memoria (restaurado desde MongoDB al arrancar)
+  if (inMemoryCache) return inMemoryCache;
+  // Fallback si MongoDB aún no conectó
+  return INITIAL_DB;
+}
+
+// ─── writeDB ──────────────────────────────────────────────────────────────────
+async function writeDB(data) {
+  // Protección anti-borrado: nunca sobreescribir con 0 miembros si ya había datos
+  const currentMembers = (inMemoryCache?.members || []).length;
+  const newMembers = (data?.members || []).length;
+  if (currentMembers > 0 && newMembers === 0) {
+    console.warn(`⚠️ writeDB bloqueado: intento de sobreescribir ${currentMembers} miembros con lista vacía.`);
+    // Preservar los miembros actuales
+    data.members = inMemoryCache.members;
+    data.solicitudes = data.solicitudes?.length > 0 ? data.solicitudes : (inMemoryCache.solicitudes || []);
+  }
+
+  inMemoryCache = data;
+
+  if (mongoConnected) {
+    try {
+      await KVStore.findOneAndUpdate(
+        { key: COLLECTION_KEY },
+        { key: COLLECTION_KEY, value: data },
+        { upsert: true, new: true }
+      );
+      console.log(`✅ DB guardada en MongoDB. Miembros: ${(data.members || []).length}`);
+    } catch (err) {
+      console.error('❌ Error al guardar en MongoDB:', err.message);
+    }
+  } else {
+    console.warn('⚠️ MongoDB no conectado, datos solo en memoria.');
+  }
+}
+
+module.exports = { readDB, writeDB };

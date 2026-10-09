@@ -1478,6 +1478,15 @@
         .then(res => res.json())
         .then(serverDb => {
           if (serverDb && typeof serverDb === 'object') {
+            const currentDb = getDB();
+            // ESCUDO DE SEGURIDAD: Si localmente hay miembros pero el servidor devuelve 0 (ej: MongoDB aún no conectó), NO borrar los miembros locales
+            if (currentDb && Array.isArray(currentDb.members) && currentDb.members.length > 0) {
+              if (!Array.isArray(serverDb.members) || serverDb.members.length === 0) {
+                console.warn("⚠️ Servidor devolvió 0 miembros mientras existen datos locales. Se preservan los datos locales.");
+                return;
+              }
+            }
+
             localStorage.setItem(DB_KEY, JSON.stringify(serverDb));
             const hasDraftEdits = lastSavedState && JSON.stringify(draftState) !== JSON.stringify(lastSavedState);
             if (!hasDraftEdits) {
