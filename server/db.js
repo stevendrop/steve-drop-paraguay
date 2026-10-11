@@ -34,7 +34,7 @@ const INITIAL_DB = {
       id: "inicio",
       name: "Inicio",
       tagline: "Aprende el sistema",
-      price: "167.000",
+      price: "210.000",
       oldPrice: "",
       badge: "Formación Básica",
       highlight: false,
@@ -57,7 +57,7 @@ const INITIAL_DB = {
       id: "impulso",
       name: "Impulso",
       tagline: "Acelera tus resultados",
-      price: "527.000",
+      price: "697.000",
       oldPrice: "",
       badge: "Más Vendido",
       highlight: false,
@@ -76,7 +76,7 @@ const INITIAL_DB = {
       id: "elite",
       name: "Elite",
       tagline: "Escala tu negocio",
-      price: "1.300.000",
+      price: "1.600.000",
       oldPrice: "",
       badge: "Acompañamiento VIP",
       highlight: true,
@@ -97,6 +97,14 @@ const INITIAL_DB = {
     { id: "faq2", question: "¿Las mentorías son en vivo?", answer: "Sí. Cada nivel incluye mentorías grupales o privadas en vivo, donde resolvemos casos reales." },
     { id: "faq3", question: "¿Funciona en Paraguay?", answer: "Sí. El sistema está adaptado al mercado local, incluyendo pasarela de pago, logística y productos." }
   ],
+  youtubeVideo: {
+    url: "https://youtu.be/QGSU5sGkmc0?si=-V-v-QFjHICqyuJF",
+    title: "🔥 GYM, NEGOCIOS Y DROPSHIPPING: Así fue Steve Drop Experience",
+    desc: "De 0 a 100 vendiendo productos físicos en Paraguay. Así vivimos una experiencia diferente de dropshipping y e-commerce con Dropi.",
+    badge: "Canal Oficial de YouTube",
+    btnText: "Ver Video en YouTube",
+    channelUrl: "https://youtube.com/@stevecandia1272?si=565jQKG-pwKS8gj3"
+  },
   solicitudes: [],
   members: []
 };

@@ -21,7 +21,10 @@ app.get('/api/public-content', (req, res) => {
     settings: db.settings,
     hero: db.hero,
     plans: (db.plans || []).filter(p => p.active !== false),
-    faqs: db.faqs || []
+    faqs: db.faqs || [],
+    aiTools: db.aiTools || {},
+    socials: db.socials || {},
+    youtubeVideo: db.youtubeVideo || null
   });
 });
 
